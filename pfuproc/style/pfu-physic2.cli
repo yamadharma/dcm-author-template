@@ -1,0 +1,17 @@
+\input{pfuproc/style/pfu-bulletin.cli}
+
+% Физика
+\journalseries{{\CYRF}{\cyri}{\cyrz}{\cyri}{\cyrk}{\cyra}}
+\altjournalseries{Physic}
+\journalfoundationyear{1993}
+
+\renewcommand{\headerFontSize}{\normalsize}
+
+\PassOptionsToClass{8dd,twocolumn}{kgeneric}
+%% \PassOptionsToClass{fontsize=8dd,twocolumn}{kgeneric}
+
+%%% Local Variables: 
+%%% mode: latex
+%%% TeX-master: t
+%%% coding: cp1251-unix
+%%% End: 

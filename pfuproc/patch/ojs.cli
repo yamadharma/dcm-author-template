@@ -1,0 +1,150 @@
+% Prepare to export for ojs
+
+\RequirePackage{morewrites}
+\RequirePackage{refcount}
+
+%\g@addto@macro\@title@hook@post{%
+\def\@title@hook@post{%
+   \let\ojs@entry\@empty
+   \g@addto@macro\ojs@entry{%
+    [[\currfilebase]]\par%
+    title = """\@title"""\par%
+   }
+   \addtocontents{ojs.ini}{\ojs@entry}
+   \let\ojs@entry\@empty
+}
+
+%\g@addto@macro\@author@fmt@hook@post{%
+%   \let\ojs@entry\@empty
+%   \g@addto@macro\ojs@entry{%
+%    author=\authorfamily, \authorinitials\par%
+%   }
+%   \addtocontents{ojs.ini}{\ojs@entry}
+%   \let\ojs@entry\@empty
+%}
+
+
+\g@addto@macro\@maketitle@hook{%
+
+   \let\ojs@entry\@empty
+
+   \g@addto@macro\ojs@entry{%
+%    [[\currfilebase]]\par%
+    mainlanguage = \PFUlanguage\par%
+    altlanguage = \PFUaltlanguage\par%
+%    title = """\@title"""\par%
+    authorstoc = \authorstoc\par%
+    abstract = """\@abstracts"""\par%
+    keywords = """\@keywords"""\par%
+    starttitle = \getpagerefnumber{\thePFUtitle:starttitle}\par%
+    endtitle = \getpagerefnumber{\thePFUtitle:endtitle}\par%
+    }
+   \addtocontents{ojs.ini}{\ojs@entry}
+   \let\ojs@entry\@empty
+}
+
+\g@addto@macro\@makealttitle@hook{%
+
+   \let\ojs@entry\@empty
+
+   \g@addto@macro\ojs@entry{%
+    alttitle = """\@alttitle"""\par%
+    altauthorstoc = \altauthorstoc\par%
+    altabstract = """\@altabstracts"""\par%
+    altkeywords = """\alt@keywords"""\par%
+    }
+   \addtocontents{ojs.ini}{\ojs@entry}
+   \let\ojs@entry\@empty
+}
+
+\RequirePackage{scrlfile}
+\BeforeClosingMainAux{%
+
+  \let\ojs@entry\@empty
+
+   \g@addto@macro\ojs@entry{%
+    [journal]\par%
+    journal = \PFUjournal\par%
+    number = \PFUjournalnumber\par%
+    year = \PFUjournalyear\par%
+    series = \PFUjournalseries\par%
+    }
+   \addtocontents{ojs.ini}{\ojs@entry}
+   \let\ojs@entry\@empty
+}
+   
+\AtEndDocument{%
+
+  \@startblindtoc{ojs.ini}
+}
+
+%\newcounter{part}
+
+\renewcommand{\part}[2][]%
+{%
+  {%
+    \stepcounter{part}
+    \clearpage
+    \interlinepenalty\@M
+    \begin{center}
+      \vskip 10\p@ \@plus -1ex \@minus -.2ex
+      {\LARGE \DivFontShape #2\par}
+    \end{center}
+    \par\nobreak
+    \vskip 10\p@\@plus -1ex \@minus -.2ex%
+  }
+  \addtocontents{tac}%
+  {{\vspace{8dd}\protect\noindent\protect\raggedright\protect\protect\Large\DivFontShape{#1}%
+      \@par%
+      \vspace{4dd}}}
+  \addtocontents{toc}%
+  {{\vspace{8dd}\protect\noindent\protect\raggedright\protect\protect\Large\DivFontShape{#2}%
+      \@par%
+      \vspace{4dd}}}
+  \def\parttoc{#2}
+  \def\parttac{#1}
+  \part@hook@post
+}
+
+\def\part@hook@post{}
+
+\g@addto@macro\part@hook@post{%
+
+  \let\ojs@entry\@empty
+
+  \g@addto@macro\ojs@entry{%
+    [section\thepart]\par%
+    parttoc = """\parttoc"""\par%
+    parttac = """\parttac"""\par%
+  }
+  \addtocontents{ojs.ini}{\ojs@entry}
+  \let\ojs@entry\@empty
+  
+}
+
+\newcounter{authordetail}[PFUtitle]
+
+\g@addto@macro\authordescription@hook@post{%
+
+    \refstepcounter{authordetail}
+
+  \let\ojs@entry\@empty
+  
+  \g@addto@macro\ojs@entry{%
+    fullname\theauthordetail = """\pfuproc@authorfull"""\par%
+    authorrank\theauthordetail = """\pfuproc@authorrank"""\par%
+    authordegree\theauthordetail = """\pfuproc@authordegree"""\par%
+    authorpost\theauthordetail = """\pfuproc@authorpost"""\par%
+    email\theauthordetail = """\pfuproc@mail"""\par%
+    country\theauthordetail = """\pfuproc@country"""\par%
+  }
+  \addtocontents{ojs.ini}{\ojs@entry}
+  \let\ojs@entry\@empty
+
+}
+
+
+%%% Local Variables:
+%%% mode: latex
+%%% coding: utf-8-unix
+%%% End:

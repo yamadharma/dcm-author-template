@@ -1,0 +1,75 @@
+\RequirePackage{bibunits}
+\bibliographyunit[\title]
+
+\DeclareRobustCommand{\mainbibstyle}[1]{%
+    \def\PFUmainbibstyle{#1}%
+}
+\let\PFUaltbibstyle\@empty
+
+\DeclareRobustCommand{\altbibstyle}[1]{%
+    \def\PFUaltbibstyle{#1}%
+}
+\let\PFUaltbibstyle\@empty
+
+\DeclareRobustCommand{\curbibstyle}[1]{%
+    \def\PFUcurbibstyle{#1}%
+}
+\let\PFUcurbibstyle\@empty
+
+\DeclareRobustCommand{\curaltlanguage}[1]{%
+    \def\PFUcuraltlanguage{#1}%
+}
+\let\PFUcuraltlanguage\@empty
+
+% Hack for bibunits
+\DeclareRobustCommand{\putbib}[1][]{%
+  \@putbib[#1]
+  \@putbib@hook@post
+}
+\def\@putbib@hook@post{\global\let\@putbib@hook@post\@empty}
+
+\DeclareRobustCommand{\putaltbib}[1][]{%
+  \begingroup
+  
+  \iflanguage{\@defaultlanguage}%
+  {%
+    \curbibstyle{\PFUaltbibstyle}
+    \def\refname{References}
+    \curaltlanguage{\@defaultaltlanguage}
+  }%
+  {%
+    \curbibstyle{\PFUmainbibstyle}
+    \def\refname{{\cyr\CYRL\cyri\cyrt\cyre\cyrr\cyra\cyrt\cyru\cyrr\cyra}}%
+    \curaltlanguage{\@defaultlanguage}
+  }
+  
+  \begin{bibunit}[\PFUcurbibstyle]
+    % \begin{otherlanguage*}{\PFUcuraltlanguage}
+    \@putbib[#1]
+    % \end{otherlanguage*}
+  \end{bibunit}
+  
+  \endgroup
+
+  \@putaltbib@hook@post
+  \label{endtitle}
+  \clearpage
+}
+
+\def\@putaltbib@hook@post{\global\let\@putaltbib@hook@post\@empty}
+
+\def\@title@hook@pre{%
+  \ltx@ifpackageloaded{biblatex}{}{%
+    \iflanguage{\@defaultlanguage}%
+    {%
+      \bibliographystyle*{\PFUmainbibstyle}%
+    }{%
+      \bibliographystyle*{\PFUaltbibstyle}%
+    }
+  }
+}
+
+%%% Local Variables:
+%%% mode: latex
+%%% coding: utf-8-unix
+%%% End: 

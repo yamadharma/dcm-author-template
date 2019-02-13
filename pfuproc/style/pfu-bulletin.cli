@@ -1,0 +1,69 @@
+\input{pfuproc/style/journal.cli}
+
+% Вестник РУДН
+\journal{{\CYRV}{\cyre}{\cyrs}{\cyrt}{\cyrn}{\cyri}{\cyrk}
+  {\CYRR}{\cyro}{\cyrs}{\cyrs}{\cyri}{\cyrishrt}{\cyrs}{\cyrk}{\cyro}{\cyrg}{\cyro}
+  {\cyru}{\cyrn}{\cyri}{\cyrv}{\cyre}{\cyrr}{\cyrs}{\cyri}{\cyrt}{\cyre}{\cyrt}{\cyra}
+  {\cyrd}{\cyrr}{\cyru}{\cyrzh}{\cyrb}{\cyrery}
+  {\cyrn}{\cyra}{\cyrr}{\cyro}{\cyrd}{\cyro}{\cyrv}}%
+\journalHeader{{\CYRV}{\cyre}{\cyrs}{\cyrt}{\cyrn}{\cyri}{\cyrk}
+  {\CYRR}{\CYRU}{\CYRD}{\CYRN}}%
+\altjournal{Bulletin of PFUR}%
+\altjournalHeader{Bulletin of PFUR}%
+\journalfoundationyear{1993}
+
+\AtBeginDocument{%
+  \doiPrefix{10.22363}
+  \doiSuffixBase{\PFUissnPrint{}-\PFUjournalyear\ifx\PFUjournalvolume\@empty\else-\PFUjournalvolume\fi\ifx\PFUjournalnumber\@empty\else-\PFUjournalnumber\fi}
+  \makeatletter
+  \doiBase{\@doiPrefix{}/\@doiSuffixBase}
+  \makeatother
+}
+
+% \AtEndOfClass{%
+%   \RequirePackage{geometry}
+%   % \geometry{reset}
+%   \geometry{twoside}
+%   % % \geometry{papersize={165mm,250mm}}
+%   \geometry{papersize={170mm,260mm}}
+%   % \geometry{footskip=16dd}
+%   % \geometry{total={135mm,225mm}}
+%   % \geometry{hmargin={15mm,20mm},vmargin={17mm,22mm}}
+%   % \geometry{total={140mm,221mm}}
+%   \geometry{total={140mm,230mm}}
+%   % \geometry{hmargin={13mm,17mm},vmargin={13mm,17mm}}
+%   % \geometry{hmargin={13mm,17mm},vmargin={15mm,20mm}}
+%   \geometry{marginparwidth=0dd,marginparsep=0dd}
+%   % \geometry{hmargin={13mm,17mm},vmargin={14mm,19mm}}
+%   % \geometry{twosideshift=0dd}
+%   \geometry{headsep=0.5\baselineskip}
+%   \geometry{bindingoffset=0pt}
+%   \geometry{includehead}
+%   \geometry{nofoot}
+%   % \geometry{includefoot}
+%   \geometry{hcentering}
+%   \geometry{vcentering}
+% }
+
+\defaultlanguage{russian}
+\defaultaltlanguage{english}
+
+%\renewcommand{\PFUheader}%
+%{%
+%  \scshape \PFUjournal,\,%
+%  \PFUjornalseriesName\,\textit{\PFUjournalseries}.\,%
+%  \CYRT.\,\PFUjournalvolume,\,\No\,\PFUjournalnumber.\,\PFUjournalyear.\,%
+%  \cyrs.\,\pageref{starttitle}--\pageref{endtitle} 
+%}
+
+\geometry{hcentering}
+\geometry{includehead}
+\geometry{nofoot}
+\geometry{marginparwidth=0pt,marginparsep=0pt}
+
+\PassOptionsToClass{twoside,final,singlespace,70x108/16}{kgeneric}
+
+%%% Local Variables: 
+%%% mode: latex
+%%% coding: utf-8-unix
+%%% End: 

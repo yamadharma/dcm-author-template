@@ -1,0 +1,258 @@
+%%
+%\RequirePackage{amssymb}%
+%\RequirePackage{amsmath}%
+%\RequirePackage[amsmath,thmmarks]{ntheorem}
+%\RequirePackage{amsthm}
+\RequirePackage[thmmarks]{ntheorem}
+%\RequirePackage{thmtools}
+%\RequirePackage{ntheorem}
+%\RequirePackage{xtheorem}
+
+% \theoremsymbol{\ensuremath{_\square}}
+\theoremsymbol{}
+\qedsymbol{\ensuremath{_\square}}
+
+\gdef\th@class@Kermit{%
+     \theoremstyle{plain}
+     \theoremheaderfont{\normalfont\bfseries}
+     \theorembodyfont{\itshape}
+     \theoremseparator{}
+     \theoremprework{\relax}
+     \theorempostwork{\relax}
+     \theoremindent0pt
+     \theoremnumbering{arabic}
+     \theoremsymbol{}}
+
+% \theoremclass{Kermit}
+
+%%
+%% Fonts
+%%
+
+\providecommand{\theoremheaderFontShape}{\bfseries}
+\providecommand{\theoremheaderFontSize}{\normalsize}
+\providecommand{\theoremheaderPosition}{}
+%%
+\providecommand{\theorembodyFontShape}{\itshape}
+\providecommand{\theorembodyFontSize}{\normalsize}
+\providecommand{\theorembodyPosition}{}
+%%
+
+\theoremseparator{.}
+\theoremheaderfont{\theoremheaderFontShape\theoremheaderFontSize\theoremheaderPosition}
+
+
+{%
+  \theoremstyle{plain}
+  \def\TheoremName{Theorem}
+  \newtheorem{Theorem}{\TheoremName}
+  \newtheorem{theorem}{\TheoremName}
+  % FIXME: dirty hack
+  \renewtheorem*{Theorem*}{\TheoremName}
+%  \@addtoreset{Theorem}{title}
+}%
+
+{
+  \theoremstyle{plain}
+  \def\LemmaName{Lemma}
+  \newtheorem{Lemma}{\LemmaName}
+  % FIXME: dirty hack  
+  \renewtheorem*{Lemma*}{\LemmaName}
+%  \@addtoreset{Lemma}{title}
+}
+{
+  \theoremstyle{definition}
+  % FIXME: dirty hack    
+  \theorembodyfont{\normalfont}  
+  \def\ConsName{Cons}
+  \newtheorem{Cons}{\ConsName}
+  % FIXME: dirty hack  
+  \renewtheorem*{Cons*}{\ConsName}
+%  \@addtoreset{Cons}{title}
+  \def\CorollaryName{Corollary}
+  \newtheorem{Corollary}{\CorollaryName}
+  % FIXME: dirty hack  
+  \renewtheorem*{Corollary*}{\CorollaryName}
+}
+{
+  \theoremstyle{remark}
+  % FIXME: dirty hack    
+  \theorembodyfont{\normalfont}  
+  \def\RemarkName{Remark}
+  \newtheorem{Remark}{\RemarkName}
+  % FIXME: dirty hack  
+  \renewtheorem*{Remark*}{\RemarkName}
+%  \@addtoreset{Remark}{title}
+}
+{
+  \theoremstyle{definition}
+  % FIXME: dirty hack
+  \theorembodyfont{\normalfont}
+  \def\DefName{Definition}
+  \newtheorem{Def}{\DefName}
+  % FIXME: dirty hack
+  \renewtheorem*{Def*}{\DefName}
+%  \@addtoreset{Def}{title}
+}
+{
+  \theoremstyle{plain}
+  % FIXME: dirty hack    
+  \theorembodyfont{\normalfont}  
+  \def\PropositionName{Proposition}
+  \newtheorem{Proposition}{\PropositionName}
+  % FIXME: dirty hack    
+  \renewtheorem*{Proposition*}{\PropositionName}
+%  \@addtoreset{Proposition}{title}
+}
+{
+  \theoremstyle{plain}
+  % FIXME: dirty hack    
+  \theorembodyfont{\normalfont}
+  \def\StatementName{Statement}
+  \newtheorem{Statement}{\StatementName}
+  \newtheorem{statement}{\StatementName}
+  % FIXME: dirty hack    
+  \renewtheorem*{Statement*}{\StatementName}
+%  \@addtoreset{Statement}{title}
+}
+{
+  \theoremstyle{definition}
+  % FIXME: dirty hack      
+  \theorembodyfont{\normalfont}
+  \def\ExampleName{Example}
+  \newtheorem{Example}{\ExampleName}
+  % FIXME: dirty hack    
+  \renewtheorem*{Example*}{\ExampleName}
+%  \@addtoreset{Example}{title}
+}
+
+{
+  \theoremstyle{nonumberplain}
+%   \theoremheaderfont{\scshape}
+  \theorembodyfont{\normalfont}
+  \theoremsymbol{\ensuremath{_\square}}
+  % \RequirePackage{amssymb}
+  \def\ProofName{Proof}
+  \newtheorem{Proof}{\ProofName}
+  \newtheorem{proof}{\ProofName}
+  % \newtheorem{Beweis}{Beweis}
+  % \newtheorem{beweis}{Beweis}
+  % \qedsymbol{\ensuremath{_\blacksquare}}
+  % \theoremclass{LaTeX}
+}
+
+
+\AtBeginDocument%
+{%
+\@ifpackageloaded{babel}{%
+  \addto\extrasrussian%
+  {
+    \def\TheoremName{{\CYRT}{\cyre}{\cyro}{\cyrr}{\cyre}{\cyrm}{\cyra}}
+    \def\LemmaName{{\CYRL}{\cyre}{\cyrm}{\cyrm}{\cyra}}
+    \def\ConsName{{\CYRS}{\cyrl}{\cyre}{\cyrd}{\cyrs}{\cyrt}{\cyrv}{\cyri}{\cyre}}
+    \def\CorollaryName{{\CYRS}{\cyrl}{\cyre}{\cyrd}{\cyrs}{\cyrt}{\cyrv}{\cyri}{\cyre}}
+    \def\RemarkName{{\CYRZ}{\cyra}{\cyrm}{\cyre}{\cyrch}{\cyra}{\cyrn}{\cyri}{\cyre}}
+    \def\DefName{{\CYRO}{\cyrp}{\cyrr}{\cyre}{\cyrd}{\cyre}{\cyrl}{\cyre}{\cyrn}{\cyri}{\cyre}}
+    \def\PropositionName{{\CYRP}{\cyrr}{\cyre}{\cyrd}{\cyrl}{\cyro}{\cyrzh}{\cyre}{\cyrn}{\cyri}{\cyre}}
+    \def\StatementName{{\CYRU}{\cyrt}{\cyrv}{\cyre}{\cyrr}{\cyrzh}{\cyrd}{\cyre}{\cyrn}{\cyri}{\cyre}}
+    \def\ExampleName{{\CYRP}{\cyrr}{\cyri}{\cyrm}{\cyre}{\cyrr}}
+    \def\ProofName{{\CYRD}{\cyro}{\cyrk}{\cyra}{\cyrz}{\cyra}{\cyrt}{\cyre}{\cyrl}{\cyrsftsn}{\cyrs}{\cyrt}{\cyrv}{\cyro}}
+  }
+%%
+  \addto\extrasenglish%
+  {
+    \def\TheoremName{Theorem}
+    \def\LemmaName{Lemma}
+    \def\ConsName{Cons}
+    \def\CorollaryName{Corollary}
+    \def\RemarkName{Remark}
+    \def\DefName{Definition}
+    \def\PropositionName{Proposition}
+    \def\StatementName{Statement}
+    \def\ExampleName{Example}
+    \def\ProofName{Proof}
+  }
+}{} %% babel
+%%
+\@ifpackageloaded{polyglossia}{%
+    \addto\captionsrussian@modern{%
+    \def\TheoremName{Теорема}
+    \def\LemmaName{Лемма}
+    \def\ConsName{Следствие}
+    \def\CorollaryName{Следствие}
+    \def\RemarkName{Замечание}
+    \def\DefName{Определение}
+    \def\PropositionName{Предложение}
+    \def\StatementName{Утверждение}
+    \def\ExampleName{Пример}
+    \def\ProofName{Доказательство}
+  }
+  \addto\captionsenglish%
+  {
+    \def\TheoremName{Theorem}
+    \def\LemmaName{Lemma}
+    \def\ConsName{Cons}
+    \def\CorollaryName{Corollary}
+    \def\RemarkName{Remark}
+    \def\DefName{Definition}
+    \def\PropositionName{Proposition}
+    \def\StatementName{Statement}
+    \def\ExampleName{Example}
+    \def\ProofName{Proof}
+  }
+}{} %% polyglossia
+}
+
+%%%
+%\theoremnumbering{arabic}
+%\theoremstyle{plain}
+%\RequirePackage{latexsym}
+%\theoremsymbol{\ensuremath{_\Box}}
+%\theorembodyfont{\itshape}
+%\theoremheaderfont{\normalfont\bfseries}
+%\theoremseparator{}
+%\newtheorem{Theorem}{Theorem}
+%\newtheorem{theorem}{Theorem}
+%\newtheorem{Satz}{Satz}
+%\newtheorem{satz}{Satz}
+%\newtheorem{Proposition}{Proposition}
+%\newtheorem{proposition}{Proposition}
+%\newtheorem{Lemma}{Lemma}
+%\newtheorem{lemma}{Lemma}
+%\newtheorem{Korollar}{Korollar}
+%\newtheorem{korollar}{Korollar}
+%\newtheorem{Corollary}{Corollary}
+%\newtheorem{corollary}{Corollary}
+%
+%\theorembodyfont{\upshape}
+%\newtheorem{Example}{Example}
+%\newtheorem{example}{Example}
+%\newtheorem{Beispiel}{Beispiel}
+%\newtheorem{beispiel}{Beispiel}
+%\newtheorem{Bemerkung}{Bemerkung}
+%\newtheorem{bemerkung}{Bemerkung}
+%\newtheorem{Anmerkung}{Anmerkung}
+%\newtheorem{anmerkung}{Anmerkung}
+%\newtheorem{Remark}{Remark}
+%\newtheorem{remark}{Remark}
+%\newtheorem{Definition}{Definition}
+%\newtheorem{definition}{Definition}
+%
+% {
+%   \theoremstyle{nonumberplain}
+%   \theoremheaderfont{\scshape}
+%   \theorembodyfont{\normalfont}
+%   \theoremsymbol{\ensuremath{_\blacksquare}}
+%   % \RequirePackage{amssymb}
+%   \newtheorem{Proof}{Proof}
+%   \newtheorem{proof}{Proof}
+%   % \newtheorem{Beweis}{Beweis}
+%   % \newtheorem{beweis}{Beweis}
+%   % \qedsymbol{\ensuremath{_\blacksquare}}
+%   % \theoremclass{LaTeX}
+% }
+
+%%% Local Variables: 
+%%% mode: latex
+%%% coding: utf-8-unix
+%%% End: 

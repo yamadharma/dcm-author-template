@@ -1,0 +1,18 @@
+%%%
+
+\RequirePackage{indentfirst}
+
+%{{{ Lists
+
+\InputIfFileExists{kermit/lang/ru/list.cli}{}{}
+\InputIfFileExists{kermit/lang/ru/math.cli}{}{}
+
+%}}}
+
+\InputIfFileExists{kermit/gost/caption.cli}{}{}
+
+%%% Local Variables: 
+%%% mode: latex
+%%% coding: utf-8-unix
+%%% End: 
+

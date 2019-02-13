@@ -1,0 +1,127 @@
+\input{pfuproc/style/pfu-bulletin.cli}
+
+\altjournal{RUDN Journal of Mathematics, Information Sciences and Physics}
+\altjournalHeader{RUDN Journal of MIPh}
+% Математика. Информатика. Физика
+\journalseries{{\CYRM}{\cyra}{\cyrt}{\cyre}{\cyrm}{\cyra}{\cyrt}{\cyri}{\cyrk}{\cyra}.
+{\CYRI}{\cyrn}{\cyrf}{\cyro}{\cyrr}{\cyrm}{\cyra}{\cyrt}{\cyri}{\cyrk}{\cyra}.
+{\CYRF}{\cyri}{\cyrz}{\cyri}{\cyrk}{\cyra}}
+% \altjournalseries{Mathematics.\,Information\,Sciences.\,Physics}
+\altjournalseries{}
+\journalseriesHeader{{\CYRM}{\CYRI}{\CYRF}}
+% \altjournalseriesHeader{MIPh}
+\altjournalseriesHeader{}
+\journalfoundationyear{2006}
+\issnPrint{2312-9735}
+\issnOnline{2312-9743}
+\journalURL{http://journals.rudn.ru/miph}
+
+\AtEndOfPackage{%
+  \RequirePackage{truncate}
+  % \renewcommand{\leftmark}{\hfill \headerFontSize {\authorsrunning} \hfill}
+  % \renewcommand{\rightmark}{\truncate{0.8\textwidth}{\headerFontSize {\shorttitle}}}
+  
+  \pagestyle{fancy} 
+  \fancyhead{}%
+  % \fancyhead[LE,RO]{\headerFontSize\thepage}%
+  \fancyhead[LE,RO]{%
+      \begin{otherlanguage*}{\PFUlanguage}
+        \headerFontSize\thepage
+      \end{otherlanguage*}
+%    \iflanguage{\@defaultlanguage}%
+%    {%
+%       \headerFontSize\thepage
+%    }
+%    {%
+%      \begin{otherlanguage*}{\@defaultlanguage}
+%       \headerFontSize\thepage
+%      \end{otherlanguage*}
+%    }
+  }        
+%  \fancyhead[CO]{\truncate{0.8\textwidth}{\headerFontSize {\authorsrunning{} \shorttitle}}}%
+  \fancyhead[CO]{%
+      \begin{otherlanguage*}{\PFUlanguage}
+        \truncate{0.8\textwidth}{\headerFontSize {\authorsrunning{} \shorttitle}}
+      \end{otherlanguage*}
+%    \iflanguage{\@defaultlanguage}%
+%    {%
+%        \truncate{0.8\textwidth}{\headerFontSize {\authorsrunning{} \shorttitle}}
+%    }
+%    {%
+%      \begin{otherlanguage*}{\@defaultlanguage}
+%        \truncate{0.8\textwidth}{\headerFontSize {\authorsrunning{} \shorttitle}}
+%      \end{otherlanguage*}
+%    }
+  }
+  \fancyhead[RE]{\headerFontSize \PFUTitleHeader}%
+%  \fancyhead[RE]{%
+%    \iflanguage{\@defaultlanguage}%
+%    {%
+%       \headerFontSize \PFUTitleHeader
+%    }
+%    {%
+%      \begin{otherlanguage*}{\@defaultlanguage}
+%       \headerFontSize \PFUTitleHeader
+%      \end{otherlanguage*}
+%    }
+%  }
+  % \fancyhead[LO]{%
+  %   \iflanguage{\@defaultlanguage}%
+  %   {%
+  %     %% \headerFontSize\PFUheader
+  %     % \rightmark
+  %     \truncate{0.8\textwidth}{\headerFontSize {\shorttitle}}
+  %   }
+  %   {%
+  %     \begin{otherlanguage*}{\@defaultlanguage}
+  %       %% \headerFontSize\PFUheader
+  %       % \rightmark
+  %       \truncate{0.8\textwidth}{\headerFontSize {\shorttitle}}
+  %     \end{otherlanguage*}
+  %   }
+  % }
+  \fancyfoot{}
+
+  \fancypagestyle{plain}{%
+    \fancyhf{} % clear all header and footer fields
+    \fancyhead[C]{%
+      % \headerFontSize\PFUTitleHeader
+    }
+    % \renewcommand{\headrulewidth}{0pt}
+    % \renewcommand{\footrulewidth}{0pt}
+  }
+
+} % END \AtEndOfPackage
+
+
+\PassOptionsToClass{10dd,onecolumn}{kgeneric}
+
+\AtEndPreamble{%
+  \ltx@ifpackageloaded{biblatex}{}{%
+    \usepackage{gost7184}
+    \usepackage{cite}
+  }
+}
+
+\AtBeginDocument{%
+  \ltx@ifpackageloaded{biblatex}{}{%
+    \mainbibstyle{gost7184u}
+    \altbibstyle{elsarticle-num}
+  }
+}
+
+%\renewcommand{\PFUheader}%
+%{%
+%  \scshape \PFUjournal,\,%
+%  \PFUjornalseriesName~\textit{\PFUjournalseries}.\,% 
+%  \ifx\PFUjournalvolume\@empty\else \CYRT.~\PFUjournalvolume.\,\fi{}%
+%  \ifx\PFUjournalnumber\@empty\else\No~\PFUjournalnumber.\,\fi{}%
+%  \ifx\PFUjournalissue\@empty\else\PFUjornalissueName~\PFUjournalissue.\,\fi{}%
+%  \PFUjournalyear.\,% 
+%  \cyrs.\,\pageref{starttitle}--\pageref{endtitle} 
+%}
+
+%%% Local Variables: 
+%%% mode: latex
+%%% coding: utf-8-unix
+%%% End: 

@@ -1,0 +1,1054 @@
+{%
+\selectlanguage{english}
+
+%\graphicspath{{image/zaryadov/}}
+
+\udc{519.872, 519.217}
+
+
+\title{Towards the Analysis of the Queuing System Operating in~the~Random Environment with Resource Allocation}
+
+
+\author[1,2]{Ivan S. Zaryadov}
+\author[1]{Vladimir V. Tsurlukov}
+\author[1]{H. Viana Carvalho Cravid}
+\author[1]{Anna A. Zaytseva}
+\author[1]{Tatiana A. Milovanova}
+
+\address[1]{
+  Department of Applied Probability and Informatics\\
+  Peoples' Friendship University of Russia (RUDN University)\\
+  6, Miklukho-Maklaya str., Moscow, 117198, Russian Federation}
+
+\address[2]{Institute of Informatics Problems, FRC CSC RAS\\
+  IPI FRC CSC RAS, 44-2 Vavilova Str., Moscow 119333, Russian
+  Federation}
+
+
+% \received{\formatdate{09}{10}{2018}}
+
+
+\begin{authordescription}
+% \authorfull[russian]{Зарядов Иван Сергеевич}
+\authorfull[english]{Zaryadov, Ivan S.}
+% \authordegree[russian]{кандидат физико\-/математических наук}
+\authordegree[english]{Candidate of Physical and Mathematical Sciences}
+% \authorpost[russian]{доцент кафедры прикладной информатики и теории вероятностей РУДН, старший научный сотрудник ИПИ ФИЦ ИУ РАН}
+\authorpost[english]{assistant professor of   Department of Applied
+   Probability  and Informatics of  Peoples' Friendship
+    University of Russia (RUDN University); Senior Researcher of
+    Institute of Informatics Problems of 
+  Federal Research Center ``Computer Science and Control'' 
+  Russian Academy of Sciences}
+\email{zaryadov-is@rudn.ru}
+\orcid{0000-0002-7909-6396}
+\phone{+7(495)9550927}
+\end{authordescription}
+
+
+% \begin{authordescription}
+% \authorfull{Зарядов Иван Сергеевич}
+% \authordegree{кандидат физико\-/математических наук}
+% \authorpost{доцент кафедры прикладной информатики и теории вероятностей  РУДН, старший научный сотрудник ИПИ РАН}
+% \email{zaryadov-is@rudn.ru}
+% \phone{+7(495)9550927}
+% \end{authordescription}
+
+\begin{authordescription}
+% \authorfull[russian]{Цурлуков Владимир Владимирович}
+\authorfull[english]{Tsurlukov, Vladimir V.}
+% \authordegree{}
+% \authorpost[russian]{магистр кафедры прикладной информатики и теории вероятностей РУДН}
+\authorpost[english]{master's degree student of   Department of Applied
+  Probability  and Informatics of  Peoples' Friendship
+  University of Russia (RUDN University)}
+\email{dober.vvt@gmail.com}
+\phone{+7(495)9550927}
+\end{authordescription}
+
+\begin{authordescription}
+% \authorfull[russian]{Виана Карвалью Кравид Илкиаш}
+\authorfull[english]{Viana, Carvalho Cravid H.}
+% \authordegree{}
+% \authorpost[russian]{магистр кафедры прикладной информатики и теории вероятностей РУДН}
+\authorpost[english]{master's degree student   of   Department of Applied
+   Probability  and Informatics of  Peoples' Friendship
+    University of Russia (RUDN University)}
+\email{hilvianamat1@gmail.com }
+\phone{+7(495)9550927}
+\end{authordescription}
+
+\begin{authordescription}
+% \authorfull[russian]{Зайцева Анна Андреевна}
+\authorfull[english]{Zaytseva, Anna A.}
+%\authordegree{}
+% \authorpost[russian]{магистр кафедры прикладной информатики и теории вероятностей РУДН}
+\authorpost[english]{master's degree student of     Department of Applied
+   Probability  and Informatics of  Peoples' Friendship
+    University of Russia (RUDN University)}
+\email{anna-z96@mail.ru }
+\phone{+7(495)9550927}
+\end{authordescription}
+
+\begin{authordescription}
+% \authorfull[russian]{Милованова Татьяна Александровна}
+\authorfull[english]{Milovanova, Tatiana A.}
+% \authordegree[russian]{кандидат физико\-/математических наук}
+\authordegree[english]{Candidate of Physical and Mathematical Sciences}
+% \authorpost{старший преподаватель кафедры прикладной информатики и теории вероятностей  РУДН}
+\authorpost[english]{lecturer of Department of Applied
+  Probability  and Informatics of  Peoples' Friendship
+  University of Russia (RUDN University)}
+\email{milovanova-ta@rudn.ru}
+\orcid{0000-0002-9388-9499}
+\phone{+7(495)9550927}
+\end{authordescription}
+
+\abstracts{ The mathematical model of the system, that consists of a
+  storage device and several homogeneous servers and operates in a
+  random environment, and provides incoming applications not only
+  services, but also access to resources of the system, is being
+  constructed.  The random environment is represented by two
+  independent Markov processes.  The first of Markov processes
+  controls the incoming flow of applications to the system and the
+  size of resources required by each application. The incoming flow is
+  a Poisson one, the rate of the flow and the amount of resources
+  required for the application are determined by the state of the
+  external Markov process. The service time for applications on
+  servers is exponential distributed. The service rate and the maximum
+  amount of system resources are determined by the state of the second
+  external Markov process. When the application leaves the system, its
+  resources are returned to the system. In the system under
+  consideration, there may be failures in accepting incoming
+  applications due to a lack of resources, as well as loss of the
+  applications already accepted in the system, when the state of the
+  external Markov process controlling the service and provision of
+  resources changes.  A random process describing the functioning of
+  this system is constructed. The system of equations for the
+  stationary probability distribution of the constructed random
+  process is presented in scalar form. The main tasks for further
+  research are formulated.  }
+
+\keywords{queuing system, random environment, Markov modulated Poisson
+  process, Markov modulated service process, resource allocation}
+
+%\thanks{The publication has been prepared with the support of the
+%  ``RUDN University Program 5-100'' and funded by RFBR according to
+%  the research projects No.~18-07-00692 and No.~16-07-00766.}
+
+
+
+% \alttitle{К анализу системы массового обслуживания с ресурсами, функционирующей в случайном окружении}
+
+
+% \altauthor[1,2]{И. С. Зарядов}
+% \altauthor[1]{В. В. Цурлуков}
+% \altauthor[1]{И. Виана Карвалью Кравид}
+% \altauthor[1]{А. А. Зайцева}
+% \altauthor[1]{Т. А. Милованова}
+
+% \altaddress[1]{Кафедра прикладной информатики и теории вероятностей\\
+%   Российский университет дружбы народов\\
+%   ул. Миклухо-Маклая, д.6, Москва, Россия, 117198}
+
+% \altaddress[2]{Институт проблем информатики\\
+%   Федеральный исследовательский центр <<Информатика и управление>> РАН \\
+% %  Российской академии наук\\
+%   ул. Вавилова, д.~44, кор.~2, Москва, Россия, 119333}
+
+
+
+
+
+% \altabstracts{ Строится математическая модель системы, состоящей из
+%   накопителя и нескольких однородных приборов, функционирующей в
+%   случайном окружении и предоставляющей поступающим заявкам помимо
+%   обслуживания еще и доступ к ресурсам. Случайное окружение
+%   представлено двумя независимыми марковскими процессами, управляющими
+%   поступлением заявок в систему и обслуживанием заявок. В систему
+%   поступает пуассоновский поток заявок, интенсивность поступления и
+%   объем ресурсов, необходимый заявке при обслуживании, определяются
+%   состоянием внешнего марковского процесса. Время обслуживания заявок
+%   на приборах подчинено экспоненциальному распределению. Интенсивность
+%   обслуживания и максимальный объем ресурсов системы определяются
+%   состоянием второго внешнего марковского процесса. При окончании
+%   обслуживания заявки, занятые ею ресурсы возвращаются в систему.  В
+%   рассматриваемой системе возможны отказы в приеме поступающих заявок
+%   из-за нехватки ресурсов, а также возможны потери уже принятых в
+%   систему заявок при изменении состояния внешнего марковского
+%   процесса, управляющего обслуживанием и предоставлением
+%   ресурсов. Построен случайные процесс, описывающий функционирование
+%   данной системы. Представлена в скалярной форме система уравнений для
+%   стационарного распределения вероятностей построенного случайного
+%   процесса. Сформулированы основные задачи для дальнейшего
+%   исследования.  }
+
+% \altkeywords{система массового обслуживания, случайное окружение,
+%   MMPP, предоставление ресурсов}
+
+
+\maketitle
+
+\section{Introduction}
+\label{sec:intro}
+
+The mathematical model of the analysis of the functioning of modern
+telecommunication systems must take into account the influence of
+external factors, which may be realized within the framework of the
+queuing theory (the theory of
+teletraffic)\cite{Boch,bash1,MMAP-book,5} with the help of arrival
+and/or service processes controlled by some external random
+process. The application of the Markov modulated arrival process
+(MMAP), Markov modulated service process
+(MMSP))~\cite{Neuts3,Neuts4,Neuts5,Neuts6,4,MMAP-book} allows us to
+construct not only the adequate mathematical model, but also to obtain
+good analytical results for different
+tasks~\cite{MMPP-1998,MMPP-2005,vish,koz1,koz2,koz3,raz0,raz1,raz2,raz3,sam1,sam2,6b}
+
+The mathematical modeling of modern telecommunication systems when
+incoming applications in addition to services also require some fixed
+or variable volume of
+resources~\cite{sop1,sop3,sop4,sop5,sop6,sop7,sop8} is the actual
+problem.
+
+We will try to apply Markov modulated Poisson process (MMPP)
+theory~\cite{Neuts3,Neuts4,Neuts5,Neuts6,4} to construct the
+mathematical model of the system, that consists of a storage device
+and several homogeneous servers and operates in a random environment,
+provides incoming applications not only services, but also access to
+resources of the system, is being constructed. The random environment
+is represented by two independent Markov processes. The first of
+Markov processes controls the incoming flow of applications to the
+system and the size of resources required by each application. The
+service rate and the maximum amount of system resources are determined
+by the states of the second external Markov process.  The initial
+stages of this study were presented in~\cite{13}. The system of
+equations for the stationary probability distribution of the random
+process, describing the behavior of the system, is the main goal of
+this part of the research.
+
+
+
+\section{System description} 
+\label{sec:base-section}
+
+We will consider the queueing system $MMPP_2 |MMSP_2 |n|r|R_1,R_2$
+(according to Kendall--Basharin notation\cite{Boch}), functioining in
+the random environment (Markov modulated Poisson arrival process and
+Markov modulated service process), with $1\leqslant  n<\infty$ homogeneous
+servers and the buffer of $r\leqslant  \infty$ capacity.
+
+
+The random environment is present by two-state Markov process (MP)
+$\eta_1 (t)$, which control the incoming Poisson process.  If the
+external Markov process $\eta_1 (t)$ is in state $1$ then the rate of
+incoming Poisson process is $\lambda_1$ and each arriving application
+requires the fixed $k_1$ amount of system resources. If the MP
+$\eta_1 (t)$ is in state $2$ the each application arrives according
+the Poisson law with the rate $\lambda_2$ and requires the fixed
+amount of system resources of size $k_2$.
+
+The second external two-state Markov process $\eta_2 (t)$ controls the
+service process on system servers and the maximum amount of system
+resources. If MP $\eta_2 (t)$ is in the state $1$, then the maximum
+value of system resources is $R_1<\infty$, the service time of an
+application (on each of $n$ homogeneous servers) is subject to the
+exponential distribution with the rate $\mu_1$. If MP $\eta_2 (t)$ is
+in the state $2$, then the amount of system resources $R_2$ is
+unlimited, the service time of an application (on each of $n$
+homogeneous servers) is subject to the exponential distribution but
+with the rate $mu_2$.
+
+The transitions of Markov processes $\eta_1$ and $\eta_2$ from one
+state to another are determined by the corresponding infinitesimal
+matrices $\Lambda=\left(\lambda_{ij}\right)_{i,j=1,2}$ and
+$M=\left(\mu_{ij}\right)_{i,j=1,2}$.
+
+After the end of the service each application returns to the system
+the resources, occupied by this application.
+
+The functioning of the system may be defined by the multidimensional
+random process
+$\zeta(t)=\{\mathbf{\xi}_1 (t), \mathbf{\xi}_2 (t),R(t),\eta_1
+(t),\eta_2 (t)\}$, where random process
+$\mathbf{\xi}_1 (t)=\left(\xi_{1s}(t),\xi_{1q}(t)\right)$ describes
+the number of applications with demand on $k_1$ amount of resources
+(applications of the first type) on the servers ($\xi_{1s}(t)$) and in
+the buffer ($\xi_{1q}(t)$) at the time moment $t$.  Respectively, the
+random process
+$\mathbf{\xi}_2 (t)=\left(\xi_{2s}(t),\xi_{2q}(t)\right)$ --- the
+number of application with demand on $k_2$ amount of resources
+(applications of the second type) on the servers ($\xi_{2s}(t)$) and
+in the buffer ($\xi_{2q}(t)$) at the time moment $t$. $R(t)$ --- the
+available at time $t$ amount of system resources. If the state of the
+Markov process $\eta_2$ is $1$, then
+$R(t)=\max(0, R_1 - k_1\mathbf{\xi}_1(t)\mathbf{1} - k_2
+\mathbf{\xi}_2 (t)\mathbf{1})$, if the state of the Markov process
+$\eta_2$ is $2$ then $R(t)=R_2=\infty$.
+
+If the amount of the system resources $R(t)$ at the moment of the new
+application arrival is less then $k_1$ (for the first type
+application) or $k_2$ (for the second type application) amount of
+resources needed in addition to service (i.e. $R(t)<k_1$ or
+$R(t)<k_2$), then the incoming application is lost. Also the accepted
+to the system applications may be dropped from the buffer due to the
+transition Markov chain $\eta_2$ from state $2$ with unlimited amount
+$R_2$ of system resources to the state $1$ with limited amount of
+resources
+$R(t)=R_1 - k_1\mathbf{\xi}_1(t)\mathbf{1} - k_2 \mathbf{\xi}_2
+(t)\mathbf{1}$.
+
+In order to avoid downtime of servers it is supposed that the maximum
+value of system resources $R_1<\infty$ is sufficient for all sersers
+to be occupied, that is $R_1\geqslant  n\cdot\max(k_1,k_2)$.
+
+
+The goal of this paper is to derive the system of equations for random
+process $\zeta(t)$ steady-state probability distribution. The main
+goals of the study as a whole are to obtain main time-probability
+characteristics of the system as for this general case (also for the
+case when the maximum values of system resources are finite, but
+different for all states of governing external Markov process), and
+for special cases of only one external governing Markov process.
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\section{The steady-state probability distribution. The system of
+  equations (scalar form)}
+\label{sec:base-steady}
+
+The set $\mathcal{X}$ of states of the random process
+$\zeta(t)=\{\mathbf{\xi}_1 (t), \mathbf{\xi}_2 (t),R(t),\eta_1
+(t),\eta_2 (t)\}$ may be presented as
+$\mathcal{X}=\{(i_s; i_q),(j_s; j_q),R_1(i_s+i_q;j_s+j_q)|R_2,l,m\}$.
+Here, $i_s$ and $i_q$ ($0\leqslant i_s\leqslant n$, $i_q\geqslant 0$)
+are numbers of the first type applications on servers ($i_s$) and in
+the buffer ($i_q$); $j_s$ and $j_q$ ($0\leqslant j_s\leqslant n$,
+$j_q\geqslant 0$) are numbers of the second type applications on
+servers ($j_s$) and in the buffer ($j_q$).  It should be noted that
+$0\leqslant i_s + j_s\leqslant n$. The argument $l=1,2$ describes the
+state of the external Markov process $\eta_1$ as well as the $m=1,2$
+--- the state of the Markov process
+$\eta_2$. $R_1(i_s+i_q;j_s+j_q)=R_1-(i_s+i_q)k_1-(j_s+j_q)k_2$ --- the
+current amount of the system resources in the state $1$ of Markov
+process $\eta_2$.
+
+
+In the case of the buffer of unlimited capacity, the entire set of
+states can be divided into $10$ subsets corresponding to the following
+states:
+\begin{enumerate}
+\item the system is empty --- the
+  states $\left\{(0; 0),(0; 0), R_1(0;0),1,1\right\}$,
+  $\{(0; 0),(0; 0), R_1(0;0),\\* 2,1\}$,
+  $\left\{(0; 0),(0; 0), R_2,1,2\right\}$,
+  $\left\{(0; 0),(0; 0), R_2,2,2\right\}$;
+\item there are only applications of the first type in the system, not
+  all servers are occupied, the buffer is empty ---
+  $\left\{(i_s; 0),(0; 0), R_1(i_s;0),1,1\right\}$,
+  $\{(i_s; 0),(0; 0), R_1(i_s;0),\\* 2,1\}$,
+  $\{(i_s; 0),(0; 0), R_2,1,2\}$, $\{(i_s; 0),(0; 0), R_2,2,2\}$,
+  $1\leqslant  i_s < n$;
+\item there are only applications of the first type in the system, all
+  servers are occupied, the buffer is empty ---
+  $\left\{(n; 0),(0; 0), R_1(n;0),1,1\right\}$,
+  $\left\{(n; 0),(0; 0), R_1(n;0),2,1\right\}$,
+  $\left\{(n; 0),(0; 0), R_2,1,2\right\}$,
+  $\left\{(n; 0),(0; 0), R_2,2,2\right\}$;
+\item there are only applications of the first type in the system, all
+  servers are occupied, the buffer is not empty ---
+  $\left\{(n; i_q),(0; 0), R_1(n+i_q;0),1,1\right\}$,
+  $\{(n; i_q),(0; 0), \\*R_1(n+i_q;0),2,1\}$,
+  $\left\{(n; i_q),(0; 0), R_2,1,2\right\}$,
+  $\left\{(n; i_q),(0; 0), R_2,2,2\right\}$, $i_q\geqslant  1$;
+\item there are only applications of the second type in the system,
+  not all servers are occupied, the buffer is empty ---
+  $\left\{(0; 0),(j_s; 0), R_1(0;j_s),1,1\right\}$,
+  $\{(0; 0),(j_s; 0), R_1(0;j_s),\\* 2,1\}$,
+  $\{(0; 0),(j_s; 0), R_2,1,2\}$, $\{(0; 0),(j_s; 0), R_2,2,2\}$,
+  $1\leqslant  j_s <n$;
+\item there are only applications of the second type in the system,
+  all servers are occupied, the buffer is empty ---
+  $\left\{(0; 0),(n; 0), R_1(0;n),1,1\right\}$,
+  $\left\{(0; 0),(n; 0), R_1(0;n),2,1\right\}$,
+  $\left\{(0; 0),(n; 0), R_2,1,2\right\}$,
+  $\left\{(0; 0),(n; 0), R_2,2,2\right\}$;
+\item there are only applications of the second type in the system,
+  all servers are occupied, the buffer is not empty ---
+  $\left\{(0; 0),(n; j_q), R_1(0;n+j_q),1,1\right\}$,
+  $\{(0; 0),(n; j_q), \\*R_1(;n+j_q),2,1\}$,
+  $\left\{(0; 0),(n; j_q), R_2,1,2\right\}$,
+  $\left\{(0; 0),(n; j_n), R_2,2,2\right\}$, $j_q\geqslant  1$;
+\item there are applications of both types in the system, not all
+  servers are occupied, the buffer is empty ---
+  $\left\{(i_s; 0),(j_s; 0), R_1(i_s;j_s),1,1\right\}$,
+  $\left\{(i_s; 0),(j_s; 0), R_1(i_s;j_s),2,1\right\}$,
+  $\{(i_s; 0),(j_s; 0), R_2,1,2\}$, $\{(i_s; 0),(j_s; 0), R_2,2,2\}$,
+  $1\leqslant  i_s \leqslant  n-2$, $1\leqslant  j_s \leqslant  n-1-i_s$;
+\item there are applications of both types in the system, all servers
+  are occupied, the buffer is empty ---
+  $\left\{(i_s; 0),(n-i_s; 0), R_1(i_s;n-i_s),1,1\right\}$,
+  $\{(i_s; 0),(n-i_s; 0), \\* R_1(i_s;n-i_s),2,1\}$,
+  $\{(i_s; 0),n-i_s; 0), R_2,1,2\}$,
+  $\{(i_s; 0),n-i_s; 0), R_2,2,2\}$, $1\leqslant  i_s \leqslant  n-1$;
+\item there are applications of both types in the system, all servers
+  are occupied, the buffer is not empty ---
+  $\left\{(i_s; i_q),(n-i_s; j_q), R_1(i_s+i_q;n-i_s+
+    j_q),1,1\right\}$,
+  $\{(i_s; i_q), \\* (n-i_s; j_q), R_1(i_s+i_q; n-i_s+ j_q),2,1\}$,
+  $\{(i_s; i_q),(n-i_s; j_q ), R_2,1,2\}$,
+  $\{(i_s; i_q),(n-i_s; j_q), R_2,2,2\}$, $1\leqslant  i_s \leqslant  n-1$,
+  $i_q+j_q\geqslant  1$.
+\end{enumerate}
+
+For the system with the buffer of finite size, three more groups of
+states will be introduced (the system is fully occupied by
+applications of only one type, the system is fully occupied by both
+type applications).
+
+Since the states in which the amount of resources requested by
+applications exceeds the amount of resources of the entire system are
+impossible (due to our assumptions), then then conditional indicator
+function --- the Kronecker symbol --- is introduced:
+\begin{equation}
+  \delta\left(R_1(i_s+i_q,j_s+j_q)\right)=
+  \left\{
+    \begin{aligned}
+      &1,\quad R_1-(i_s+i_q)k_1-(j_s+j_q)k_2\geqslant  0,\\
+      &0, \quad R_1-(i_s+i_q)k_1-(j_s+j_q)k_2 < 0.
+    \end{aligned}
+  \right.
+\end{equation}
+
+This indicator function will be used for the equations of transitions
+between the states of the groups (4), (6), (10) and for the transition
+from the states (3), (6) and (9) to the overlying states and for
+transitions from the overlying states to states of these groups.
+
+
+The first four equations consider the transition of the system from
+the zero state.
+\begin{multline}
+  \left(\lambda_1+\mu_{1,2}+\lambda_{1,2}\right)
+  P\left((0;0),(0;0),R_1(0;0),1,1\right)=\mu_1
+  P\left((1;0),(0;0),R_1(1;0),1,1\right)+\\ +\mu_1
+  P\left((0;0),(1;0),R_1(0;1),1,1\right)+\lambda_{2,1}
+  P\left((0;0),(0;0),R_1(0;0),2,1\right)+\\ +\mu_{2,1}
+  P\left((0;0),(0;0),R_2,1,2\right),
+\label{eq:1.1}
+\end{multline}
+%%%%%%%%%%%
+\begin{multline}
+  \left(\lambda_2+\mu_{1,2}+\lambda_{2,1}\right)
+  P\left((0;0),(0;0),R_1(0;0),2,1\right)=\mu_1
+  P\left((1;0),(0;0),R_1(1;0),2,1\right)+\\ +\mu_1
+  P\left((0;0),(1;0),R_1(0;1),2,1\right)+\lambda_{1,2}
+  P\left((0;0),(0;0),R_1(0;0),1,1\right)+\\ +\mu_{2,1}
+  P\left((0;0),(0;0),R_2,2,2\right),
+\label{eq:1.2}
+\end{multline}
+%%%%%%%%%%%%
+\begin{multline}
+  \left(\lambda_1+\mu_{2,1}+\lambda_{1,2}\right)
+  P\left((0;0),(0;0),R_2,1,2\right)=\mu_2
+  P\left((1;0),(0;0),R_2,1,2\right)+\\ +\mu_2
+  P\left((0;0),(1;0),R_2,1,2\right)+\lambda_{2,1}
+  P\left((0;0),(0;0),R_2,2,2\right)+\\ +\mu_{1,2}
+  P\left((0;0),(0;0),R_1(0;0),1,1\right),
+\label{eq:1.3}
+\end{multline}
+%%%%%%%%%%%
+\begin{multline}
+  \left(\lambda_2+\mu_{2,1}+\lambda_{2,1}\right)
+  P\left((0;0),(0;0)R_2,2,2\right)=\mu_2
+  P\left((1;0),(0;0),R_2,2,2\right)+\\ +\mu_2
+  P\left((0;0),(1;0),R_2,2,2\right)+\lambda_{1,2}P\left((0;0),(0;0),R_2,1,2\right)+\\
+  +\mu_{1,2}P\left((0;0),(0;0),R_1(0;0),2,1\right).
+\label{eq:1.4}
+\end{multline}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+Now consider the case where only the first type of application is
+present in the system and not all servers are occupied.
+\begin{multline}
+  \left(\lambda_1+\lambda_{1,2}+\mu_{1,2}+i_s\mu_1\right)
+  P\left((i_s;0),(0;0),R_1(i_s;0),1,1\right)=\\ = \lambda_1
+  P\left((i_s-1;0),(0;0),R_1(i_s-1;0),1,1\right) + \lambda_{2,1}
+  P\left((i_s;0,)(0;0),R_1(i_s;0),2,1\right) + \\ + \mu_{2,1}
+  P\left((i_s;0),(0;0),R_2,1,2\right)+\mu_1 (i_s+1)
+  P\left((i_s+1;0),(0;0),R_1(i_s+1;0),1,1\right) + \\ + \mu_1
+  P\left((i_s;0),(1;0),R_1(i_s;1),1,1\right),\quad 1\leqslant
+  i_s\leqslant n-1,
+\label{eq:2.1}
+\end{multline}
+%%%%%%
+\begin{multline}
+  \left(\lambda_2+\lambda_{2,1}+\mu_{1,2}+i_s\mu_1\right)
+  P\left((i_s;0),(0;0),R_1(i_s;0),2,1\right)=\\ =
+  \mu_1 (i_s+1) P\left((i_s+1;0),(0;0),R_1(i_s+1;0),2,1\right) + \\ +\mu_1
+  P\left((i_s;0),(1;0),R_1(i_s;1),2,1\right)+ %\\ +
+  \lambda_{1,2}
+  P\left((i_s;0),(0;0),R_1(i_s;0),1,1\right) + \\ +\mu_{2,1}
+  P\left((i_s;0),(0;0),R_2,2,2\right), \quad 1\leqslant i_s\leqslant
+  n-1,
+\label{eq:2.2}
+\end{multline}
+%%%%%
+\begin{multline}
+  \left(\lambda_1+\lambda_{1,2}+\mu_{2,1}+i_s\mu_2\right)
+  P\left((i_s;0),(0;0),R_2,1,2\right)= \\ = \lambda_1
+  P\left((i_s-1;0),(0;0),R_2,1,2\right) + %\\ +
+  \lambda_{2,1}  P\left((i_s;0),(0;0),R_2,2,2\right) + \\ + \mu_{1,2}
+  P\left((i_s;0),(0;0),R_1(i_s;0),1,1\right) + %\\ 
+  \mu_2 (i_s+1) P\left((i_s+1;0),(0;0),R_2,1,2\right) + \\ + \mu_2
+  P\left((i_s;0),(1;0),R_2,1,2\right),\quad 1\leqslant i_s\leqslant
+  n-1,
+\label{eq:2.3}
+\end{multline}
+%%%%%
+\begin{multline}
+  \left(\lambda_2+\lambda_{2,1}+\mu_{2,1}+i_s\mu_2\right)
+  P\left((i_s;0),(0;0),R_2,2,2\right)= \lambda_{1,2}
+  P\left((i_s;0),(0;0),R_2,1,2\right) + \\ + \mu_{1,2}
+  P\left((i_s;0),(0;0),R_1(i_s;0),2,1\right)+ \mu_2 (i_s+1)
+  P\left((i_s+1;0),(0;0),R_2,2,2\right) + \\ + \mu_2
+  P\left((i_s;0),(1;0),R_2,2,2\right), \quad 1\leqslant i_s\leqslant
+  n-1.
+\label{eq:2.4}
+\end{multline}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+The system contains only applications of the first type, all servers
+are occupied, but the buffer is empty. According to the assumptions,
+the maximum amount of system resources is sufficient for all servers
+to be occupied, but it is not sufficient for arriving applications to
+occupy the buffer. Therefore, it is necessary to use the indicator
+function --- verification of the existence of overlying states.
+\begin{multline}
+  \left(n\mu_1+\mu_{1,2}+\lambda_{1,2}+\lambda_1 \delta\left(R_1
+      (n+1,0)\right)\right) P\left((n,0),(0,0),R_1 (n;0),1,1\right) =
+  \\ = \lambda_1 P\left((n-1,0),(0,0),R_1
+    (n-1;0),1,1\right)+\lambda_{2,1} P\left((n,0),(0,0),R_1
+    (n;0),2,1\right)+ \\ + \mu_{2,1}
+  P\left((n,0),(0,0),R_2,1,2\right)+\mu_1 \delta\left(R_1 (n;1)\right)
+  P\left((n-1,1),(1,0),R_1 (n;1),1,1\right)+\\ + \mu_{2,1}
+  \sum\limits_{i+j=1}^{\infty}\prod\limits_{i_1+j_1=1)}^{j+j}\left(1-\delta\left(R_1
+      (n+i_1;j_1) \right)\right) P\left((n,i),(0,j),R_2,1,2\right)+ \\
+  + n\mu_1 \delta\left(R_1 (n+1,0)\right) P\left((n,1),(0,0),R_1
+    (n+1;0),1,1\right),
+\label{eq:3.1}
+\end{multline}
+%%%%%%%%%%%
+\begin{multline}
+  \left(n\mu_1+\mu_{1,2}+\lambda_{2,1}+\lambda_2 \delta\left(R_1
+      (n,1)\right)\right) P\left((n,0),(0,0),R_1 (n;0),2,1\right) = \\
+  = \lambda_{1,2} P\left((n,0)(0,0),R_1 (n;0),1,1\right)+ \mu_1
+  \delta\left(R_1 (n,1)\right) P\left((n-1,1),(1,0),R_1
+    (n;1),2,1\right)+\\ + \mu_{2,1} P\left((n,0),(0,0),R_2,2,2\right)+
+  n\mu_1 \delta\left(R_1 (n+1,0)\right) P\left((n,1),(0,0), R_1
+    (n+1;0),2,1\right)+ \\ + \mu_{2,1}
+  \sum\limits_{i+j=1}^{\infty}\prod\limits_{i_1+j_1=1)}^{j+j}\left(1-\delta\left(R_1
+      (n+i_1;j_1) \right)\right) P\left((n,i),(0,j),R_2,2,2\right),
+\label{eq:3.2}
+\end{multline}
+%%%%%%%%%%%
+\begin{multline}
+  \left(n\mu_2+\mu_{2,1}+\lambda_{1,2}+\lambda_1 \right)
+  P\left((n,0),(0,0),R_2,1,2\right) =
+  \lambda_1 P\left((n-1,0),(0,0),R_2,1,2\right)+\\
+  \lambda_{2,1} P\left((n,0),(0,0),R_2,2,2\right)+ \mu_{1,2}
+  P\left((n,0),(0,0), R_1(n;0),1,1\right)+\\ + \mu_2
+  P\left((n-1,1),(1,0),R_2,1,2\right)+ n\mu_2 P\left((n,1),(0,0),
+    R_2,1,2\right),
+\label{eq:3.3}
+\end{multline}
+%%%%%%%%%%%
+\begin{multline}
+  \left(n\mu_2+\mu_{2,1}+\lambda_{2,1}+\lambda_2\right)
+  P\left((n,0),(0,0),R_2,2,2\right) = \lambda_{1,2}
+  P\left((n,0),(0,0),R_2,1,2\right)+ \\ + \mu_{1,2}
+  P\left((n,0),(0,0),R_1(n;0),2,1\right)+\mu_2
+  P\left((n-1,1),(1,0),R_2,2,2\right)+\\ + n\mu_2 P\left((n,1),(0,0),
+    R_2,2,2\right),
+\label{eq:3.4}
+\end{multline}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+In the system there are only applications of the first type, all
+servers are occupied, there are also applications in the buffer. The
+indicator function is used to check the possibility of transition to
+(from) overlying states.
+\begin{multline}
+  \left(n\mu_1+\mu_{1,2}+\lambda_{1,2}+\lambda_1 \delta\left(R_1
+      (n+i_q+1,0)\right)\right) P\left((n,i_q),(0,0),R_1
+    (n+i_q;0),1,1\right) = \\ = \lambda_1 P\left((n,i_q-1),(0,0),R_1
+    (n+i_q-1;0),1,1\right)+ \\ +\lambda_{2,1} P\left((n,i_q),(0,0),R_1
+    (n+i_q;0),2,1\right)+ % \\ +
+  \mu_{2,1}
+  P\left((n,i_q),(0,0),R_2,1,2\right)+ \\ +\mu_1 \delta\left(R_1
+    (n+i_q;1)\right) P\left((n-1,i_q+1)(1,0),R_1 (n+i_q;1),1,1\right)+
+  \\ + \mu_{2,1}
+  \sum\limits_{i+j=1}^{\infty}\prod\limits_{i_1+j_1=1)}^{j+j}\left(1-\delta\left(R_1
+      (n+i_q+i_1;j_1) \right)\right)
+  P\left((n,i_q+i),(0,j),R_2,1,2\right)+\\ + n\mu_1 \delta\left(R_1
+    (n+i_q+1,0)\right) P\left((n,i_q+1),(0,0),R_1
+    (n+i_q+1;0),1,1\right), \quad i_q\geqslant 1,
+\label{eq:4.1}
+\end{multline}
+%%%%%%%%
+\begin{multline}
+  \left(n\mu_1+\mu_{1,2}+\lambda_{2,1}+\lambda_2\delta\left(R_1
+      (n+i_q+1,0)\right)\right) P\left((n,i_q)(0,0),R_1
+    (n+i_q;0),2,1\right) = \\ =
+%\lambda_1 P\left((n,i_q-1)(0,0),R_1 (n+i_q-1;0),1,1\right)+
+  \lambda_{1,2} P\left((n,i_q),(0,0),R_1 (n+i_q;0),1,1\right)+
+  \mu_{2,1} P\left((n,i_q),(0,0),R_2,2,2\right)+\\ + n\mu_1
+  \delta\left(R_1 (n+i_q+1,0)\right) P\left((n,i_q+1),(0,0),R_1
+    (n+i_q+1;0),2,1\right) +\\ + \mu_{2,1}
+  \sum\limits_{i+j=1}^{\infty}\prod\limits_{i_1+j_1=1)}^{j+j}\left(1-\delta\left(R_1
+      (n+i_q+i_1;j_1) \right)\right)
+  P\left((n,i_q+i),(0,j),R_2,2,2\right)+\\ + \mu_1 \delta\left(R_1
+    (n+i_q;1)\right) P\left((n-1;i_q+1),(1,0),R_1
+    (n+i_q;1),2,1\right), \quad i_q\geqslant 1,
+\label{eq:4.2}
+\end{multline}
+%%%%%%%%%
+\begin{multline}
+  \left(n\mu_2+\mu_{2,1}+\lambda_{1,2}+\lambda_1\right)
+  P\left((n,i_q),(0,0),R_2,1,2\right) = \\ =\lambda_1
+  P\left((n,i_q-1),(0,0),R_2,1,2\right)+ \lambda_{1,2}
+  P\left((n,i_q),(0,0),R_2,1,2\right)+ \\+ 
+  \mu_{1,2}\delta\left(R_1(n+i_q;0)\right)
+  P\left((n,i_q),(0,0),(R_1(n+i_q;0),1,1\right)+\\ +
+  \mu_2 P\left((n-1,i_q+1),(1,0),R_2,1,2\right)+ \\+ n\mu_2
+  P\left((n,i_q+1),(0,0),R_2,1,2\right), \quad i_q\geqslant 1,
+\label{eq:4.3}
+\end{multline}
+%%%%%%%
+\begin{multline}
+  \left(n\mu_2+\mu_{2,1}+\lambda_{2,1}+\lambda_2\right)
+  P\left((n,i_q),(0,0),R_2,2,2\right) =  \lambda_{2,1}
+  P\left((n,i_q),(0,0),R_2,2,2\right)+ \\ +
+  \mu_{1,2}\delta\left(R_1(n+i_q;0)\right)
+  P\left((n,i_q),(0,0),(R_1(n+i_q;0),2,1\right)+\\ +
+  \mu_2 P\left((n-1,i_q+1),(1,0),R_2,2,2\right)+ n\mu_2
+  P\left((n,i_q+1),(0,0),R_2,2,2\right), \ i_q\geqslant 1,
+\label{eq:4.4}
+\end{multline}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+There are only application of the second type in the system, not all
+servers are occupied, the buffer is empty.
+\begin{multline}
+  \left(\lambda_1+\lambda_{1,2}+\mu_{1,2}+j_s\mu_1\right)
+  P\left((0;0),(j_s;0),R_1(0;j_s),1,1\right)=\\ = \mu_1 (j_s+1)
+  P\left((0;0),(j_s+1;0),R_1(0;j_s+1),1,1\right) + \\ + \mu_1
+  P\left((1;0),(j_s;0),R_1(1;j_s),1,1\right) + \lambda_{2,1}
+  P\left((0;0)(j_s;0),R_1(0;j_s),2,1\right) + \\ +\mu_{2,1}
+  P\left((0;0),(j_s;0),R_2,1,2\right), \quad 1\leqslant j_s\leqslant
+  n-1,
+\label{eq:5.1}
+\end{multline}
+%%%%%%
+\begin{multline}
+  \left(\lambda_2+\lambda_{2,1}+\mu_{1,2}+j_s\mu_1\right)
+  P\left((0;0),(j_s;0),R_1(0;j_s),2,1\right)=\\ = \lambda_2
+  P\left((0;0),(j_s-1;0),R_1(0;j_s-1),2,1\right) + \mu_1
+  P\left((1;0),(j_s;0),R_1(1;j_s),2,1\right)+\\ + \mu_1 (j_s+1)
+  P\left((0;0),(j_s+1;0),R_1(0;j_s+1),2,1\right) +\\ + \lambda_{1,2}
+  P\left((0;0),(j_s;0),R_1(0;j_s),1,1\right) + \\ + \mu_{2,1}
+  P\left((0;0),(j_s;0),R_2,2,2\right), \quad 1\leqslant j_s\leqslant
+  n-1,
+\label{eq:5.2}
+\end{multline}
+%%%%%
+\begin{multline}
+  \left(\lambda_1+\lambda_{1,2}+\mu_{2,1}+j_s\mu_2\right)
+  P\left((0;0),(j_s;0),R_2,1,2\right)= \\ = \lambda_{2,1}
+  P\left((0;0),(j_s;0),R_2,2,2\right) + \mu_{1,2}
+  P\left((0;0),(j_s;0),R_1(0;j_s),1,1\right)+\\ + \mu_2 (j_s+1)
+  P\left((0;0),(i_s+1;0),R_2,1,2\right) + \\ +\mu_2
+  P\left((1;0),(i_s;0),R_2,1,2\right),\quad 1\leqslant j_s\leqslant
+  n-1,
+\label{eq:5.3}
+\end{multline}
+%%%%%
+\begin{multline}
+  \left(\lambda_2+\lambda_{2,1}+\mu_{2,1}+j_s\mu_2\right)
+  P\left((0;0),(j_s;0),R_2,2,2\right)=\\ = \lambda_2
+  P\left((0;0),(j_s-1;0),R_2,2,2\right) + \lambda_{1,2}
+  P\left((0;0),(j_s;0),R_2,1,2\right) + \\ + \mu_{1,2}
+  P\left((0;0),(j_s;0),R_1(0;j_s),2,1\right)+ \mu_2 (j_s+1)
+  P\left((0;0),(j_s+1;0),R_2,2,2\right) + \\ + \mu_2
+  P\left((1;0),(j_s;0),R_2,2,2\right), \quad 1\leqslant i_s\leqslant
+  n-1,
+\label{eq:5.4}
+\end{multline}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+In the system there are only applications of the second type, all
+servers are occupied, but the buffer is empty. The indicator function
+is used to check the possibility of transition to (from) overlying
+states.
+\begin{multline}
+  \left(n\mu_1+\mu_{1,2}+\lambda_{1,2}+\lambda_1 \delta\left(R_1
+      (1,n)\right)\right) P\left((0,0),(n,0),R_1 (0;n),1,1\right) = \\
+  = \lambda_{2,1} P\left((0,0),(n,0),R_1 (0;n),2,1\right)+ \\ +
+  \mu_{2,1} P\left((0,0),(n,0),R_2,1,2\right)+\mu_1 \delta\left(R_1
+    (1;n)\right) P\left(1,0),((n-1,1),R_1 (1;n),1,1\right)+\\ +
+  \mu_{2,1}
+  \sum\limits_{i+j=1}^{\infty}\prod\limits_{i_1+j_1=1)}^{j+j}\left(1-\delta\left(R_1
+      (i_1;n+j_1) \right)\right) P\left((0,i),(n,j),R_2,1,2\right)+ \\
+  + n\mu_1 \delta\left(R_1 (0,n+1)\right) P\left((0;0),(n;1),R_1
+    (0;n+1),1,1\right),
+\label{eq:6.1}
+\end{multline}
+%%%%%%%%%%%
+\begin{multline}
+  \left(n\mu_1+\mu_{1,2}+\lambda_{2,1}+\lambda_2 \delta\left(R_1
+      (0,n+1)\right)\right) P\left((0,0),(n,0),R_1 (0;n),2,1\right) =
+  \\ = \lambda_2 P\left((0,0),(n-1,0),R_1 (0;n-1),1,1\right)+
+  \lambda_{1,2} P\left((0,0)(n,0),R_1 (0;n),1,1\right)+ \\ + \mu_1
+  \delta\left(R_1 (1,n)\right) P\left(1,0),((n-1,1),R_1
+    (1;n),2,1\right)+\mu_{2,1} P\left((0,0),(n,0),R_2,2,2\right)+\\ +
+  n\mu_1 \delta\left(R_1 (0,n+1)\right) P\left((0,0),(n,1), R_1
+    (0;n+1),2,1\right)+ \\ + \mu_{2,1}
+  \sum\limits_{i+j=1}^{\infty}\prod\limits_{i_1+j_1=1)}^{j+j}\left(1-\delta\left(R_1
+      (i_1;n+j_1) \right)\right) P\left((0,i),(n,j),R_2,2,2\right),
+\label{eq:6.2}
+\end{multline}
+%%%%%%%%%%%
+\begin{multline}
+  \left(n\mu_2+\mu_{2,1}+\lambda_{1,2}+\lambda_1 \right)
+  P\left((0,0),(n,0),R_2,1,2\right) = \lambda_{2,1}
+  P\left((0,0),(n,0),R_2,2,2\right)+ \\ +
+  \mu_{1,2} P\left((0,0),(n,0), R_1(0;n),1,1\right)+ \mu_2
+  P\left((1,0),(n-1,1),R_2,1,2\right)+ \\ +
+  n\mu_2 P\left((0,0),(n,1), R_2,1,2\right),
+\label{eq:6.3}
+\end{multline}
+%%%%%%%%%%%
+\begin{multline}
+  \left(n\mu_2+\mu_{2,1}+\lambda_{2,1}+\lambda_2\right)
+  P\left((0,0),(n,0),R_2,2,2\right) = \lambda_2
+  P\left((0,0),(n-1,0),R_2,1,2\right)+\\ + \lambda_{1,2}
+  P\left((0,0),(n,0),R_2,1,2\right)+ \mu_{1,2}
+  P\left((0,0),(n,0),R_1(0;n),2,1\right)+\\ + \mu_2
+  P\left((1,0),(n-1,1),R_2,2,2\right)+ n\mu_2 P\left((0,0),(n,1),
+    R_2,2,2\right),
+\label{eq:6.4}
+\end{multline}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+In the system there are only applications of the second type, all
+servers are occupied, the buffer is not empty. The indicator function
+is used to check the possibility of transition to (from) overlying
+states.
+\begin{multline}
+  \left(n\mu_1+\mu_{1,2}+\lambda_{1,2}+\lambda_1 \delta\left(R_1
+      (1,n+j_q)\right)\right) P\left((0,0),(n,j_q),R_1
+    (0;n+j_q),1,1\right) = \\ = \lambda_{2,1} P\left((0,0),(n,j_q),R_1
+    (0;n+j_q),2,1\right)+ \mu_{2,1}
+  P\left((0,0,(n,j_q),R_2,1,2\right)+ \\ + \mu_1 \delta\left(R_1
+    (1;n+J_q)\right) P\left((1,0)(n-1,j_q+1),R_1 (1;n+j_q),1,1\right)+
+  \\ + \mu_{2,1}
+  \sum\limits_{i+j=1}^{\infty}\prod\limits_{i_1+j_1=1)}^{j+j}\left(1-\delta\left(R_1
+      (i_1;n+j_q+j_1) \right)\right)
+  P\left((0,i),(n,j_q+j),R_2,1,2\right)+\\ + n\mu_1 \delta\left(R_1
+    (0, n+j_q+1)\right) P\left((0,0),(n,j_q+1),R_1
+    (0;n+j_q+1),1,1\right), \quad j_q\geqslant 1,
+\label{eq:7.1}
+\end{multline}
+%%%%%%%%
+\begin{multline}
+  \left(n\mu_1+\mu_{1,2}+\lambda_{2,1}+\lambda_2\delta\left(R_1
+      (0;n+j_q+1)\right)\right) P\left((0,0)(n,j_q),R_1
+    (0;n+j_q),2,1\right) = \\ = \lambda_2 P\left((0,0),(n,j_q-1),R_1
+    (0;n+j_q-1),1,1\right)+ \\ + \lambda_{1,2} P\left((0,0),(n,j_q),R_1
+    (0;n+j_q),1,1\right)+ % \\ +
+  \mu_{2,1}
+  P\left((0,0),(n,j_q),R_2,2,2\right)+\\ + n\mu_1 \delta\left(R_1
+    (0,n+j_q+1)\right) P\left((0,0),(n,j_q+1),R_1
+    (0;n+j_q+1),2,1\right) +\\ + \mu_{2,1}
+  \sum\limits_{i+j=1}^{\infty}\prod\limits_{i_1+j_1=1)}^{j+j}\left(1-\delta\left(R_1
+      (i_1;n+i_q+j_1) \right)\right)
+  P\left((0,i),(n,j_q+j),R_2,2,2\right)+\\ + \mu_1 \delta\left(R_1
+    (1;n+j_q)\right) P\left((1,0),(n-1;j_q+1),R_1
+    (1;n+j_q),2,1\right), \quad j_q\geqslant 1,
+\label{eq:7.2}
+\end{multline}
+%%%%%%%%%
+\begin{multline}
+  \left(n\mu_2+\mu_{2,1}+\lambda_{1,2}+\lambda_1\right)
+  P\left((0,0),(n,j_q),R_2,1,2\right) =
+  \lambda_{1,2} P\left((0,0),(n,j_q),R_2,1,2\right)+ \\ +
+  \mu_{1,2}\delta\left(R_1(0;n+j_q)\right)
+  P\left((0,0),(n,j_q),(R_1(0;n+j_q),1,1\right)+\\ +
+  \mu_2 P\left((1,0),(n-1,j_q+1),R_2,1,2\right)+ \\ + n\mu_2
+  P\left((0,0),(n,j_q+1),R_2,1,2\right), \quad j_q\geqslant  1,
+\label{eq:7.3}
+\end{multline}
+%%%%%%%
+\begin{multline}
+  \left(n\mu_2+\mu_{2,1}+\lambda_{2,1}+\lambda_2\right)
+  P\left((0,0),(n,j_q),R_2,2,2\right) =
+  \lambda_2 P\left((0,0),(n,j_q-1),R_2,1,2\right)+ \\ +
+  \mu_2  P\left((1,0),(n-1,j_q+1),R_2,2,2\right)+ \lambda_{2,1}
+  P\left(0,0),((n,j_q),R_2,2,2\right)+ \\ +
+  \mu_{1,2}\delta\left(R_1(0;n+j_q)\right)
+  P\left((0,0),(n,j_q),(R_1(0;n+j_q),2,1\right)+\\ +
+  n\mu_2 P\left((0,0),(n,j_q+1),R_2,2,2\right), \quad j_q\geqslant  1,
+\label{eq:7.4}
+\end{multline}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+The applications of both types are in the system, but only some (not
+all) servers are occupied.
+\begin{multline}
+  \left(\lambda_1+\mu_{1,2}+\lambda_{1,2}+(i_s+j_s)\mu_1\right)
+  P\left((i_s,0),(j_s,0),R_1(i_s;j_s),1,1\right)=\\ =
+  \lambda_1
+  P\left((i_s-1,0),(j_s,0),R_1(i_s-1;j_s),1,1\right)+\lambda_{2,1}
+  P\left((i_s,0),(j_s,0),R_1(i_s;j_s),2,1\right)+\\ +
+  \mu_{2,1} P\left((i_s,0),(j_s,0),R_2,1,2\right)+(i_s+1)\mu_1
+  P\left((i_s+1,0),(j_s,0),R_1(i_s+1;j_s),1,1\right)+\\ +
+  (j_s+1)\mu_1 P\left((i_s,0),(j_s+1,0),R_1(i_s;j_s+1),1,1\right), \\
+  \quad i_s=\overline{1,n-2}, \quad j_s=\overline{1,n-1-i_s},
+\label{eq:8.1}
+\end{multline}
+%%%%%%%%%%%
+\begin{multline}
+  \left(\lambda_2+\mu_{1,2}+\lambda_{2,1}+(i_s+j_s)\mu_1\right)
+  P\left((i_s,0),(j_s,0),R_1(i_s;j_s),2,1\right)=\\ =
+  \lambda_2
+  P\left((i_s,0),(j_s-1,0),R_1(i_s;j_s-1),2,1\right)+\lambda_{1,2}
+  P\left((i_s,0),(j_s,0),R_1(i_s;j_s),1,1\right)+\\ +
+  \mu_{2,1} P\left((i_s,0),(j_s,0),R_2,2,2\right)+(i_s+1)\mu_1
+  P\left((i_s+1,0),(j_s,0),R_1(i_s+1;j_s),2,1\right)+\\ +
+  (j_s+1)\mu_1 P\left((i_s,0),(j_s+1,0),R_1(i_s;j_s+1),2,1\right), \\
+  \quad i_s=\overline{1,n-2}, \quad j_s=\overline{1,n-1-i_s},
+\label{eq:8.2}
+\end{multline}
+%%%%%%%%%%%
+\begin{multline}
+  \left(\lambda_1+\mu_{2,1}+\lambda_{1,2}+(i_s+j_s)\mu_2\right)
+  P\left((i_s,0),(j_s,0),R_2,1,2\right)=\\ = \lambda_1
+  P\left((i_s-1,0),(j_s,0),R_2,1,2\right)+\lambda_{2,1}
+  P\left((i_s,0),(j_s,0),R_2,2,2\right)+\\ + \mu_{1,2}
+  P\left((i_s,0),(j_s,0),R_1(i_s;j_s),1,1\right)+(i_s+1)\mu_2
+  P\left((i_s+1,0),(j_s,0),R_2,1,2\right)+\\ + (j_s+1)\mu_2
+  P\left((i_s,0),(j_s+1,0),R_2,1,2\right), \quad i_s=\overline{1,n-2},
+  \quad j_s=\overline{1,n-1-i_s},
+\label{eq:8.3}
+\end{multline}
+%%%%%%%%
+\begin{multline}
+  \left(\lambda_2+\mu_{2,1}+\lambda_{2,1}+(i_s+j_s)\mu_2\right)
+  P\left((i_s,0),(j_s,0),R_2,2,2\right)=\\ =
+  \lambda_2 P\left((i_s,0),(j_s-1,0),R_2,2,2\right)+\lambda_{1,2}
+  P\left((i_s,0),(j_s,0),R_2,1,2\right)+\\ +
+  \mu_{1,2} P\left((i_s,0),(j_s,0)R_1(i_s;j_s),2,1\right)+(i_s+1)\mu_2
+  P\left((i_s+1,0),(j_s,0),R_2,2,2\right)+\\ +
+  (j_s+1)\mu_2 P\left((i_s,0),(j_s+1,0),R_2,2,2\right), \quad
+  i_s=\overline{1,n-2}, \quad j_s=\overline{1,n-1-i_s},
+\label{eq:8.4}
+\end{multline}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+The application of the first and the second types are in the system,
+all servers are occupied, but the buffer is empty.
+\begin{multline}
+  \left(n\mu_1+\mu_{1,2}+\lambda_{1,2}+\lambda_1 \delta\left(R_1
+      (i_s+1,n-i_s)\right)\right) P\left((i_s,0),(n-i_s,0),R_1
+    (i_s;n-i_s),1,1\right) = \\ = \lambda_1
+  P\left((i_s-1,0),(n-i_s,0),R_1 (i_s-1;n-i_s),1,1\right)+\\ +
+  \lambda_{2,1} P\left((i_s,0),(n-i_s,0),R_1 (i_s;n-i_s),2,1\right)+
+  \mu_{2,1} P\left((i_s,0),(n-i_s,0),R_2,1,2\right)+ \\ +
+  i_s\mu_1 \delta\left(R_1 (i_s+1;n-i_s)\right)
+  P\left((i_s,1),(n-i_s,0),R_1 (i_s+1;n-i_s),1,1\right)+\\ +
+  (n-i_s)\mu_1 \delta\left(R_1 (i_s;n-i_s+1)\right)
+  P\left((i_s,0),(n-i_s,1),R_1 (i_s;n-i_s+1),1,1\right)+\\ +
+  (n-i_s+1)\mu_1 \delta\left(R_1 (i_s;n-i_s+1)\right)
+  P\left((i_s-1,1),(n-i_s+1,0),R_1 (i_s;n-i_s+1),1,1\right)+\\ +
+  \mu_{2,1} \sum\limits_{i+j=1}^{\infty}\prod\limits_{i_1+j_1=1)}^{j+j}\left(1-\delta\left(R_1 (i_s+i_1;n-i_s+j_1) \right)\right) P\left((i_s,i),(n-i_s,j),R_2,1,2\right), \\
+  \quad i_s=\overline{1,n-1}, \quad j_s=n-i_s,
+\label{eq:9.1}
+\end{multline}
+%%%%%%%
+\begin{multline}
+  \left(n\mu_1+\mu_{1,2}+\lambda_{2,1}+\lambda_2 \delta\left(R_1
+      (i_s,n-i_s+1)\right)\right) P\left((i_s,0),(n-i_s,0),R_1
+    (i_s;n-i_s),2,1\right) = \\ = \lambda_2
+  P\left((i_s,0),(n-i_s-1,0),R_1 (i_s;n-i_s-1),2,1\right)+\\ +
+  \lambda_{1,2} P\left((i_s,0),(n-i_s,0),R_1 (i_s;n-i_s),1,1\right)+
+  \mu_{2,1} P\left((i_s,0),(n-i_s,0),R_2,2,2\right)+ \\ + i_s\mu_1
+  \delta\left(R_1 (i_s+1;n-i_s)\right) P\left((i_s,1),(n-i_s,0),R_1
+    (i_s+1;n-i_s),2,1\right)+\\ + (n-i_s+1)\mu_1 \delta\left(R_1
+    (i_s;n-i_s+1)\right) P\left((i_s-1,1),(n-i_s+1,0),R_1
+    (i_s;n-i_s+1),2,1\right)+\\ + (n-i_s)\mu_1 \delta\left(R_1
+    (i_s;n-i_s+1)\right) P\left((i_s,0),(n-i_s,1),R_1
+    (i_s;n-i_s+1),2,1\right)+\\ + \mu_{2,1}
+  \sum\limits_{i+j=1}^{\infty}\prod\limits_{i_1+j_1=1}^{j+j}\left(1-\delta\left(R_1
+      (i_s+i_1;n-i_s+j_1) \right)\right)
+  P\left((i_s,i),(n-i_s,j),R_2,2,2\right), \\
+  \quad i_s=\overline{1,n-1}, \quad j_s=n-i_s,
+\label{eq:9.2}
+\end{multline}
+%%%%%%%
+\begin{multline}
+  \left(n\mu_2+\mu_{2,1}+\lambda_{1,2}+\lambda_1 \right)
+  P\left((i_s,0),(n-i_s,0),R_2,1,2\right) = \\ =
+  \lambda_1 P\left((i_s-1,0),(n-i_s,0),R_2,1,2\right)+ \lambda_{2,1}
+  P\left((i_s,0),(n-i_s,0),R_2,2,2\right)+ \\ +
+  \mu_{1,2} P\left((i_s,0),(n-i_s,0),R_1(i_s;j_s),1,1\right)+
+  (n-i_s)\mu_2 P\left((i_s,0),(n-i_s,1),R_2,1,2\right) +\\ +
+  i_s\mu_2 P\left((i_s,1),(n-i_s,0),R_2,1,2\right) + (n-i_s+1)\mu_2  P\left((i_s-1,1),(n-i_s+1,0),R_2,1,1\right), \\
+  \quad i_s=\overline{1,n-1}, \quad j_s=n-i_s,
+\label{eq:9.3}
+\end{multline}
+%%%%%%%%
+\begin{multline}
+  \left(n\mu_2+\mu_{2,1}+\lambda_{2,1}+\lambda_2 \right)
+  P\left((i_s,0),(n-i_s,0),R_2,2,2\right) = \\ = \lambda_2
+  P\left((i_s,0),(n-i_s-1,0),R_2,2,2\right)+ \lambda_{1,2}
+  P\left((i_s,0),(n-i_s,0),R_2,1,2\right)+ \\ + \mu_{1,2}
+  P\left((i_s,0),(n-i_s,0),R_1(i_s;j_s),2,1\right)+ (n-i_s)\mu_2
+  P\left((i_s,0),(n-i_s,1),R_2,2,2\right)+\\ +
+  (n-i_s+1)\mu_2 P\left((i_s-1,1),(n-i_s+1,0),R_2,2,2\right)+  i_s\mu_2  P\left((i_s,1),(n-i_s,0),R_2,2,2\right), \\
+  \quad i_s=\overline{1,n-1}, \quad j_s=n-i_s,
+\label{eq:9.4}
+\end{multline}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+The equations for the case when both types of applications are in the
+system (on servers and in the buffer).
+\begin{multline}
+  \left(\lambda_1 \delta\left(R_1(i_s+i_q+1,n-i_s+j_q)\right)+\lambda_{1,2}+\mu_{1,2}+n\mu_1\right) \times \\
+  \times P\left((i_s;i_q),(n-i_s;j_q),R_1(i_s+i_q;
+    n-i_s+j_q),1,1\right) = \\ = \lambda_1
+  P\left((i_s;i_q-1),(n-i_s;j_q),R_1(i_s+i_q-1;n-i_s+j_q),1,1\right) +
+  \\ + \lambda_{2,1} P\left((i_s;i_q),(n-i_s;j_q),R_1(i_s+i_q;
+    n-i_s+j_q),2,1\right) + \\ + \mu_{2,1}
+  P\left((i_s;i_q),(n-i_s;j_q),R_2,1,2\right) + \\ +
+  \mu_{2,1} \sum\limits_{i+j=1}^{\infty}\prod\limits_{i_1+j_1=1}^{j+j}\left(1-\delta\left(R_1 (i_s+i_q+i_1;n-i_s+j_q+j_1) \right)\right) \times \\
+  \times P\left((i_s,i_q+i),(n-i_s,j_q+j),R_2,1,2\right) +
+  i_s p_1\mu_1\delta\left(R_1(i_s+i_q+1;n-i_s+j_q)\right) \times \\
+  \times P\left((i_s;i_q+1),(n-i_s;j_q),R_1(i_s+i_q+1;
+    n-i_s+j_q),1,1\right) + \\ +
+  (n-i_s) p_2 \mu_1 \delta\left(R_1(i_s+i_q;n-i_s+j_q+1)\right) \times \\
+  \times P\left((i_s;i_q),(n-i_s;j_q+1),R_1(i_s+i_q;
+    n-i_s+j_q+1),1,1\right) + \\ +
+  (i_s+1) p_2 \mu_1 \delta\left(R_1(i_s+i_q+1;n-i_s+j_q)\right)  \times \\
+  \times P\left((i_s+1;i_q),(n-i_s-1;j_q+1),R_1(i_s+i_q+1;
+    n-i_s+j_q),1,1\right) + \\ +
+  (n-i_s+1) p_1\mu_1 \delta\left(R_1(i_s+i_q;n-i_s+j_q+1)\right) \times \\
+  \times  P\left((i_s-1;i_q+1),(n-i_s+1;j_q),R_1(i_s+i_q; n-i_s+j_q+1),1,1\right), \\
+  i_s=\overline{1,n-1}, \quad i_q+j_q\geqslant 1,
+\label{eq:10.1}
+\end{multline}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\begin{multline}
+  \left(\lambda_2 \delta\left(R_1(i_s+i_q,n-i_s+j_q+1)\right)+\lambda_{2,1}+\mu_{1,2}+n\mu_1\right) \times \\
+  \times  P\left((i_s;i_q),(n-i_s;j_q),R_1(i_s+i_q;
+    n-i_s+j_q),2,1\right) = \\ =
+  \lambda_2
+  P\left((i_s;i_q),(n-i_s;j_q-1),R_1(i_s+i_q;n-i_s+j_q-1),2,1\right) +
+  \\ +
+  \lambda_{1,2} P\left((i_s;i_q),(n-i_s;j_q),R_1(i_s+i_q;
+    n-i_s+j_q),1,1\right) + \\ +
+  \mu_{2,1}  P\left((i_s;i_q),(n-i_s;j_q),R_2,2,2\right) + \\ +
+  \mu_{2,1} \sum\limits_{i+j=1}^{\infty}\prod\limits_{i_1+j_1=1}^{j+j}\left(1-\delta\left(R_1 (i_s+i_q+i_1;n-i_s+j_q+j_1) \right)\right) \times \\
+  \times P\left((i_s,i_q+i),(n-i_s,j_q+j),R_2,2,2\right) +
+  i_s p_1\mu_1\delta\left(R_1(i_s+i_q+1;n-i_s+j_q)\right) \times \\
+  \times P\left((i_s;i_q+1),(n-i_s;j_q),R_1(i_s+i_q+1;
+    n-i_s+j_q),2,1\right) + \\ +
+  (n-i_s) p_2 \mu_1 \delta\left(R_1(i_s+i_q;n-i_s+j_q+1)\right) \times \\
+  \times P\left((i_s;i_q),(n-i_s;j_q+1),R_1(i_s+i_q;
+    n-i_s+j_q+1),2,1\right) + \\ +
+  (i_s+1) p_2 \mu_1 \delta\left(R_1(i_s+i_q+1;n-i_s+j_q)\right)  \times \\
+  \times P\left((i_s+1;i_q),(n-i_s-1;j_q+1),R_1(i_s+i_q+1;
+    n-i_s+j_q),2,1\right) + \\ +
+  (n-i_s+1) p_1\mu_1 \delta\left(R_1(i_s+i_q;n-i_s+j_q+1)\right) \times \\
+  \times  P\left((i_s-1;i_q+1),(n-i_s+1;j_q),R_1(i_s+i_q; n-i_s+j_q+1),2,1\right), \\
+  i_s=\overline{1,n-1}, \quad i_q+j_q\geqslant  1,
+\label{eq:10.2}
+\end{multline}
+%%%%%%%
+\begin{multline}
+  \left(\lambda_1 +\lambda_{1,2}+\mu_{1,2}+n\mu_2\right)
+  P\left((i_s;i_q),(n-i_s;j_q),R_2,1,2\right) = \\ =
+  \lambda_1 P\left((i_s;i_q-1),(n-i_s;j_q),R_2,1,2\right) +
+  \lambda_{2,1} P\left((i_s;i_q),(n-i_s;j_q),R_2,2,2\right) + \\ +
+  \mu_{1,2}  \delta\left(R_1(i_s+i_q; n-i_s+j_q)\right)
+  P\left((i_s;i_q),(n-i_s;j_q),R_1(i_s+i_q; n-i_s+j_q),1,1\right) + \\ +
+  i_s p_1\mu_2  P\left((i_s;i_q+1),(n-i_s;j_q),R_2,1,2\right) + \\ +
+  (n-i_s) p_2 \mu_2  P\left((i_s;i_q),(n-i_s;j_q+1),R_2,1,2\right) +
+  \\ +
+  (i_s+1) p_2 \mu_2  P\left((i_s+1;i_q),(n-i_s-1;j_q+1),R_2,1,2\right)
+  + \\ +
+  (n-i_s+1) p_1\mu_2 P\left((i_s-1;i_q+1),(n-i_s+1;j_q),R_2,1,2\right), \\
+  i_s=\overline{1,n-1}, \quad i_q+j_q\geqslant  1,
+\label{eq:10.3}
+\end{multline}
+%%%%%%%%
+\begin{multline}
+  \left(\lambda_2 +\lambda_{2,1}+\mu_{1,2}+n\mu_2\right)
+  P\left((i_s;i_q),(n-i_s;j_q),R_2,2,2\right) = \\ =
+  \lambda_2 P\left((i_s;i_q),(n-i_s;j_q-1),R_2,2,2\right) +
+  \lambda_{1,2} P\left((i_s;i_q),(n-i_s;j_q),R_2,1,2\right) + \\ +
+  \mu_{1,2}  \delta\left(R_1(i_s+i_q; n-i_s+j_q)\right)
+  P\left((i_s;i_q),(n-i_s;j_q),R_1(i_s+i_q; n-i_s+j_q),2,1\right) + \\ +
+  i_s p_1\mu_2  P\left((i_s;i_q+1),(n-i_s;j_q),R_2,2,2\right) + \\ +
+  (n-i_s) p_2 \mu_2  P\left((i_s;i_q),(n-i_s;j_q+1),R_2,2,2\right) +
+  \\ +
+  (i_s+1) p_2 \mu_2  P\left((i_s+1;i_q),(n-i_s-1;j_q+1),R_2,2,2\right)
+  + \\ +
+  (n-i_s+1) p_1\mu_2 P\left((i_s-1;i_q+1),(n-i_s+1;j_q),R_2,2,2\right), \\
+  i_s=\overline{1,n-1},\quad  i_q+j_q\geqslant  1.
+\label{eq:10.4}
+\end{multline}
+Here $p$ --- the probability that the first type application is taken
+from the buffer, $p_2$ --- the probability that the second type
+application is taken from the buffer.
+
+
+
+%%%%%%%%%%%%%%%%%
+\section{Conclusions}
+
+The mathematical model of the system with the allocation of resources
+to incoming applications and functioning in the random environment is
+constructed. The system of equations for steady-state probability
+distribution of the random process, which describes the functioning of
+the system, is present.
+
+The main task of future research is to present this system of
+equations in a matrix form and try to apply the well known matrix
+algorithms~\cite{Neuts4,Neuts5,MMAP-book1,MMAP-book2,MMAP-book4} in
+order to obtain the steady-state probability distribution in the
+analitycal form.
+
+Also of interest are stationary distributions of applications of each
+type, the average value of the system's system resources, the average
+number of discarded (lossed) applications.
+
+
+\begin{acknowledgments}
+The publication has been prepared with the support of the
+  ``RUDN University Program 5-100'' and funded by RFBR according to
+  the research projects No.~18-07-00692 and No.~16-07-00766.
+\end{acknowledgments}
+
+
+\putbib[cite]
+
+
+} % END \selectlanguage
+
+
+%%% Local Variables:
+%%% mode: latex
+%%% coding: utf-8-unix
+%%% End:
+

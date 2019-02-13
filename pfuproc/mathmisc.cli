@@ -1,0 +1,52 @@
+% \subsection{Fractions and subscripts}
+%
+%
+% Styles for fractions like 3/4.
+%
+% \begin{macro}{slashfracstyle}
+% |\slashfracstyle| based on the kernel |\textsuperscript| macro
+% \changes{v1.4}{2003/11/16}{Added \cs{slashfrac} and supports (from patch v1.4)}
+%    \begin{macrocode}    
+\DeclareRobustCommand*{\slashfracstyle}[1]%
+{%
+  {\m@th\ensuremath{\mbox{\fontsize\sf@size\z@\selectfont #1}}}%
+}
+%    \end{macrocode}
+% \end{macro}
+%
+% \begin{macro}{\slashfrac}
+% |\slashfrac| based on TeXbook exercise 11.6
+%    \begin{macrocode}    
+\DeclareRobustCommand*{\slashfrac}[2]%
+{\leavevmode
+  \raise.5ex\hbox{\slashfracstyle{#1}}\kern-.13em/%
+  \kern-.15em\lower.25ex\hbox{\slashfracstyle{#2}}%
+}
+%    \end{macrocode}
+% \end{macro}
+%
+% \begin{macro}{\textsubscript}
+% \begin{macro}{\@textsubscript}
+% |\textsubscript|, for text subscripts, based on the kernel 
+% |\textsuperscript| macro.
+% \changes{v1.4}{2003/11/16}{Added \cs{textsubscript} and supports 
+%                (from patch v1.5)}
+%    \begin{macrocode}    
+\DeclareRobustCommand*{\textsubscript}[1]%
+{%
+  \@textsubscript{\selectfont#1}%
+}
+\newcommand*{\@textsubscript}[1]%
+{%
+  {\m@th\ensuremath{_{\mbox{\fontsize\sf@size\z@#1}}}}%
+}
+%    \end{macrocode}
+% \end{macro}
+% \end{macro}
+%
+%
+
+%%% Local Variables: 
+%%% mode: latex
+%%% coding: cp1251-unix
+%%% End: 

@@ -1,0 +1,13 @@
+\input{pfuproc/style/pfu-bulletin.cli}
+
+% Физика
+\journalseries{{\CYRF}{\cyri}{\cyrz}{\cyri}{\cyrk}{\cyra}}
+\altjournalseries{Physic}
+\journalfoundationyear{1993}
+
+\PassOptionsToClass{10dd,onecolumn}{kgeneric}
+
+%%% Local Variables: 
+%%% mode: latex
+%%% coding: utf-8-unix
+%%% End: 

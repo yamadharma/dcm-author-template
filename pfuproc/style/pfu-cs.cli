@@ -1,0 +1,26 @@
+\input{pfuproc/style/pfu-bulletin.cli}
+
+% Прикладная и компьютерная математика
+\journalseries{{\CYRP}{\cyrr}{\cyri}{\cyrk}{\cyrl}{\cyra}{\cyrd}{\cyrn}{\cyra}{\cyrya} {\cyri} 
+{\cyrk}{\cyro}{\cyrm}{\cyrp}{\cyrsftsn}{\cyryu}{\cyrt}{\cyre}{\cyrr}{\cyrn}{\cyra}{\cyrya} 
+{\cyrm}{\cyra}{\cyrt}{\cyre}{\cyrm}{\cyra}{\cyrt}{\cyri}{\cyrk}{\cyra}}
+\altjournalseries{Applied and Computer Mathematics}
+\journalfoundationyear{2002}
+
+\PassOptionsToClass{10dd,onecolumn}{kgeneric}
+
+\renewcommand{\PFUheader}%
+{%
+  \scshape \PFUjournal,\,%
+  \PFUjornalseriesName~\textit{\PFUjournalseries}.\,% 
+  \ifx\PFUjournalvolume\@empty\else \CYRT.~\PFUjournalvolume.\,\fi{}%
+  \ifx\PFUjournalnumber\@empty\else\No~\PFUjournalnumber.\,\fi{}%
+  \ifx\PFUjournalissue\@empty\else\PFUjornalissueName~\PFUjournalissue.\,\fi{}%
+  \PFUjournalyear.\,% 
+  \cyrs.\,\pageref{starttitle}--\pageref{endtitle}
+}
+
+%%% Local Variables: 
+%%% mode: latex
+%%% coding: utf-8-unix
+%%% End: 

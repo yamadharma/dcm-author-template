@@ -1,0 +1,13 @@
+\providecommand{\PFUheader}%
+{%
+%%   \scshape \PFUjournal,
+%%   \PFUjornalseriesName~\textit{\PFUjournalseries}. \PFUjournalyear,
+%%   \No~\PFUjournalnumber, \PFUjornalissueName~\PFUjournalissue,
+%%   \cyrs.~\pageref{starttitle}--\pageref{endtitle} 
+}
+
+%%% Local Variables: 
+%%% mode: latex
+%%% TeX-master: t
+%%% coding: utf-8-unix
+%%% End: 

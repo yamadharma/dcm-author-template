@@ -1,0 +1,113 @@
+\RequirePackage{calc}
+%\RequirePackage{enumerate}[1999/03/05]
+\RequirePackage[shortlabels]{enumitem}
+
+% \renewcommand{\theenumi}{\arabic{enumii}}
+% \renewcommand{\labelenumi}{\theenumii)}
+% \renewcommand{\theenumii}{\asbuk{enumi}}
+% \renewcommand{\labelenumii}{\theenumi)}
+
+
+\renewcommand{\labelitemi}{\bfseries\textendash}
+\renewcommand{\labelitemii}{\bfseries\textendash}
+\renewcommand{\labelitemiii}{\bfseries\textendash}
+\renewcommand{\labelitemiv}{\bfseries\textendash}
+
+\setlength{\itemsep}{0pt}
+\setlength{\parsep}{0pt plus 0pt minus 0pt}  
+\setlength{\topsep}{0pt plus 2pt minus 0pt}  
+
+\AtBeginDocument{%
+\settowidth\leftmargini{\labelenumi\hskip\labelsep}%
+% \advance\leftmargini by \normalparindent
+\settowidth\leftmarginii{\labelenumii\hskip\labelsep}%
+% \advance\leftmarginii by 15pt
+\settowidth\leftmarginiii{\labelenumiii\hskip\labelsep}%
+% \advance\leftmarginiii by 12pt
+\settowidth\leftmarginiv{\labelenumiv\hskip\labelsep}%
+% \advance\leftmarginiv by 10pt
+% \leftmarginv=10pt
+% \leftmarginvi=10pt
+% \leftmargin=\leftmargini
+% \labelsep=5pt
+% \labelwidth=\leftmargini \advance\labelwidth-\labelsep
+}
+
+\makeatletter
+\renewcommand{\@listi}{%
+  \leftmargin\leftmargini
+  \setlength{\itemsep}{0pt}
+  \setlength{\parsep}{0pt plus 0pt minus 0pt}
+  \setlength{\topsep}{0pt plus 2pt minus 0pt}  
+}
+\renewcommand{\@listii}{%
+  \leftmargin\leftmarginii
+  \labelwidth\leftmarginii
+  \advance\labelwidth-\labelsep
+  \setlength{\itemsep}{0pt}
+  \setlength{\parsep}{0pt plus 0pt minus 0pt}
+  \setlength{\topsep}{0pt plus 2pt minus 0pt}    
+}
+\renewcommand{\@listiii}{%
+  \leftmargin\leftmarginiii
+  \labelwidth\leftmarginiii
+  \advance\labelwidth-\labelsep
+  \setlength{\itemsep}{0pt}
+  \setlength{\parsep}{0pt plus 0pt minus 0pt}
+  \setlength{\topsep}{0pt plus 2pt minus 0pt}  
+}
+\renewcommand{\@listiv}{%
+  \leftmargin\leftmarginiv
+  \labelwidth\leftmarginiv
+  \advance\labelwidth-\labelsep
+  \setlength{\itemsep}{0pt}
+  \setlength{\parsep}{0pt plus 0pt minus 0pt}  
+  \setlength{\topsep}{0pt plus 2pt minus 0pt}  
+}
+\let\@listI\@listi
+\@listi
+\makeatother
+ 
+% \setlength{\labelwidth}{\parindent+.7em+\labelsep}
+% \setlength{\itemindent}{0pt}
+% \setlength{\leftmargin}{\labelwidth}
+
+%\addto\extrasrussian{%
+% \def\labelitemi{---}
+% \def\labelitemii{---}
+% \def\labelitemiii{---}
+%\def\labelenumi{\theenumi)}
+%\def\theenumii{\asbuk{enumii}}
+%\def\labelenumii{\theenumii)}
+% \def\p@enumii{\theenumi}
+% \def\labelenumiii{{\bf--}}
+% \let\theenumiii\relax
+% \def\p@enumiii{\theenumi\theenumii}
+%}
+
+%% Fixup for russian enumeration
+%\makeatletter
+%\addto\extrasrussian%
+%{
+%\g@addto@macro\@enhook{%
+%  \def\@tempb{\IeC{\CYRA}}%
+%  \def\@tempc{\IeC{\cyra}}%
+%  \ifx\@tempb\@entemp\def\@tempa{\@enLabel\Asbuk}\fi
+%  \ifx\@tempc\@entemp\def\@tempa{\@enLabel\asbuk}\fi}
+%}
+%\makeatother
+
+%% И еще запретим вкладывать четыре enumerate друг в друга ...
+%\makeatletter
+%\def\enumerate{\ifnum \@enumdepth >2% было 3, а не 2
+%\@toodeep\else
+%      \advance\@enumdepth \@ne
+%      \edef\@enumctr{enum\romannumeral\the\@enumdepth}\list
+%      {\csname label\@enumctr\endcsname}{\usecounter
+%        {\@enumctr}\def\makelabel##1{\hss\llap{##1}}}\fi}
+%\makeatother
+
+%%% Local Variables: 
+%%% mode: latex
+%%% coding: utf-8-unix
+%%% End:

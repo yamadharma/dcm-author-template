@@ -1,0 +1,70 @@
+\let\PFUsubcaptionlist\@empty
+
+\long\def\@subcaption#1#2#3{%
+  \ifx \relax#2\relax \else
+    \bgroup
+      \let\label=\@gobble
+      \let\protect=\string
+      \def\@subcaplabel{%
+        \caption@lstfmt{\@nameuse{p@#1}}{\@nameuse{the#1}}}%
+      \xdef\sf@captionlist{%
+        \sf@captionlist,%
+        {\protect\numberline{\@subcaplabel}\noexpand{\ignorespaces #2}}}%
+    \egroup
+  \fi
+  \bgroup
+    \ifx \relax#3\relax
+      \let\captionlabelsep=\relax
+    \fi
+    \hb@xt@\the\@tempdima{%
+      \hss
+      \parbox[t]{\the\@tempdima}{%
+        \caption@make
+            {\@nameuse{sub\@captype name}}%
+            {\@nameuse{thesub\@captype}}%
+%%
+	    {}}%
+%%
+      \hss}%
+  \egroup
+%%
+    {%
+    \ifx\PFUsubcaptionlist\@empty\protected@xdef\PFUsubcaptionlist{{\@nameuse{the#1}}) #3}%
+    \else\protected@xdef\PFUsubcaptionlist{\PFUsubcaptionlist; {\@nameuse{the#1}}) #3}%
+    \fi%
+    }
+%%
+}
+
+\long\def\@caption#1[#2]#3{%
+  \par
+  \addcontentsline{\csname ext@#1\endcsname}{#1}%
+    {\protect\numberline{\csname the#1\endcsname}{\ignorespaces #2}}%
+  \begingroup
+    \@parboxrestore
+    \if@minipage
+      \@setminipage
+    \fi
+    \normalsize
+%%
+    \@makecaption{\csname fnum@#1\endcsname}{\ignorespaces #3%
+    \ifx\PFUsubcaptionlist\@empty\else : \PFUsubcaptionlist%
+    \fi%
+    }\par
+%%
+  \endgroup%
+  \let\PFUsubcaptionlist\@empty%
+}
+
+\renewenvironment{figure}
+                {\let\PFUsubcaptionlist\@empty%
+		\@float{figure}}
+                {\end@float}
+
+\renewenvironment{table}
+                {\let\PFUsubcaptionlist\@empty%
+		\@float{table}}
+                {\end@float}
+
+\captionsetup{textfont={bf}}
+
