@@ -191,6 +191,8 @@ Bulletin of Peoples' Friendship University of Russia]
   \let\pfuproc@authorpost@english\@empty
   \let\pfuproc@mail\@empty
   \let\pfuproc@orcid\@empty
+  \let\pfuproc@scopusauthorid\@empty
+  \let\pfuproc@researcerid\@empty
   \let\pfuproc@phone\@empty
   \let\pfuproc@country\@empty
   \let\pfuproc@country@english\@empty
@@ -240,6 +242,14 @@ Bulletin of Peoples' Friendship University of Russia]
     \else
     \pfuproc@komma\protect\mbox{ORCID:~https://orcid.org/\pfuproc@orcid{}}%
     \fi
+    \ifx\pfuproc@researcherid\@empty
+    \else
+    \pfuproc@komma\protect\mbox{ResearcherID: \pfuproc@researcherid{}}%
+    \fi
+    \ifx\pfuproc@scopusauthorid\@empty
+    \else
+    \pfuproc@komma\protect\mbox{Scopus Author ID: \pfuproc@scopusauthorid{}}%
+    \fi
     \pfuproc@ket%
   }
 
@@ -274,7 +284,15 @@ Bulletin of Peoples' Friendship University of Russia]
     \fi
     \ifx\pfuproc@orcid\@empty
     \else
-    \pfuproc@komma\protect\mbox{ORCID:~https://orcid.org/\pfuproc@orcid{}}%
+      \pfuproc@komma\protect\mbox{ORCID:~https://orcid.org/\pfuproc@orcid{}}%
+    \fi
+    \ifx\pfuproc@researcherid\@empty
+    \else
+      \pfuproc@komma\protect\mbox{ResearcherID: \pfuproc@researcherid{}}%
+    \fi
+    \ifx\pfuproc@scopusauthorid\@empty
+    \else
+      \pfuproc@komma\protect\mbox{Scopus Author ID: \pfuproc@scopusauthorid{}}%
     \fi
     \pfuproc@ket%
   }
@@ -373,6 +391,18 @@ Bulletin of Peoples' Friendship University of Russia]
   \def\pfuproc@orcid{#1}
 }
 \let\pfuproc@orcid\@empty
+
+% ResearcherID
+\DeclareRobustCommand{\researcherid}[1]{%
+  \def\pfuproc@researcherid{#1}
+}
+\let\pfuproc@researcherid\@empty
+
+% Scopus Author ID
+\DeclareRobustCommand{\scopusauthorid}[1]{%
+  \def\pfuproc@scopusauthorid{#1}
+}
+\let\pfuproc@scopusauthorid\@empty
 
 %}}}
 
