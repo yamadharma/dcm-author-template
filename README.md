@@ -12,7 +12,7 @@
 
 - clean working directory
 
-```bash
+``` bash
   make clean
 ```
 
@@ -20,19 +20,19 @@
 
 - run LaTeX
 
-```
+``` bash
   lualatex default
 ```
 
 - run BibTeX
 
-```
+``` bash
   bibtexu bu1.aux
 ```
 
 - run LaTeX twice
 
-```
+``` bash
   lualatex default
   lualatex default
 ```
