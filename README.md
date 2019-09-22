@@ -16,7 +16,7 @@
 
 - run LaTeX
   ```bash
-  pdflatex default
+  lualatex default
   ```
 - run BibTeX
   ```bash
@@ -24,8 +24,8 @@
   ```
 - run LaTeX twice
   ```bash
-  pdflatex default
-  pdflatex default
+  lualatex default
+  lualatex default
   ```
 - see `default.pdf`
 
