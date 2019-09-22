@@ -22,8 +22,8 @@
 
 % \AtEndOfClass{%
 %   \RequirePackage{geometry}
-%   % \geometry{reset}
-%   \geometry{twoside}
+  % \geometry{reset}
+  % \geometry{twoside}
 %   % % \geometry{papersize={165mm,250mm}}
 %   \geometry{papersize={170mm,260mm}}
 %   % \geometry{footskip=16dd}
@@ -31,17 +31,17 @@
 %   % \geometry{hmargin={15mm,20mm},vmargin={17mm,22mm}}
 %   % \geometry{total={140mm,221mm}}
 %   \geometry{total={140mm,230mm}}
-%   % \geometry{hmargin={13mm,17mm},vmargin={13mm,17mm}}
+  % \geometry{hmargin={13mm,17mm},vmargin={13mm,17mm}}
 %   % \geometry{hmargin={13mm,17mm},vmargin={15mm,20mm}}
 %   \geometry{marginparwidth=0dd,marginparsep=0dd}
 %   % \geometry{hmargin={13mm,17mm},vmargin={14mm,19mm}}
 %   % \geometry{twosideshift=0dd}
 %   \geometry{headsep=0.5\baselineskip}
-%   \geometry{bindingoffset=0pt}
-%   \geometry{includehead}
-%   \geometry{nofoot}
+  % \geometry{bindingoffset=0pt}
+  % \geometry{includehead}
+  % \geometry{nofoot}
 %   % \geometry{includefoot}
-%   \geometry{hcentering}
+  % \geometry{hcentering}
 %   \geometry{vcentering}
 % }
 
@@ -56,10 +56,19 @@
 %  \cyrs.\,\pageref{starttitle}--\pageref{endtitle} 
 %}
 
-\geometry{hcentering}
-\geometry{includehead}
-\geometry{nofoot}
-\geometry{marginparwidth=0pt,marginparsep=0pt}
+\AtEndOfClass{%
+  \RequirePackage{geometry}
+  % \geometry{reset}
+  \geometry{twoside}
+  \geometry{hcentering}
+  \geometry{includehead}
+  \geometry{includefoot}
+  % \geometry{nofoot}
+  \geometry{marginparwidth=0pt,marginparsep=0pt}
+  % \geometry{hmargin={13mm,17mm},vmargin={14mm,19mm}}
+  \geometry{hmargin={13mm,17mm},vmargin={8mm,13mm}}
+  \geometry{heightrounded}
+}
 
 \PassOptionsToClass{twoside,final,singlespace,70x108/16}{kgeneric}
 

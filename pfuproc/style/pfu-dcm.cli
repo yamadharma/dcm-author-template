@@ -1,6 +1,7 @@
 \input{pfuproc/style/pfu-bulletin.cli}
 
 % Discrete and Continuous Models and Applied Computational Science
+\journal{Discrete and Continuous Models and Applied Computational Science}
 \altjournal{Discrete and Continuous Models and Applied Computational Science}
 \altjournalHeader{DCM\textit{\&}ACS}
 \journalHeader{DCM\textit{\&}ACS}
@@ -9,8 +10,8 @@
 \journalseriesHeader{}
 \altjournalseriesHeader{}
 \journalfoundationyear{1993}
-\issnPrint{2312-9735}
-\issnOnline{2312-9743}
+\issnPrint{2658-4670}
+\issnOnline{2658-7149}
 \journalURL{http://journals.rudn.ru/miph}
 % Оформление логотипа
 \AtBeginDocument{%
@@ -32,7 +33,7 @@
   \RequirePackage{truncate}
   % \renewcommand{\leftmark}{\hfill \headerFontSize {\authorsrunning} \hfill}
   % \renewcommand{\rightmark}{\truncate{0.8\textwidth}{\headerFontSize {\shorttitle}}}
-  
+
   \pagestyle{fancy}
   \fancyhead{}%
   % \fancyhead[LE,RO]{\headerFontSize\thepage}%
@@ -65,28 +66,29 @@
 %      \end{otherlanguage*}
 %    }
   }
-  \fancyhead[RE]{\headerFontSize \PFUTitleHeader}%
-%  \fancyhead[RE]{%
-%    \iflanguage{\@defaultlanguage}%
-%    {%
+  
+\fancyhead[RE]{\headerFontSize \PFUTitleHeader}%
+
+% \fancyhead[RE]{%
+%   \iflanguage{\@defaultlanguage}{%
+%     \headerFontSize \PFUTitleHeader
+%   }{%
+%     \begin{otherlanguage*}{\@defaultlanguage}
 %       \headerFontSize \PFUTitleHeader
-%    }
-%    {%
-%      \begin{otherlanguage*}{\@defaultlanguage}
-%       \headerFontSize \PFUTitleHeader
-%      \end{otherlanguage*}
-%    }
-%  }
-  % \fancyhead[LO]{%
-  %   \iflanguage{\@defaultlanguage}%
+%     \end{otherlanguage*}
+%   }
+% }
+
+ % \fancyhead[LO]{%
+ % \iflanguage{\@defaultlanguage}%
+ % {%
+ %     %% \headerFontSize\PFUheader
+ %     % \rightmark
+ % \truncate{0.8\textwidth}{\headerFontSize {\shorttitle}}
+ % }
   %   {%
-  %     %% \headerFontSize\PFUheader
-  %     % \rightmark
-  %     \truncate{0.8\textwidth}{\headerFontSize {\shorttitle}}
-  %   }
-  %   {%
-  %     \begin{otherlanguage*}{\@defaultlanguage}
-  %       %% \headerFontSize\PFUheader
+  %   \begin{otherlanguage*}{\@defaultlanguage}
+  %       %%     \headerFontSize\PFUheader
   %       % \rightmark
   %       \truncate{0.8\textwidth}{\headerFontSize {\shorttitle}}
   %     \end{otherlanguage*}
@@ -110,7 +112,7 @@
 
 \AtEndPreamble{%
   \ltx@ifpackageloaded{biblatex}{}{%
-    % \usepackage{gost7184}
+    \usepackage{gost7184}
     \usepackage{cite}
   }
 }
@@ -133,7 +135,7 @@
 %  \cyrs.\,\pageref{starttitle}--\pageref{endtitle} 
 %}
 
-%%% Local Variables: 
+%%% Local Variables:
 %%% mode: latex
 %%% coding: utf-8-unix
-%%% End: 
+%%% End:

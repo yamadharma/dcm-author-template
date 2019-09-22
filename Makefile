@@ -1,12 +1,12 @@
 FILE = `cat NAME`
-
+LATEX = lualatex
 
 all:
-	pdflatex $(FILE)
-	pdflatex $(FILE)
+	$(LATEX) $(FILE)
+	$(LATEX) $(FILE)
 	-bibtexu bu*.aux
-	pdflatex $(FILE)
-	pdflatex $(FILE)
+	$(LATEX) $(FILE)
+	$(LATEX) $(FILE)
 	mkdir -p out
 	mv $(FILE).pdf out
 

@@ -189,10 +189,10 @@
 
   % \setlength{\paperheight}{215mm}%
   % \setlength{\paperwidth}{145mm}
-  
+
   % \setlength{\textheight}{215mm}
   % \setlength{\textwidth}{112mm}
-  
+
   % \addtolength{\topmargin}{-1in}
   % \geometry{includehead}
   % \geometry{includeheadfoot}
@@ -212,8 +212,9 @@
 %% 70x108/16
 \DeclareOption{70x108/16}
 {%
+  \geometry{layoutsize={170mm,260mm}}
   \geometry{papersize={170mm,260mm}}
-  \geometry{total={384dd,600dd}}
+  % \geometry{total={384dd,600dd}}
   % \geometry{total={140mm,230mm}}
 }
 
@@ -969,7 +970,7 @@
 \newenvironment{thebibliography}[1]
      {\chapter*{\bibname
         \@mkboth{\bibname}{\bibname}}%
-%% FIXME Перенести в класс библиографии (на основе natbib) ?    
+%% FIXME Перенести в класс библиографии (на основе natbib) ?
         \addcontentsline{toc}{chapter}{\bibname}%
       \list{\@biblabel{\@arabic\c@enumiv}}%
            {\settowidth\labelwidth{\@biblabel{#1}}%
@@ -1053,7 +1054,7 @@
 
 \RequirePackage{fancyhdr}%
 \AtEndOfClass{
-\pagestyle{fancy} 
+\pagestyle{fancy}
 \fancyhead{}%
 \fancyfoot{}%
 \fancyhead[LE,RO]{\small \thepage}%
@@ -1126,5 +1127,5 @@
 %%%
 %%%
 \endinput
-%% 
+%%
 %% End of file `kgeneric.cls'.

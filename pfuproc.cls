@@ -130,14 +130,16 @@ Bulletin of Peoples' Friendship University of Russia]
   }{% isn't empty
     \begin{otherlanguage}{english}
       \noindent
-      \textbf{\listauthorsname}:
-    \end{otherlanguage}\nopagebreak[4]
+      \textbf{\listauthorsname}:%
+      \par%
+      % \end{otherlanguage}%
+      \nopagebreak[4]%
+      % \begin{otherlanguage}{english}
+      \noindent%
+      \@starttoc{\currfilebase.english.loa}
+    \end{otherlanguage}
+    \par
   }
-  \begin{otherlanguage}{english}
-    \noindent
-    \@starttoc{\currfilebase.english.loa}
-  \end{otherlanguage}
-  \par
 }
 
 \newcommand{\authorlistFontShape}{\bf}
@@ -235,8 +237,8 @@ Bulletin of Peoples' Friendship University of Russia]
     \fi
     \ifx\pfuproc@phone\@empty
     \else
-    \pfuproc@komma\protect\mbox{{\cyrt }{\cyre }{\cyrl }.:~\pfuproc@phone{}}%
-    % \pfuproc@komma\protect\mbox{\pfuproc@phoneName:~\pfuproc@phone{}}%
+    % \pfuproc@komma\protect\mbox{{\cyrt }{\cyre }{\cyrl }.:~\pfuproc@phone{}}%
+    \pfuproc@komma\protect\mbox{\pfuproc@phoneName:~\pfuproc@phone{}}%
     \fi
     \ifx\pfuproc@orcid\@empty
     \else
@@ -522,7 +524,7 @@ Bulletin of Peoples' Friendship University of Russia]
   \let\pfuproc@titleslist@entry\@empty
   \g@addto@macro\pfuproc@titleslist@entry{%
     \string\clearpage
-    {\LARGE \textbf{{\CYRN}{\cyra}{\cyrsh}{\cyri} {\cyra}{\cyrv}{\cyrt}{\cyro}{\cyrr}{\cyrery}}}
+    % {\LARGE \textbf{{\CYRN}{\cyra}{\cyrsh}{\cyri} {\cyra}{\cyrv}{\cyrt}{\cyro}{\cyrr}{\cyrery}}}
     \string\InputIfFileExists{default.loa}{}{}
   }
 
@@ -584,8 +586,8 @@ Bulletin of Peoples' Friendship University of Russia]
     \hfill
   }
   \chead{%
-    \hspace*{-4cm}
-    \vspace*{-18pt}
+    \hspace*{-4.8cm}
+    \vspace*{-24pt}
     \begin{minipage}[c]{\cheadwidth}
       \begin{center}
         \headerFontSize
@@ -603,10 +605,10 @@ Bulletin of Peoples' Friendship University of Russia]
         \headerFontSize
         \textbf{%
           \PFUjournalyear{} Vol.\,\PFUjournalvolume{}
-          No.\,\PFUjournalnumber{}
+          No.\,\PFUjournalnumber{}%
           \ifthenelse{\pageref{starttitle}=\pageref{endtitle}}%
-          {\pageref{starttitle}}% then
-          {\pageref{starttitle}--\pageref{endtitle}}% else
+          {, \pageref{starttitle}}% then
+          {, \pageref{starttitle}--\pageref{endtitle}}% else
         }\\
         \PFUjournalURL
       \end{center}
@@ -653,7 +655,6 @@ Bulletin of Peoples' Friendship University of Russia]
 }
 
 
-
 %{{{ Рекомендуемый формат цитирования
 
 \DeclareRobustCommand{\howtoCiteRu}{%
@@ -688,7 +689,7 @@ Bulletin of Peoples' Friendship University of Russia]
   \iflanguage{english}{%
     \ifpolyglossia\begin{otherlanguage}{\PFUlanguage}\else\begin{otherlanguage*}{\PFUlanguage}\fi
       \authorstocshort{} \@title{}, \PFUjournal{}%
-      \ifx\PFUjournalvolume\@empty\else{} \PFUjournalvolume\fi\ifx\PFUjournalnumber\@empty\else{} (\PFUjournalnumber)\fi{}
+      \ifx\PFUjournalvolume\@empty\else{} \textbf{\PFUjournalvolume}\fi\ifx\PFUjournalnumber\@empty\else{} (\PFUjournalnumber)\fi{}
       (\PFUjournalyear)
       \pageref{starttitle}--\pageref{endtitle}.
       \ifx\@empty\@doi \else DOI: \@doi{}.\fi{}
@@ -696,7 +697,7 @@ Bulletin of Peoples' Friendship University of Russia]
   }{%
     \ifpolyglossia\begin{otherlanguage}{english}\else\begin{otherlanguage*}{english}\fi
       \altauthorstocshort{} \@alttitle{}, \PFUjournal{}%
-      \ifx\PFUjournalvolume\@empty\else{} \PFUjournalvolume\fi\ifx\PFUjournalnumber\@empty\else{} (\PFUjournalnumber)\fi{}
+      \ifx\PFUjournalvolume\@empty\else{} \textbf{\PFUjournalvolume}\fi\ifx\PFUjournalnumber\@empty\else{} (\PFUjournalnumber)\fi{}
       (\PFUjournalyear)
       \pageref{starttitle}--\pageref{endtitle}.
       \ifx\@empty\@doi \else DOI: \@doi{}.\fi{}
@@ -708,7 +709,8 @@ Bulletin of Peoples' Friendship University of Russia]
 
 %}}}
 
-% Логотип для CC лицензии
+%{{{ Логотип для CC лицензии
+
 % По умолчанию лицензия CC-BY
 \DeclareRobustCommand{\cclogo}[1]{%
   \def\pfuproc@cclogo{#1}
@@ -719,16 +721,23 @@ Bulletin of Peoples' Friendship University of Russia]
 \graphicspath{{./}{image/}}
 \bigskip
 \begin{flushleft}
-\copyright{} \authorstoc{}, \PFUjournalyear{}
+\copyright{} \authorstoc\xspace \PFUjournalyear{}
 \end{flushleft}%
 \bigskip
 \begin{flushleft}
-  \includegraphics[width=2cm]{\pfuproc@cclogo}\\
-  This work is licensed under a Creative Commons Attribution 4.0 International License
-  %This work is licensed under a \href{http://creativecommons.org/licenses/by/4.0/}{Creative Commons Attribution 4.0 International License}.
+  \includegraphics[width=2cm]{\pfuproc@cclogo}%
+  \par%
+  \nopagebreak[4]%
+  {\footnotesize
+  This work is licensed under a Creative Commons Attribution 4.0
+  International License
+  }
+  % This work is licensed under a \href{http://creativecommons.org/licenses/by/4.0/}{Creative Commons Attribution 4.0 International License}.
 \end{flushleft}%
 \par
 }
+
+%}}}
 
 \AtEndPreamble{%
 \@ifpackageloaded{tex4ht}{}{%

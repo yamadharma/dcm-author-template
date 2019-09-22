@@ -4,17 +4,17 @@
 \journal{{\CYRV}{\cyre}{\cyrs}{\cyrt}{\cyrn}{\cyri}{\cyrk} {\CYRR}{\CYRU}{\CYRD}{\CYRN}} 
 \journalfoundationyear{1993}
 
-\AtEndOfClass{%
-  \RequirePackage{geometry}
-  \geometry{reset}
-  \geometry{twoside}
+%\AtEndOfClass{%
+%  \RequirePackage{geometry}
+%  \geometry{reset}
+%  \geometry{twoside}
 %  \geometry{papersize={170mm,260mm}}
 %  \geometry{footskip=16dd}
 %  \geometry{total={140mm,230mm}}
 %  \geometry{hmargin={13mm,17mm},vmargin={13mm,17mm}}
 %  \geometry{marginparwidth=0dd,marginparsep=0dd}
 %  \geometry{twosideshift=0dd}
-}
+%}
 
 \defaultlanguage{russian}
 \defaultaltlanguage{english}
