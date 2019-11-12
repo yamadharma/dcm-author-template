@@ -34,7 +34,11 @@ Bulletin of Peoples' Friendship University of Russia]
   \immediate\closeout\paperidFile
 }
 
-\def\@maketitle@hook@post{%
+% \def\@maketitle@hook@post{%
+%   \paperid{\currfilebase}
+% }
+
+\g@addto@macro\@maketitle@hook@post{%
   \paperid{\currfilebase}
 }
 
@@ -131,6 +135,7 @@ Bulletin of Peoples' Friendship University of Russia]
     \begin{otherlanguage}{english}
       \noindent
       \textbf{\listauthorsname}:%
+      \smallskip
       \par%
       % \end{otherlanguage}%
       \nopagebreak[4]%
@@ -175,7 +180,24 @@ Bulletin of Peoples' Friendship University of Russia]
 %   \immediate\openout\authorlistFile=\jobname.loa
 % }
 
-% \def\pfuproc@authorlistentry{}
+
+\def\pfuproc@authorlistentry{}
+\def\pfuproc@authorlistentry@english{}
+\def\pfuproc@authorfull{}
+\def\pfuproc@authorfull@english{}
+\def\pfuproc@authorrank{}
+\def\pfuproc@authorrank@english{}
+\def\pfuproc@authordegree{}
+\def\pfuproc@authordegree@english{}
+\def\pfuproc@authorpost{}
+\def\pfuproc@authorpost@english{}
+\def\pfuproc@mail{}
+\def\pfuproc@orcid{}
+\def\pfuproc@scopusauthorid{}
+\def\pfuproc@researcerid{}
+\def\pfuproc@phone{}
+\def\pfuproc@country{}
+\def\pfuproc@country@english{}
 % \g@addto@macro\pfuproc@authorlistentry{}
 % \g@addto@macro\@title@hook{\let\pfuproc@authorlistentry\@empty}
 
@@ -257,47 +279,48 @@ Bulletin of Peoples' Friendship University of Russia]
 
   \ifx\pfuproc@authorfull@english\@empty
   \else
-  \def\pfuproc@authorlistentry@english{%
-    {\authorlistFontShape
-      \pfuproc@authorfull@english}%
-    \ifx\pfuproc@country@english\@empty
-    \else{ (\pfuproc@country@english)}
-    \fi~---
-    \ifx\pfuproc@authorrank@english\@empty
-    \else
-    \pfuproc@authorrank@english,
-    \fi
-    \ifx\pfuproc@authordegree@english\@empty
-    \else
-    \pfuproc@authordegree@english,
-    \fi
-    \ifx\pfuproc@authorpost@english\@empty
-    \else
-    \pfuproc@authorpost@english{}
-    \fi
-    \pfuproc@bra%
-    \ifx\pfuproc@mail\@empty
-    \else
-    \mbox{\-e-mail}:~\protect\url{\pfuproc@mail}%
-    \fi
-    \ifx\pfuproc@phone\@empty
-    \else
-    \pfuproc@komma\protect\mbox{phone:~\pfuproc@phone{}}%
-    \fi
-    \ifx\pfuproc@orcid\@empty
-    \else
-      \pfuproc@komma\protect\mbox{ORCID:~https://orcid.org/\pfuproc@orcid{}}%
-    \fi
-    \ifx\pfuproc@researcherid\@empty
-    \else
-      \pfuproc@komma\protect\mbox{ResearcherID: \pfuproc@researcherid{}}%
-    \fi
-    \ifx\pfuproc@scopusauthorid\@empty
-    \else
-      \pfuproc@komma\protect\mbox{Scopus Author ID: \pfuproc@scopusauthorid{}}%
-    \fi
-    \pfuproc@ket%
-  }
+    \def\pfuproc@authorlistentry@english{%
+      {\authorlistFontShape
+        \pfuproc@authorfull@english}%
+      \ifx\pfuproc@country@english\@empty
+      \else{ (\pfuproc@country@english)}
+      \fi~---
+      \ifx\pfuproc@authorrank@english\@empty
+      \else
+        \pfuproc@authorrank@english,
+      \fi
+      \ifx\pfuproc@authordegree@english\@empty
+      \else
+        \pfuproc@authordegree@english,
+      \fi
+      \ifx\pfuproc@authorpost@english\@empty
+      \else
+        \pfuproc@authorpost@english{}
+      \fi
+      \pfuproc@bra%
+      \ifx\pfuproc@mail\@empty
+      \else
+        \mbox{\-e-mail}:~\protect\url{\pfuproc@mail}%
+      \fi
+      \ifx\pfuproc@phone\@empty
+      \else
+        \pfuproc@komma\protect\mbox{phone:~\pfuproc@phone{}}%
+      \fi
+      \ifx\pfuproc@orcid\@empty
+      \else
+        \pfuproc@komma\protect\mbox{ORCID:~https://orcid.org/\pfuproc@orcid{}}%
+      \fi
+      \ifx\pfuproc@researcherid\@empty
+      \else
+        \pfuproc@komma\protect\mbox{ResearcherID: \pfuproc@researcherid{}}%
+      \fi
+      \ifx\pfuproc@scopusauthorid\@empty
+      \else
+        \pfuproc@komma\protect\mbox{Scopus Author ID: \pfuproc@scopusauthorid{}}%
+      \fi
+      \pfuproc@ket%
+      \protect\smallskip
+    }
   \fi
 
   % \addtocontents{loa}{\begin{otherlanguage}{russian}\pfuproc@authorlistentry\end{otherlanguage}\newline}
@@ -604,11 +627,13 @@ Bulletin of Peoples' Friendship University of Russia]
       \begin{center}
         \headerFontSize
         \textbf{%
-          \PFUjournalyear{} Vol.\,\PFUjournalvolume{}
-          No.\,\PFUjournalnumber{}%
+          % \PFUjournalyear{} Vol.\,\PFUjournalvolume{}
+          % No.\,\PFUjournalnumber{}%
+          \PFUjournalyear{},
+          \PFUjournalvolume{} (\PFUjournalnumber{})
           \ifthenelse{\pageref{starttitle}=\pageref{endtitle}}%
-          {, \pageref{starttitle}}% then
-          {, \pageref{starttitle}--\pageref{endtitle}}% else
+          {\pageref{starttitle}}% then
+          {\pageref{starttitle}--\pageref{endtitle}}% else
         }\\
         \PFUjournalURL
       \end{center}
@@ -659,11 +684,13 @@ Bulletin of Peoples' Friendship University of Russia]
 
 \DeclareRobustCommand{\howtoCiteRu}{%
   % Для цитирования:
+  \smallskip
   \begin{otherlanguage*}{russian}
     \noindent
     \textbf{{\CYRD}{\cyrl}{\cyrya}
-    {\cyrc}{\cyri}{\cyrt}{\cyri}{\cyrr}{\cyro}{\cyrv}{\cyra}{\cyrn}{\cyri}{\cyrya}:}
-  \end{otherlanguage*}\\
+      {\cyrc}{\cyri}{\cyrt}{\cyri}{\cyrr}{\cyro}{\cyrv}{\cyra}{\cyrn}{\cyri}{\cyrya}:}
+  \end{otherlanguage*}%
+  \smallskip\\
   \iflanguage{russian}{%
     \ifpolyglossia\begin{otherlanguage}{\PFUlanguage}\else\begin{otherlanguage*}{\PFUlanguage}\fi
       \emph{\authorstocshort} \@title{}~//
@@ -684,20 +711,22 @@ Bulletin of Peoples' Friendship University of Russia]
 }
 
 \DeclareRobustCommand{\howtoCiteEn}{%
+  \smallskip
   \noindent
-  \textbf{For citation:}\\
+  \textbf{For citation:}%
+  \smallskip\\
   \iflanguage{english}{%
     \ifpolyglossia\begin{otherlanguage}{\PFUlanguage}\else\begin{otherlanguage*}{\PFUlanguage}\fi
-      \authorstocshort{} \@title{}, \PFUjournal{}%
-      \ifx\PFUjournalvolume\@empty\else{} \textbf{\PFUjournalvolume}\fi\ifx\PFUjournalnumber\@empty\else{} (\PFUjournalnumber)\fi{}
+      \authorstocshort{}\unskip,{}\xspace \@title{}, \PFUjournal{}%
+      \ifx\PFUjournalvolume\@empty\else{} \PFUjournalvolume\fi\ifx\PFUjournalnumber\@empty\else{} (\PFUjournalnumber)\fi{}
       (\PFUjournalyear)
       \pageref{starttitle}--\pageref{endtitle}.
       \ifx\@empty\@doi \else DOI: \@doi{}.\fi{}
     \ifpolyglossia\end{otherlanguage}\else\end{otherlanguage*}\fi%
   }{%
     \ifpolyglossia\begin{otherlanguage}{english}\else\begin{otherlanguage*}{english}\fi
-      \altauthorstocshort{} \@alttitle{}, \PFUjournal{}%
-      \ifx\PFUjournalvolume\@empty\else{} \textbf{\PFUjournalvolume}\fi\ifx\PFUjournalnumber\@empty\else{} (\PFUjournalnumber)\fi{}
+      \altauthorstocshort{}\unskip,{}\xspace \@alttitle{}, \PFUjournal{}%
+      \ifx\PFUjournalvolume\@empty\else{} \PFUjournalvolume\fi\ifx\PFUjournalnumber\@empty\else{} (\PFUjournalnumber)\fi{}
       (\PFUjournalyear)
       \pageref{starttitle}--\pageref{endtitle}.
       \ifx\@empty\@doi \else DOI: \@doi{}.\fi{}
@@ -718,24 +747,46 @@ Bulletin of Peoples' Friendship University of Russia]
 \def\pfuproc@cclogo{by}
 
 \def\papercopyright{%
-\graphicspath{{./}{image/}}
-\bigskip
-\begin{flushleft}
-\copyright{} \authorstoc\xspace \PFUjournalyear{}
-\end{flushleft}%
-\bigskip
-\begin{flushleft}
-  \includegraphics[width=2cm]{\pfuproc@cclogo}%
-  \par%
-  \nopagebreak[4]%
-  {\footnotesize
-  This work is licensed under a Creative Commons Attribution 4.0
-  International License
-  }
-  % This work is licensed under a \href{http://creativecommons.org/licenses/by/4.0/}{Creative Commons Attribution 4.0 International License}.
-\end{flushleft}%
-\par
+  \graphicspath{{./}{image/}}
+  \bigskip
+  \begin{flushleft}
+    \footnotesize
+    \copyright{} \authorstocshortRev\unskip,{}\xspace \PFUjournalyear{}
+  \end{flushleft}%
+  % \bigskip
+  \begin{minipage}{0.15\linewidth}
+    \begin{flushleft}
+      % \includegraphics[width=2cm]{\pfuproc@cclogo}%
+      \includegraphics[width=1.0\linewidth]{\pfuproc@cclogo}%
+      % \par%
+      % \nopagebreak[4]%
+    \end{flushleft}
+  \end{minipage}
+  \hfill
+  \begin{minipage}{0.8\linewidth}
+    \begin{flushleft}
+      {% \footnotesize
+        \scriptsize
+        This work is licensed under a Creative Commons Attribution 4.0
+        International License\\
+        \url{http://creativecommons.org/licenses/by/4.0/}
+      }
+      % This work is licensed under a \href{http://creativecommons.org/licenses/by/4.0/}{Creative Commons Attribution 4.0 International License}.
+    \end{flushleft}%
+  \end{minipage}
+  % \par
 }
+
+\RequirePackage{float}
+
+\newfloat{PapercopyrightFloat}{b}{cpr}
+
+\g@addto@macro\@maketitle@hook@post{%
+  \begin{PapercopyrightFloat}
+    \papercopyright
+  \end{PapercopyrightFloat}
+}
+
 
 %}}}
 
@@ -743,8 +794,9 @@ Bulletin of Peoples' Friendship University of Russia]
 \@ifpackageloaded{tex4ht}{}{%
   \ifthenelse{\boolean{singlelanguage}}{% then
     \def\@putbib@hook@post{%
-      \papercopyright
-      \medskip
+      % \papercopyright
+      % \par
+      % \medskip
       \howtoCiteEn
       \medskip
       \listofauthorsPerTitleEn
@@ -754,8 +806,9 @@ Bulletin of Peoples' Friendship University of Russia]
     }
   }{% else
     \def\@putaltbib@hook@post{%
-      \papercopyright
-      \medskip
+      % \papercopyright
+      % \par
+      % \medskip
       \howtoCiteRu
       \medskip
       \howtoCiteEn

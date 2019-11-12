@@ -605,7 +605,7 @@
     \addto\captionsenglish{%
     \def\PFUudcName{UDC}
     \def\PFUpacsName{PACS}
-    \def\PFUreceivedName{Received}%
+    \def\PFUreceivedName{received}%
     \def\PFUrevisedName{revised}%
     \def\PFUacceptedName{accepted}%
     \def\PFUpublishedName{published}%
@@ -621,9 +621,9 @@
       \def\PFUpacsName{PACS}
       % Статья поступила в редакцию
       \def\PFUreceivedName{{\CYRS}{\cyrt}{\cyra}{\cyrt}{\cyrsftsn}{\cyrya} {\cyrp}{\cyro}{\cyrs}{\cyrt}{\cyru}{\cyrp}{\cyri}{\cyrl}{\cyra} {\cyrv} {\cyrr}{\cyre}{\cyrd}{\cyra}{\cyrk}{\cyrc}{\cyri}{\cyryu}}%
-      \def\PFUrevisedName{Revised }%
-      \def\PFUacceptedName{Accepted }%
-      \def\PFUpublishedName{Published }%
+      \def\PFUrevisedName{revised }%
+      \def\PFUacceptedName{accepted }%
+      \def\PFUpublishedName{published }%
       \def\etal{\cyri{} \cyrd\cyrr.}
       % Ключевые слова
       \def\keywordsname{{\CYRK}{\cyrl}{\cyryu}{\cyrch}{\cyre}{\cyrv}{\cyrery}{\cyre}
@@ -635,7 +635,7 @@
   {
     \def\PFUudcName{UDC}
     \def\PFUpacsName{PACS}
-    \def\PFUreceivedName{Received }%
+    \def\PFUreceivedName{received }%
     \def\PFUrevisedname{Revised }%
     \def\PFUacceptedname{Accepted }%
     \def\PFUpublishedname{Published }%
@@ -977,7 +977,7 @@
 \g@addto@macro\@title@hook{}
 % \def\@title@hook@post{\global\let\@title@hook@post\@empty}
 \def\@title@hook@post{}
-
+\g@addto@macro\@title@hook@post{}
 
 \providecommand*{\subtitle}[2][]%
 {%
@@ -1037,7 +1037,10 @@
 
 \NewDocumentCommand{\refList}{ m }
  {
-  \clist_map_inline:nn { #1 } { \ref{##1} }
+   % \clist_map_inline:nn { #1 } { \ref{##1} }
+   \seq_set_from_clist:Nn \l_tmpa_seq { #1 }
+   \seq_set_map:NNn \l_tmpb_seq \l_tmpa_seq { \exp_not:n { \ref { ##1 } } }
+   \seq_use:Nn \l_tmpb_seq { ,~ }   
  }
 
 \ExplSyntaxOff
@@ -1058,7 +1061,10 @@
 % %    \let\@tempc\string{\the\t@loc@notes}
 %     \@temptokena\@xp{\t@loc@notes}
 %     \edef\@tempc{\the\@temptokena}
-     \author@fmt{\the\c@PFUauthor}{\refList{#1}}{#2}{}%
+  \edef\refListAndify{\refList{#1}}
+  \andify\refListAndify
+  % \author@fmt{\the\c@PFUauthor}{\refList{#1}}{#2}{}%
+  \author@fmt{\the\c@PFUauthor}{\refListAndify}{#2}{}%
 %     \author@fmt{\the\c@PFUauthor}{#1}{#2}{}%
      \@author@hook@post
 }
@@ -1236,6 +1242,8 @@
       \protected@xdef\authorstoc{\authorInFam}%
       \protected@xdef\authorstocshort{\authorInFamShort}%
       \protected@xdef\authorsrunning{\authorInFamShort}%
+      \protected@xdef\authorstocRev{\authorFamIn}%
+      \protected@xdef\authorstocshortRev{\authorFamInShort}%
     }{% lastname firstname
       % \gdef\authorstoc{#3}%
       \protected@xdef\authorstoc{\authorFamIn}%
@@ -1278,6 +1286,8 @@
     \ifbool{isNameFam}{% firstname lastname
       \protected@xdef\authorstoc{\authorstoc \and \authorInFam}%
       \protected@xdef\authorstocshort{\authorstocshort \and \authorInFamShort}%
+      \protected@xdef\authorstocRev{\authorstocRev \and \authorFamIn}%
+      \protected@xdef\authorstocshortRev{\authorstocshortRev \and \authorFamInShort}%
     }{% lastname firstname
       \protected@xdef\authorstoc{\authorstoc \and \authorFamIn}%
       \protected@xdef\authorstocshort{\authorstocshort \and \authorFamInShort}%
@@ -1490,7 +1500,7 @@
   \proc@elem{address}{#1}%
   \address@fmt{\m@ne}{\the\t@loc@notes}{\@address}{*}%
   \ignorespaces}
-\def\theaddress{\fnsymbol{address}}
+% \def\theaddress{\fnsymbol{address}}
 \def\address@fmt#1#2#3#4{\@newelemtrue
   \if@Elproofing\def\@eltag{#4}\else\def\@eltag{\theaddress}\fi
   \ifnum\prev@elem=\e@address \@newelemfalse \fi
@@ -1650,7 +1660,7 @@
 %%
 
 % \RequirePackage{datetime2}
-\RequirePackage[nodayofweek]{datetime}
+\RequirePackage[nodayofweek,us]{datetime}
 
 \DeclareRobustCommand{\received}[3]{%
   \def\@received@day{#1}
@@ -1946,15 +1956,43 @@
   \message{\@biblabel{1}}
   \iflanguage{\@defaultlanguage}
   {%
-    \addcontentsline{toc}{chapter}{{\bfseries \authorstoc} \no@harm \@title}
-    \addcontentsline{tac}{chapter}{{\bfseries \altauthorstoc} \no@harm \@alttitle}
+    \message{99999-1}
+    % \addcontentsline{toc}{chapter}{%
+    %   \raggedright
+    %   {\bfseries \authorstoc}\unskip,{}\xspace
+    %   % \\
+    %   \no@harm \@title}
+    % \addcontentsline{tac}{chapter}{%
+    %   \raggedright
+    %   {\bfseries \altauthorstoc}\unskip,{}\xspace
+    %   % \\
+    %   \no@harm \@alttitle}
+    \addcontentsline{toc}{chapter}{%
+      % \raggedright
+      {\bfseries \authorstoc}\unskip,{}\xspace
+      \no@harm \@title
+    }
+    \addcontentsline{tac}{chapter}{%
+      % \raggedright
+      {\bfseries \altauthorstoc}\unskip,{}\xspace
+      \no@harm \@alttitle
+    }
   }
   {%
     \addtocontents{toc}{\protect\select@language{\@defaultlanguage}}
-    \addcontentsline{toc}{chapter}{{\bfseries \altauthorstoc} \no@harm \@alttitle}
+    \addcontentsline{toc}{chapter}{
+      \raggedright
+      {\bfseries \altauthorstoc}\unskip,{}\xspace
+      % \\
+      \no@harm \@alttitle}
     \addtocontents{tac}{\protect\select@language{\@defaultaltlanguage}}
-    \addcontentsline{tac}{chapter}{{\bfseries \authorstoc} \no@harm \@title}
+    \addcontentsline{tac}{chapter}{%
+      \raggedright
+      {\bfseries \authorstoc}\unskip,{}\xspace
+      % \\
+      \no@harm \@title}
   }
+  \message{99999-5}
   % \@mkboth{\@journal}{\authors \@title}
   % \@mkboth{\andify\altauthors}{\shorttitle}
   % \toks@\@xp{\authors}
@@ -2258,12 +2296,12 @@
   \let\@makefnmark\relax  \let\@thefnmark\relax
   % \ifx\@empty\@subjclass\else \@footnotetext{\@setsubjclass}\fi
   \if@keywordsAsFooter%
-  \ifx\@empty\@keywords\else \@footnotetext{\@setkeywords} \fi
+    \ifx\@empty\@keywords\else \@footnotetext{\@setkeywords} \fi
   \fi
   % \if@receivedAsFooter%
-  % \ifx\@empty\@received \else        \@footnotetext{\PFUreceivedName \@received} \fi
+  %   \ifx\@empty\@received \else        \@footnotetext{\PFUreceivedName \@received} \fi
   % \else
-  % \ifx\@empty\@received \else        \PFUreceivedName \@received \fi
+  %   \ifx\@empty\@received \else        \PFUreceivedName \@received \fi
   % \fi
   % \ifx\@empty\thankses\else \@footnotetext{\def\par{\let\par\@par}\@setthanks}
   % \fi
@@ -2276,12 +2314,10 @@
   % \bigskip
   % \vspace{2\bigskipamount}
   \begingroup
-  \ifx\@empty\@documentType \else \noindent \textit{\@documentType} \hfill\par \fi
-  % \ifx\@empty\@udcnum \else \nobreak\smallskip\noindent \PFUudcName{} \@udcnum \hfill\par \fi
-  % % \nobreak%
-  % \ifx\@empty\@pacsnum \else \nobreak\smallskip\noindent \PFUpacsName{} \@pacsnum \hfill\par \fi
-  % % \nobreak%
-  % \ifx\@empty\@doi \else \nobreak\smallskip\noindent DOI: \@doi \hfill\par \fi
+  \ifx\@empty\@documentType \else \noindent \hfill\textit{\@documentType}\par \fi
+  \ifx\@empty\@udcnum \else \nobreak\smallskip\noindent \footnotesize\PFUudcName{} \@udcnum \hfill\par \fi
+  \ifx\@empty\@pacsnum \else \nobreak\smallskip\noindent \footnotesize\PFUpacsName{} \@pacsnum \hfill\par \fi
+  \ifx\@empty\@doi \else \nobreak\smallskip\noindent \footnotesize DOI: \@doi \hfill\par \fi
   \nobreak%
   \smallskip
   \@settitle
@@ -2319,11 +2355,11 @@
       \begin{center}
         \footnotesize
         (%
-        \PFUreceivedName\enspace \@received%
+        \PFUreceivedName:\enspace \@received%
         \ifx\@empty\@accepted%
         \else
           ;
-          \PFUacceptedName\enspace \@accepted%
+          \PFUacceptedName:\enspace \@accepted%
         \fi
         )
       \end{center}
@@ -2346,16 +2382,16 @@
     \ifx\@empty\@keywords\else \@setkeywords \fi
   \fi
   %
-  \begingroup
-  \par
-  \medskip
-  \ifx\@empty\@udcnum \else \nobreak\smallskip\noindent \PFUudcName{} \@udcnum \hfill\par \fi
+  % \begingroup
+  % \par
+  % \medskip
+  % \ifx\@empty\@udcnum \else \nobreak\smallskip\noindent \footnotesize\PFUudcName{} \@udcnum \hfill\par \fi
+  % % \nobreak%
+  % \ifx\@empty\@pacsnum \else \nobreak\smallskip\noindent \footnotesize\PFUpacsName{} \@pacsnum \hfill\par \fi
+  % % \nobreak%
+  % \ifx\@empty\@doi \else \nobreak\smallskip\noindent \footnotesize DOI: \@doi \hfill\par \fi
+  % \endgroup
   % \nobreak%
-  \ifx\@empty\@pacsnum \else \nobreak\smallskip\noindent \PFUpacsName{} \@pacsnum \hfill\par \fi
-  % \nobreak%
-  \ifx\@empty\@doi \else \nobreak\smallskip\noindent DOI: \@doi \hfill\par \fi
-  \endgroup
-  \nobreak%
   %
   % \if@titlepage
   % \newpage
@@ -3527,6 +3563,7 @@
 {%
   {%
     \clearpage
+    \vspace*{\baselineskip}
     \interlinepenalty\@M
     \begin{center}
       \vskip 10\p@ \@plus -1ex \@minus -.2ex
@@ -3623,7 +3660,7 @@
 \setcounter{tocdepth}{0}
 \def\@starttoc#1{%
   \begingroup
-%%     \toc@pre
+  %% \toc@pre
     \makeatletter
     \@input{\jobname.#1}%
     \if@filesw
@@ -3665,21 +3702,22 @@
 
 \renewcommand{\tableofcontents}{%
   \tableofcontents@hook
-%     \if@twocolumn
-%       \@restonecoltrue\onecolumn
-%     \else
-%       \@restonecolfalse
-%     \fi
-%    \section*{\flushleft\textbf{\contentsname}}
-    {\contentsnamePosition\contentsnameFontShape\contentsnameFontSize\contentsname}%
-    \par\nobreak%
-    \vskip 1ex \@plus -1ex \@minus -.2ex%
-%         \@mkboth{%
-%            \MakeUppercase\contentsname}{\MakeUppercase\contentsname}}%
-    \@starttoc{toc}%
-%     \if@restonecol\twocolumn\fi
-    \raggedbottom\relax
-%    \clearpage
+  % \if@twocolumn
+  %   \@restonecoltrue\onecolumn
+  % \else
+  %   \@restonecolfalse
+  % \fi
+  % \section*{\flushleft\textbf{\contentsname}}
+  \vspace*{\baselineskip}
+  {\contentsnamePosition\contentsnameFontShape\contentsnameFontSize\contentsname}%
+  \par\nobreak%
+  \vskip 1ex \@plus -1ex \@minus -.2ex%
+  % \@mkboth{%
+  % \MakeUppercase\contentsname}{\MakeUppercase\contentsname}}%
+  \@starttoc{toc}%
+  % \if@restonecol\twocolumn\fi
+  \raggedbottom\relax
+  % \clearpage
 }
 
 \def\tableofcontents@hook{\global\let\tableofcontents@hook\@empty}

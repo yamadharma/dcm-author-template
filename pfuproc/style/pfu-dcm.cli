@@ -41,59 +41,59 @@
     % \begin{otherlanguage*}{\PFUlanguage}
     \headerFontSize\thepage
     % \end{otherlanguage*}
-%    \iflanguage{\@defaultlanguage}%
-%    {%
-%       \headerFontSize\thepage
-%    }
-%    {%
-%      \begin{otherlanguage*}{\@defaultlanguage}
-%       \headerFontSize\thepage
-%      \end{otherlanguage*}
-%    }
-  }        
-%  \fancyhead[CO]{\truncate{0.8\textwidth}{\headerFontSize {\authorsrunning{} \shorttitle}}}%
+    % \iflanguage{\@defaultlanguage}%
+    % {%
+    % \headerFontSize\thepage
+    % }
+    %   {%
+    %   \begin{otherlanguage*}{\@defaultlanguage}
+    %     \headerFontSize\thepage
+    %   \end{otherlanguage*}
+    % }
+  }
+  % \fancyhead[CO]{\truncate{0.8\textwidth}{\headerFontSize {\authorsrunning{} \shorttitle}}}%
   \fancyhead[LO]{%
     % \begin{otherlanguage*}{\PFUlanguage}
-    \truncate{0.8\textwidth}{\headerFontSize {\authorsrunning{} \shorttitle}}
+    \truncate{0.8\textwidth}{\headerFontSize {\authorsrunning\unskip{}, \shorttitle}}
     % \end{otherlanguage*}
-%    \iflanguage{\@defaultlanguage}%
-%    {%
-%        \truncate{0.8\textwidth}{\headerFontSize {\authorsrunning{} \shorttitle}}
-%    }
-%    {%
-%      \begin{otherlanguage*}{\@defaultlanguage}
-%        \truncate{0.8\textwidth}{\headerFontSize {\authorsrunning{} \shorttitle}}
-%      \end{otherlanguage*}
-%    }
+    % \iflanguage{\@defaultlanguage}%
+    % {%
+    % \truncate{0.8\textwidth}{\headerFontSize {\authorsrunning{} \shorttitle}}
+    % }
+    %   {%
+    %   \begin{otherlanguage*}{\@defaultlanguage}
+    %     \truncate{0.8\textwidth}{\headerFontSize {\authorsrunning{} \shorttitle}}
+    %   \end{otherlanguage*}
+    % }
   }
-  
-\fancyhead[RE]{\headerFontSize \PFUTitleHeader}%
 
-% \fancyhead[RE]{%
-%   \iflanguage{\@defaultlanguage}{%
-%     \headerFontSize \PFUTitleHeader
-%   }{%
-%     \begin{otherlanguage*}{\@defaultlanguage}
-%       \headerFontSize \PFUTitleHeader
-%     \end{otherlanguage*}
-%   }
-% }
+  \fancyhead[RE]{\headerFontSize \PFUTitleHeader}%
 
- % \fancyhead[LO]{%
- % \iflanguage{\@defaultlanguage}%
- % {%
- %     %% \headerFontSize\PFUheader
- %     % \rightmark
- % \truncate{0.8\textwidth}{\headerFontSize {\shorttitle}}
- % }
+  % \fancyhead[RE]{%
+  % \iflanguage{\@defaultlanguage}{%
+  % \headerFontSize \PFUTitleHeader
+  % }{%
+  %   \begin{otherlanguage*}{\@defaultlanguage}
+  %     \headerFontSize \PFUTitleHeader
+  %   \end{otherlanguage*}
+  % }
+  % }
+
+  %   \fancyhead[LO]{%
+  %   \iflanguage{\@defaultlanguage}%
+  %   {%
+  %     %%   \headerFontSize\PFUheader
+  %     %   \rightmark
+  %   \truncate{0.8\textwidth}{\headerFontSize {\shorttitle}}
+  % }
   %   {%
   %   \begin{otherlanguage*}{\@defaultlanguage}
   %       %%     \headerFontSize\PFUheader
-  %       % \rightmark
+  %       %     \rightmark
   %       \truncate{0.8\textwidth}{\headerFontSize {\shorttitle}}
   %     \end{otherlanguage*}
   %   }
-  % }
+  %   }
   \fancyfoot{}
 
   \fancypagestyle{plain}{%
@@ -113,26 +113,52 @@
 \AtEndPreamble{%
   \ltx@ifpackageloaded{biblatex}{}{%
     \usepackage{gost7184}
-    \usepackage{cite}
+    % \usepackage{cite}
   }
 }
 
 \AtBeginDocument{%
   \ltx@ifpackageloaded{biblatex}{}{%
     \mainbibstyle{elsarticle-num}
+    % \mainbibstyle{ACM-Reference-Format}
+    % \mainbibstyle{aipnum4-2}
+    % \newcommand\href[1]{}
+    % \mainbibstyle{tugboat}
     \altbibstyle{gost7184u}
   }
 }
 
+% From journal.cli
+\renewcommand{\PFUTitle}{%
+  \PFUjournalHeader.~%
+  \ifdefempty{\PFUjournalseries}{}{\PFUjornalseriesName\,\textit{\PFUjournalseriesHeader}.~}%
+  \PFUjournalyear%
+  \ifx\PFUjournalvolume\@empty\else, \PFUjournalvolume\fi{}~%
+  \ifx\PFUjournalnumber\@empty\else (\PFUjournalnumber)\fi{}%
+  \ifx\PFUjournalissue\@empty\else\,(\PFUjournalissue),\fi{}%
+  % dirty hack
+  \@ifundefined{r@\thePFUtitle:starttitle}{}{%
+    ~\pageref{starttitle}--\pageref{endtitle}
+  }
+}
+
+\renewcommand{\PFUTitleHeader}%
+{%
+  \begin{otherlanguage*}{\PFUlanguage}
+    \PFUTitle
+  \end{otherlanguage*}
+}
+
+
 %\renewcommand{\PFUheader}%
 %{%
 %  \scshape \PFUjournal,\,%
-%  \PFUjornalseriesName~\textit{\PFUjournalseries}.\,% 
+%  \PFUjornalseriesName~\textit{\PFUjournalseries}.\,%
 %  \ifx\PFUjournalvolume\@empty\else \CYRT.~\PFUjournalvolume.\,\fi{}%
 %  \ifx\PFUjournalnumber\@empty\else\No~\PFUjournalnumber.\,\fi{}%
 %  \ifx\PFUjournalissue\@empty\else\PFUjornalissueName~\PFUjournalissue.\,\fi{}%
-%  \PFUjournalyear.\,% 
-%  \cyrs.\,\pageref{starttitle}--\pageref{endtitle} 
+%  \PFUjournalyear.\,%
+%  \cyrs.\,\pageref{starttitle}--\pageref{endtitle}
 %}
 
 %%% Local Variables:
