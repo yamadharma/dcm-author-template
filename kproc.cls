@@ -365,7 +365,7 @@
 \setboolean{sectionAfterTitle}{false}
 
 \DeclareRobustCommand{\doi}[1]{%
-  \def\@doi{#1}
+  \gdef\@doi{#1}
 }
 \let\@doi\@empty
 
@@ -1061,10 +1061,10 @@
 % %    \let\@tempc\string{\the\t@loc@notes}
 %     \@temptokena\@xp{\t@loc@notes}
 %     \edef\@tempc{\the\@temptokena}
-  \edef\refListAndify{\refList{#1}}
-  \andify\refListAndify
-  % \author@fmt{\the\c@PFUauthor}{\refList{#1}}{#2}{}%
-  \author@fmt{\the\c@PFUauthor}{\refListAndify}{#2}{}%
+  % \edef\refListAndify{\refList{#1}}
+  % \andify\refListAndify
+  \author@fmt{\the\c@PFUauthor}{\refList{#1}}{#2}{}%
+  % \author@fmt{\the\c@PFUauthor}{\refListAndify}{#2}{}%
 %     \author@fmt{\the\c@PFUauthor}{#1}{#2}{}%
      \@author@hook@post
 }
@@ -1226,13 +1226,13 @@
     \protected@edef\authorFamIn{\authorfamily\,\authorinitials}
     \protected@edef\authorFamInShort{\authorfamily\,\authorinitialsshort}
     \protected@edef\authorInFamShort{\authorinitialsshort\,\authorfamily}
-    \protected@edef\authorInFam{\authorinitials\,\authorfamily}
+    \protected@edef\authorInFam{\authorinitials~\authorfamily}
     \protected@xdef\authorFamily{\authorfamily\xspace}
     \protected@xdef\authorInitials{\authorinitials\xspace}
     \protected@xdef\authorInitialsPlain{\authorinitialsplain\xspace}
   \else
     \protected@edef\authorFamIn{\protect\csname\@tempd \endcsname{\authorfamily\,\authorinitials}}
-    \protected@edef\authorInFam{\protect\csname\@tempd \endcsname{\authorinitials\,\authorfamily}}
+    \protected@edef\authorInFam{\protect\csname\@tempd \endcsname{\authorinitials~\authorfamily}}
     \protected@edef\authorFamInShort{\protect\csname\@tempd \endcsname{\authorfamily\,\authorinitialsshort}}
     \protected@edef\authorInFamShort{\protect\csname\@tempd \endcsname{\authorinitialsshort\,\authorfamily}}
   \fi
@@ -1287,7 +1287,7 @@
       \protected@xdef\authorstoc{\authorstoc \and \authorInFam}%
       \protected@xdef\authorstocshort{\authorstocshort \and \authorInFamShort}%
       \protected@xdef\authorstocRev{\authorstocRev \and \authorFamIn}%
-      \protected@xdef\authorstocshortRev{\authorstocshortRev \and \authorFamInShort}%
+      \protected@xdef\authorstocshortRev{\authorstocshortRev \and \mbox{\authorFamInShort}}%
     }{% lastname firstname
       \protected@xdef\authorstoc{\authorstoc \and \authorFamIn}%
       \protected@xdef\authorstocshort{\authorstocshort \and \authorFamInShort}%
@@ -1747,7 +1747,13 @@
 %%%
 % \newcommand{\email}[2][]{\g@addto@macro\addresses{\email{#1}{#2}}}
 \newcommand{\urladdr}[2][]{\g@addto@macro\addresses{\urladdr{#1}{#2}}}
-\renewcommand{\thanks}[1]{\g@addto@macro\thankses{\thanks{#1}}}
+
+% FIXME
+% Не компилится с biblatex, когда несколько файлов
+% TeX capacity exceeded, sorry [input stack size=5000]
+\renewcommand{\thanks}[1]{}
+%\renewcommand{\thanks}[1]{\g@addto@macro\thankses{\thanks{#1}}}
+
 \newcommand{\thanksref}[1]{\g@addto@macro\thankses{#1}}
 %\def\enddoc@text{\ifx\@empty\@translators \else\@settranslators\fi
 %  \ifx\@empty\addresses \else\@setaddresses\fi}
@@ -2661,7 +2667,7 @@
 %%% --
 \let\@udcnum\@empty
 \let\@pacsnum\@empty
-% \let\@doi\@empty
+\let\@doi\@empty
 \let\@documentType\@empty
 \let\alt@keywords\@empty
 \let\@altabstracts\@empty
@@ -2713,9 +2719,11 @@
 } % END \makealttitle*
 
 
-\def\@makealttitle@hook@pre{\global\let\@makealttitle@hook@pre\@empty}
-\def\@makealttitle@hook{\global\let\@makealttitle@hook\@empty}
-\def\@makealttitle@hook@post{\global\let\@makealttitle@hook@post\@empty}
+\def\@makealttitle@hook@pre{\global\let\@maketitle@hook@pre\@empty}
+% \def\@makealttitle@hook{\global\let\@maketitle@hook\@empty}
+\def\@makealttitle@hook{}
+% \def\@makealttitle@hook@post{\global\let\@maketitle@hook@post\@empty}
+\def\@makealttitle@hook@post{}
 \providecommand{\@makealttitle}%
 {%
   \begingroup
@@ -2736,11 +2744,10 @@
     % \bigskip\nobreak%
     % \ifx\@empty\@udcnum \else \noindent \@udcnum \hfill\par \fi
     \begingroup
-    \ifx\@empty\@udcnum \else \noindent \PFUudcName{} \@udcnum \hfill\par \fi%
-    \nobreak%
-    \ifx\@empty\@pacsnum \else \noindent \PFUpacsName{} \@pacsnum \hfill\par \fi%
-    \nobreak%
-    \ifx\@empty\@doi \else \noindent DOI: \@doi \hfill\par \fi
+    % \ifx\@empty\@documentType \else \noindent \hfill\textit{\@documentType}\par \fi
+    \ifx\@empty\@udcnum \else \nobreak\smallskip\noindent \footnotesize\PFUudcName{} \@udcnum \hfill\par \fi
+    \ifx\@empty\@pacsnum \else \nobreak\smallskip\noindent \footnotesize\PFUpacsName{} \@pacsnum \hfill\par \fi
+    \ifx\@empty\@doi \else \nobreak\smallskip\noindent \footnotesize DOI: \@doi \hfill\par \fi
     \nobreak%
     \smallskip
     \@setalttitle%

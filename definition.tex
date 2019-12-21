@@ -1,7 +1,23 @@
-\usepackage[T1,T2A]{fontenc}
-\usepackage{ucs}
-\usepackage[utf8x]{inputenc}
-\usepackage[english,russian]{babel}
+% looks for pdfTEX in pdf mode
+\IfFileExists{ifpdf.sty}{\usepackage{ifpdf}}{}
+\IfFileExists{ifxetex.sty}{\usepackage{ifxetex}}{}
+\IfFileExists{ifluatex.sty}{\usepackage{ifluatex}}{}
+
+\usepackage{xifthen}
+
+\ifthenelse{\boolean{luatex}}
+    {\input preamble/lualatex}
+%else
+{\ifthenelse{\boolean{xetex}}
+    {\input preamble/xelatex}
+    %else
+    {
+        \input preamble/latex
+        \ifpdf
+            \input preamble/pdflatex
+        \fi
+    }
+}
 
 %% Расширенная математика
 

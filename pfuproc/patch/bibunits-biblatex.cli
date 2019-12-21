@@ -1,4 +1,10 @@
 
+% \AtBeginDocument{%
+%   \ExecuteBibliographyOptions{%
+%     refsection=title,%
+%   }
+% }
+
 \DeclareRobustCommand{\putbib}[1][]{%
   \begingroup
   % \iflanguage{\@defaultlanguage}{%
@@ -11,22 +17,26 @@
   %   \curaltlanguage{\@defaultlanguage}
   % }
   % \addbibresource{#1.bib}
-  \printbibliography[heading=subbibliography,resetnumbers=true]
+  % \printbibliography[heading=subbibliography,resetnumbers=true]
+  \printbibliography[heading=subbibliography]
   \endgroup
   \@putbib@hook@post
   \label{endtitle}
+  \end{refsection}
   \clearpage
 }
 
 \def\@putbib@hook@post{\global\let\@putaltbib@hook@post\@empty}
 
 \def\@title@hook@pre{%
-  \newrefsection
+  % \newrefsection
+  \begin{refsection}
 }
 
-\def\@putbib@hook@post{%
-  \endrefsection
-}
+% \def\@putbib@hook@post{%
+%   % \endrefsection
+%   \end{refsection}
+% }
 
 %%% Local Variables:
 %%% mode: latex

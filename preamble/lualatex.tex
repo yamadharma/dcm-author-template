@@ -1,0 +1,26 @@
+%%%
+
+% Dirty hack. We need amssymb befor xunicode
+\usepackage{amssymb}
+\usepackage{xltxtra}
+\usepackage{polyglossia}
+
+%{{{ Fonts
+
+\input{preamble/font/fontspec}
+
+%}}}
+
+\setdefaultlanguage{english}  % устанавливает язык по умолчанию
+\setotherlanguages{russian}
+
+\usepackage{fontspec}
+\defaultfontfeatures{Mapping=tex-text,Scale=MatchLowercase} % устанавливает поведение шрифтов по умолчанию
+
+\input{preamble/fix/xelatex}
+
+%%% Local Variables:
+%%% mode: latex
+%%% TeX-master: "../default"
+%%% coding: utf-8-unix
+%%% End: 

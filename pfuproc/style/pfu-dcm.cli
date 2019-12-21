@@ -161,6 +161,11 @@
 %  \cyrs.\,\pageref{starttitle}--\pageref{endtitle}
 %}
 
+\AtEndOfPackage{%
+  \g@addto@macro\@makealttitle@hook@pre{\clearpage}
+  \g@addto@macro\@makealttitle@hook@post{\clearpage}
+}
+
 %%% Local Variables:
 %%% mode: latex
 %%% coding: utf-8-unix

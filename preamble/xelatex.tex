@@ -1,0 +1,39 @@
+%%%
+
+% \usepackage{mathtext}
+
+% Dirty hack. We need amssymb befor xunicode
+\usepackage{amssymb}
+
+%% Don't load xunicode before fontspec (loaded by xltxtra). 
+%% In a current system you don't need to load xunicode at all, 
+%% fontspec will do it at the correct place.
+% \usepackage{xunicode}
+\usepackage{xltxtra}
+
+\usepackage{polyglossia}
+
+\usepackage{xecyr}
+
+%{{{ Fonts
+
+\input{preamble/font/fontspec}
+
+%}}}
+
+\setdefaultlanguage[spelling=modern]{russian}  % устанавливает язык по умолчанию
+\setkeys{russian}{babelshorthands=true}
+\setotherlanguages{english}
+
+\usepackage{fontspec}
+\defaultfontfeatures{Mapping=tex-text,Scale=MatchLowercase} % устанавливает поведение шрифтов по умолчанию
+
+
+\input{preamble/fix/xelatex}
+
+
+%%% Local Variables: 
+%%% mode: latex
+%%% TeX-master: "../default"
+%%% coding: utf-8-unix
+%%% End: 

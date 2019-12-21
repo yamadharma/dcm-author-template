@@ -1,0 +1,26 @@
+%% An Antiqua font from PSCyr bundle
+%% url: ftp://scon155.phys.msu.su/pub/russian/psfonts/
+%% gentoo: emerge dev-tex/pscyr
+
+\def\rmdefault{faq} %% AntiquaPSCyr
+\def\sfdefault{ftx} %% TextbookPSCyr
+\def\ttdefault{fer} %% ERKurierPSCyr
+
+%%
+%% Math support
+%%
+
+\DeclareSymbolFont{operators}{OT1}{faq}{m}{n}
+\DeclareSymbolFont{letters}{OML}{faq}{m}{it}
+\SetSymbolFont{letters}{bold}{OML}{faq}{bx}{it}
+\DeclareMathAlphabet{\mathbf}{OT1}{faq}{bx}{it} % bx/it or bx/m
+\DeclareMathAlphabet{\mathit}{OT1}{faq}{m}{it}
+\DeclareMathAlphabet{\mathsf}{OT1}{ftx}{m}{n}
+
+\renewcommand{\hbar}{{\mathchar'26\mkern-8.5muh}}
+
+
+%%% Local Variables:
+%%% mode: latex
+%%% coding: utf-8-unix
+%%% End:
