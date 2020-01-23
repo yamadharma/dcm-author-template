@@ -112,7 +112,7 @@
 
 \AtEndPreamble{%
   \ltx@ifpackageloaded{biblatex}{}{%
-    \usepackage{gost7184}
+    % \usepackage{gost7184}
     % \usepackage{cite}
   }
 }
@@ -124,7 +124,8 @@
     % \mainbibstyle{aipnum4-2}
     % \newcommand\href[1]{}
     % \mainbibstyle{tugboat}
-    \altbibstyle{gost7184u}
+    % \altbibstyle{gost7184u}
+    \altbibstyle{elsarticle-num}
   }
 }
 
