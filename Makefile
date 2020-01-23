@@ -4,7 +4,7 @@ LATEX = lualatex
 all:
 	$(LATEX) $(FILE)
 	$(LATEX) $(FILE)
-	-bibtexu bu*.aux
+	-bibtex bu*.aux
 	$(LATEX) $(FILE)
 	$(LATEX) $(FILE)
 	mkdir -p out
