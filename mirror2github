@@ -1,3 +1,4 @@
 #!/bin/bash
 
-git push --mirror git@github.com:yamadharma/kermit-templates.git
+git push --mirror git@github.com:yamadharma/dcm-author-template.git
+
