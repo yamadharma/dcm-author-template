@@ -927,12 +927,22 @@
   }
 }
 
+%% Для biblatex, привязанного к файлу
+\def\pfuBiblatexResource{}
+
 \renewcommand*{\title}[2][]%
 {%
-%%  \def\@biblabel##1{\@ifempty{##1}##1.......}
-  \@title@hook@pre
-  \@title@hook
+  %% \def\@biblabel##1{\@ifempty{##1}##1.......}
   \refstepcounter{PFUtitle}
+  \@title@hook@pre
+  \if@filesw
+    \makeatletter
+    \@input{\PFU@auxname.aux}%
+    \immediate\openout\PFU@aux\PFU@auxname.aux\relax
+  \fi
+  %%
+  \@title@hook
+  %%
   % \message{*********** \thePFUtitle}
   \refstepcounter{subtitle}
   % \thispagestyle{plain}
@@ -962,12 +972,8 @@
     \edef\PFUlanguage{russian}
     \edef\PFUaltlanguage{english}
   }
-  \if@filesw
-    \makeatletter
-    \@input{\PFU@auxname.aux}%
-    \immediate\openout\PFU@aux\PFU@auxname.aux\relax
-  \fi
   \gdef\shorttitle{#1}\gdef\@title{#2}
+  \ifx\shorttitle\@empty\gdef\shorttitle{\@title}\fi
   \@title@hook@post
 } % END \title
 
@@ -1040,7 +1046,7 @@
    % \clist_map_inline:nn { #1 } { \ref{##1} }
    \seq_set_from_clist:Nn \l_tmpa_seq { #1 }
    \seq_set_map:NNn \l_tmpb_seq \l_tmpa_seq { \exp_not:n { \ref { ##1 } } }
-   \seq_use:Nn \l_tmpb_seq { ,~ }   
+   \seq_use:Nn \l_tmpb_seq { ,\protect\, }   
  }
 
 \ExplSyntaxOff
@@ -1175,7 +1181,7 @@
 %     \def\authorinitials{#1}
 %     \def\authorfamily{#2}
 % }
-\def\PFUNumRunningauthor{3}
+\def\PFUNumRunningauthor{2}
 %%%
 \def\runningauthor@fmt{%
   \begingroup\no@harm
@@ -1226,13 +1232,13 @@
     \protected@edef\authorFamIn{\authorfamily\,\authorinitials}
     \protected@edef\authorFamInShort{\authorfamily\,\authorinitialsshort}
     \protected@edef\authorInFamShort{\authorinitialsshort\,\authorfamily}
-    \protected@edef\authorInFam{\authorinitials~\authorfamily}
+    \protected@edef\authorInFam{\authorinitials\,\authorfamily}
     \protected@xdef\authorFamily{\authorfamily\xspace}
     \protected@xdef\authorInitials{\authorinitials\xspace}
     \protected@xdef\authorInitialsPlain{\authorinitialsplain\xspace}
   \else
     \protected@edef\authorFamIn{\protect\csname\@tempd \endcsname{\authorfamily\,\authorinitials}}
-    \protected@edef\authorInFam{\protect\csname\@tempd \endcsname{\authorinitials~\authorfamily}}
+    \protected@edef\authorInFam{\protect\csname\@tempd \endcsname{\authorinitials\,\authorfamily}}
     \protected@edef\authorFamInShort{\protect\csname\@tempd \endcsname{\authorfamily\,\authorinitialsshort}}
     \protected@edef\authorInFamShort{\protect\csname\@tempd \endcsname{\authorinitialsshort\,\authorfamily}}
   \fi
@@ -1410,7 +1416,7 @@
   \else
     \protected@xdef\altauthorstoc{\altauthorstoc \altand \altauthorFamIn}%
     \protected@xdef\altauthorstocshort{\altauthorstocshort \altand \altauthorFamInShort}%
-    \ifnum0\n@author@ > 3
+    \ifnum0\n@author@ > \PFUNumRunningauthor
       \ifnum0#1 = 2
         %% FIXME removing \etal (20031214)
         % \g@addto@macro\altauthorsrunning{ \etal}%
@@ -1830,8 +1836,13 @@
 
 \def\keywords#1{\def\@keywords{#1}}
 \let\@keywords=\@empty
-\def\altkeywords#1{\def\alt@keywords{#1}}
-\let\alt@keywords=\@empty
+
+\DeclareRobustCommand{\altkeywords}[1]{%
+  \gdef\alt@keywords{#1}}
+\let\alt@keywords\@empty
+
+% \def\altkeywords#1{\def\alt@keywords{#1}}
+% \let\alt@keywords=\@empty
 \def\subjclass#1{\def\@subjclass{#1}}
 \let\@subjclass=\@empty
 \def\translator#1{%
@@ -1975,11 +1986,13 @@
     %   \no@harm \@alttitle}
     \addcontentsline{toc}{chapter}{%
       % \raggedright
+      \\[-6pt]
       {\bfseries \authorstoc}\unskip,{}\xspace
       \no@harm \@title
     }
     \addcontentsline{tac}{chapter}{%
       % \raggedright
+      \\[-6pt]
       {\bfseries \altauthorstoc}\unskip,{}\xspace
       \no@harm \@alttitle
     }
@@ -2009,9 +2022,7 @@
   \else \edef\rauthor{\@rauthor}
   \fi
   % \renewcommand{\leftmark}{\rauthor\ \textit{\shorttitle}}
-  \ifx\shorttitle\@empty
-  \let\shorttitle\@title
-  \fi
+  \ifx\shorttitle\@empty\gdef\shorttitle{\@title}\fi
   %% \renewcommand{\leftmark}{\authorsrunning{} {\shorttitle}}
   % \renewcommand{\leftmark}{\truncate{0.8\textwidth}{\hfill \emph{\authorsrunning} {\shorttitle} \hfill}}
   % \renewcommand{\leftmark}{\truncate{0.8\textwidth}{\hfill \headerFontSize {\authorsrunning} \hfill}}
@@ -2941,7 +2952,8 @@
   {\DivFontShape \keywordsname:}\enspace \@keywords%\@addpunct.%
 }%
 \def\@setaltkeywords{%
-  \hskip\parindent%
+  % \hskip\parindent%
+  \noindent
   \@keywordsize%
   {\DivFontShape \keywordsname:}\enspace \alt@keywords%\@addpunct.%
 }%
@@ -3475,7 +3487,7 @@
 \providecommand{\chapaftersnum}{.}
 \providecommand{\secaftersnum}{.}
 
-\RequirePackage{titlesec}
+\RequirePackage[indentafter]{titlesec}
 
 \titleformat{\chapter}[block]%
     {\thispagestyle{fancy}\normalfont\chapterFontSize\chapterFontShape}{\ifx\chaptertitlename\@empty\else\chaptertitlename\ \fi\thechapter\chapaftersnum}{0.8\baselineskip}{\chapterFontSize}
@@ -3788,6 +3800,7 @@
 %%
 \def\listofalts{\@starttoc{alt}\listaltname}
 %%
+
 \AtBeginDocument{%
   \@for\@tempa:=-1,0,1,2,3\do{%
     \@ifundefined{r@tocindent\@tempa}{%

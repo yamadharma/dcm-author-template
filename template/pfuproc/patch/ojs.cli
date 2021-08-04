@@ -57,21 +57,21 @@
    \let\ojs@entry\@empty
 }
 
-\RequirePackage{scrlfile}
-\BeforeClosingMainAux{%
+% \RequirePackage{scrlfile}
+% \BeforeClosingMainAux{%
 
-  \let\ojs@entry\@empty
+%   \let\ojs@entry\@empty
 
-   \g@addto@macro\ojs@entry{%
-    [journal]\par%
-    journal = \PFUjournal\par%
-    number = \PFUjournalnumber\par%
-    year = \PFUjournalyear\par%
-    series = \PFUjournalseries\par%
-    }
-   \addtocontents{ojs.ini}{\ojs@entry}
-   \let\ojs@entry\@empty
-}
+%    \g@addto@macro\ojs@entry{%
+%     [journal]\par%
+%     journal = \PFUjournal\par%
+%     number = \PFUjournalnumber\par%
+%     year = \PFUjournalyear\par%
+%     series = \PFUjournalseries\par%
+%     }
+%    \addtocontents{ojs.ini}{\ojs@entry}
+%    \let\ojs@entry\@empty
+% }
    
 \AtEndDocument{%
 
