@@ -491,7 +491,6 @@ Bulletin of Peoples' Friendship University of Russia]
      \@keywords%
 
      \string\end{otherlanguage*}
-
      \par
      \par
      \string\medskip
@@ -542,21 +541,21 @@ Bulletin of Peoples' Friendship University of Russia]
  }
 
 
-\RequirePackage{scrlfile}
-\BeforeClosingMainAux{%
-  \let\pfuproc@titleslist@entry\@empty
-  \g@addto@macro\pfuproc@titleslist@entry{%
-    \string\clearpage
-    % {\LARGE \textbf{{\CYRN}{\cyra}{\cyrsh}{\cyri} {\cyra}{\cyrv}{\cyrt}{\cyro}{\cyrr}{\cyrery}}}
-    \string\InputIfFileExists{default.loa}{}{}
-  }
-
-  \g@addto@macro\pfuproc@titleslist@entry{%
-    \string\end{document}
-  }
-  \addtocontents{titlelist.tex}{\pfuproc@titleslist@entry}
-  \let\pfuproc@titleslist@entry\@empty
-}
+% \RequirePackage{scrlfile}
+% \BeforeClosingMainAux{%
+%   \let\pfuproc@titleslist@entry\@empty
+%   \g@addto@macro\pfuproc@titleslist@entry{%
+%     \string\clearpage
+%     % {\LARGE \textbf{{\CYRN}{\cyra}{\cyrsh}{\cyri} {\cyra}{\cyrv}{\cyrt}{\cyro}{\cyrr}{\cyrery}}}
+%     \string\InputIfFileExists{default.loa}{}{}
+%   }
+  
+%   \g@addto@macro\pfuproc@titleslist@entry{%
+%     \string\end{document}
+%   }
+%   \addtocontents{titlelist.tex}{\pfuproc@titleslist@entry}
+%   \let\pfuproc@titleslist@entry\@empty
+% }
 
 \AtEndDocument{%
   \@startblindtoc{titlelist.tex}
@@ -783,7 +782,7 @@ Bulletin of Peoples' Friendship University of Russia]
 
 \newfloat{PapercopyrightFloat}{b}{cpr}
 
-\g@addto@macro\@maketitle@hook@post{%
+\g@addto@macro\@maketitle@hook{%
   \begin{PapercopyrightFloat}
     \papercopyright
   \end{PapercopyrightFloat}
