@@ -1,0 +1,132 @@
+\ProvidesFile{russian.bdf}%
+    [2010/08/24  v0.0.1.0]
+
+%\AtBeginDocument{%
+\AtEndPreamble{%
+  %% Russian language
+  \@ifpackageloaded{polyglossia}{%
+  \addto\captionsrussian@modern{%
+    % FUNCTION {bbl.and}
+    \def\bbland{}
+    % FUNCTION {bbl.etal}
+    \def\bbletal{и др}                  %% и др.
+    % FUNCTION {bbl.editors}
+    % { "\bbleditors{}" }
+    % FUNCTION {bbl.editor}
+    %\def\bbleditor{{\cyrp}{\cyro}{\cyrd} {\cyrr}{\cyre}{\cyrd}.}
+    % FUNCTION {bbl.edby}
+    \def\bbledby{под ред.}
+    \def\bbled{под ред.}
+    \def\bbleds{под ред.}
+    % FUNCTION {bbl.edition}
+    \def\bbledn{издание}    %% издание
+    \def\bblvol{Т.}                                 %% Т.
+    \def\bblissue{вып.}                   %% вып.
+    \def\bblissuefirst{Вып.}              %% Вып.
+    % FUNCTION {bbl.of}
+    \def\bblof{из}
+    % FUNCTION {bbl.number}
+    \def\bblno{№}
+    \def\bblnofirst{№}
+    % FUNCTION {bbl.nr}
+    % { "\bblno{}" }
+    % FUNCTION {bbl.in}
+    % { "\bblin{}" }
+    % FUNCTION {bbl.pages}
+    \def\bblpp{С.}  %% {С}.
+    % FUNCTION {bbl.page}
+    \def\bblp{С.}   %% {с}.
+    %FUNCTION {bbl.numpages}
+    \def\bblnump{с}
+    % FUNCTION {bbl.chapter}
+    % { "\bblchap{}" }
+    % FUNCTION {bbl.techrep}
+    \def\bbltechrep{Отчёт}
+    % FUNCTION {bbl.mthesis}
+    \def\bblmthesis{Master's thesis}
+    % FUNCTION {bbl.phdthesis}
+    \def\bblphdthesis{Кандидатская диссертация}
+    %FUNCTION {bbl.cmplr}
+    \def\bblcompiler{Сост.}
+    % MACRO {jan} {"\bbljan{}"}
+    % MACRO {feb} 
+    \def\bblfeb{Февраль}
+    % MACRO {mar} {"\bblmar{}"}
+    % MACRO {apr} {"\bblapr{}"}
+    % MACRO {may} {"\bblmay{}"}
+    % MACRO {jun} {"\bbljun{}"}
+    % MACRO {jul} {"\bbljul{}"}
+    % MACRO {aug} {"\bblaug{}"}
+    % MACRO {sep} {"\bblsep{}"}
+    % MACRO {oct} {"\bbloct{}"}
+    % MACRO {nov} {"\bblnov{}"}
+    % MACRO {dec} {"\bbldec{}"}
+
+  }
+  }{%
+  \addto\extrasrussian{%
+    % FUNCTION {bbl.and}
+    \def\bbland{}
+    % FUNCTION {bbl.etal}
+    \def\bbletal{\cyr\cyri~\cyrd\cyrr}                  %% и др.
+    % FUNCTION {bbl.editors}
+    % { "\bbleditors{}" }
+    % FUNCTION {bbl.editor}
+    %\def\bbleditor{{\cyrp}{\cyro}{\cyrd} {\cyrr}{\cyre}{\cyrd}.}
+    % FUNCTION {bbl.edby}
+    \def\bbledby{{\cyrp}{\cyro}{\cyrd} {\cyrr}{\cyre}{\cyrd}.}
+    \def\bbled{{\cyrp}{\cyro}{\cyrd} {\cyrr}{\cyre}{\cyrd}.}
+    \def\bbleds{{\CYRP}{\cyro}{\cyrd} {\cyrr}{\cyre}{\cyrd}.}
+    % FUNCTION {bbl.edition}
+    \def\bbledn{\cyri\cyrz\cyrd\cyra\cyrn\cyri\cyre}    %% издание
+    \def\bblvol{\CYRT.}                                 %% Т.
+    \def\bblissue{\cyrv\cyrery\cyrp.}                   %% вып.
+    \def\bblissuefirst{\CYRV\cyrery\cyrp.}              %% Вып.
+    % FUNCTION {bbl.of}
+    \def\bblof{\cyr\cyri\cyrz}
+    % FUNCTION {bbl.number}
+    \def\bblno{\No}
+    \def\bblnofirst{\No}
+    % FUNCTION {bbl.nr}
+    % { "\bblno{}" }
+    % FUNCTION {bbl.in}
+    % { "\bblin{}" }
+    % FUNCTION {bbl.pages}
+    \def\bblpp{\CYRS.}  %% {\CYRS}.
+    % FUNCTION {bbl.page}
+    \def\bblp{\CYRS.}   %% {\cyrs}.
+    %FUNCTION {bbl.numpages}
+    \def\bblnump{\cyrs}
+    % FUNCTION {bbl.chapter}
+    % { "\bblchap{}" }
+    % FUNCTION {bbl.techrep}
+    \def\bbltechrep{{\CYRO}{\cyrt}{\cyrch}{\cyryo}{\cyrt}}
+    % FUNCTION {bbl.mthesis}
+    \def\bblmthesis{Master's thesis}
+    % FUNCTION {bbl.phdthesis}
+    \def\bblphdthesis{{\CYRK}{\cyra}{\cyrn}{\cyrd}{\cyri}{\cyrd}{\cyra}{\cyrt}{\cyrs}{\cyrk}{\cyra}{\cyrya} {\cyrd}{\cyri}{\cyrs}{\cyrs}{\cyre}{\cyrr}{\cyrt}{\cyra}{\cyrc}{\cyri}{\cyrya}}
+    %FUNCTION {bbl.cmplr}
+    \def\bblcompiler{\cyr\CYRS\cyro\cyrs\cyrt.}
+    % MACRO {jan} {"\bbljan{}"}
+    % MACRO {feb} 
+    \def\bblfeb{{\CYRF}{\cyre}{\cyrv}{\cyrr}{\cyra}{\cyrl}{\cyrsftsn}}
+    % MACRO {mar} {"\bblmar{}"}
+    % MACRO {apr} {"\bblapr{}"}
+    % MACRO {may} {"\bblmay{}"}
+    % MACRO {jun} {"\bbljun{}"}
+    % MACRO {jul} {"\bbljul{}"}
+    % MACRO {aug} {"\bblaug{}"}
+    % MACRO {sep} {"\bblsep{}"}
+    % MACRO {oct} {"\bbloct{}"}
+    % MACRO {nov} {"\bblnov{}"}
+    % MACRO {dec} {"\bbldec{}"}
+  }
+  } % END \@ifpackageloaded
+} % END \AtBeginDocument
+
+\endinput
+
+%%% Local Variables: 
+%%% mode: latex
+%%% coding: utf-8-unix
+%%% End: 

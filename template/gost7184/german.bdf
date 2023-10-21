@@ -1,0 +1,71 @@
+\ProvidesFile{german.bdf}%
+  [2004/06/14  v0.0.0.1]
+
+\AtBeginDocument%
+{%
+  %% German language      
+  \addto\extrasgerman%
+  {
+    %%% English
+    % FUNCTION {bbl.and}
+    \def\bbland{und}
+    % FUNCTION {bbl.etal}
+    \def\bbletal{et~al}
+    % FUNCTION {bbl.editors}
+    % { "\bbleditors{}" }
+    % FUNCTION {bbl.editor}
+    % { "\bbleditor{}" }
+    % FUNCTION {bbl.edby}
+    % { "\bbledby{}" }
+    \def\bbledby{Ed.~by}
+    % FUNCTION {bbl.edition}
+    \def\bbledn{edition}
+    \def\bblvol{Bd.}				%% Band
+    \def\bblissue{issue}
+    \def\bblissuefirst{Issue}
+    % FUNCTION {bbl.of}
+    \def\bblof{of}
+    % FUNCTION {bbl.number}
+    \def\bblno{No.}
+    \def\bblnofirst{No.}
+    % FUNCTION {bbl.nr}
+    % { "\bblno{}" }
+    % FUNCTION {bbl.in}
+    % { "\bblin{}" }
+    % FUNCTION {bbl.pages}
+    \def\bblpp{Ss.}
+    % FUNCTION {bbl.page}
+    \def\bblp{S.}				%% Seite
+    %FUNCTION {bbl.numpages}
+    \def\bblnump{s}
+    % FUNCTION {bbl.chapter}
+    % { "\bblchap{}" }
+    % FUNCTION {bbl.techrep}
+    % { "\bbltechrep{}" }
+    % FUNCTION {bbl.mthesis}
+    \def\bblmthesis{Master's thesis}
+    % FUNCTION {bbl.phdthesis}
+    \def\bblphdthesis{Ph.D. thesis}
+    %FUNCTION {bbl.cmplr}
+    \def\bblcompiler{Compiler}
+    % MACRO {jan} {"\bbljan{}"}
+    % MACRO {feb} {"\bblfeb{}"}
+    % MACRO {mar} {"\bblmar{}"}
+    % MACRO {apr} {"\bblapr{}"}
+    % MACRO {may} {"\bblmay{}"}
+    % MACRO {jun} {"\bbljun{}"}
+    % MACRO {jul} {"\bbljul{}"}
+    % MACRO {aug} {"\bblaug{}"}
+    % MACRO {sep} {"\bblsep{}"}
+    % MACRO {oct} {"\bbloct{}"}
+    % MACRO {nov} {"\bblnov{}"}
+    % MACRO {dec} {"\bbldec{}"}
+  }
+} % END \AtBeginDocument
+
+\endinput
+
+%%% Local Variables: 
+%%% mode: latex
+%%% coding: cp1251-unix
+%%% End: 

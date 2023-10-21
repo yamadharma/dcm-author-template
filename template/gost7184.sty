@@ -1,0 +1,24 @@
+% Here are the language-specific definitions for explicit words.
+% Each function has a name bbl.xxx where xxx is the English word.
+% The BABEL language selection is made here; definitions in babelbst.tex.
+
+\NeedsTeXFormat{LaTeX2e}[1994/12/01]
+\ProvidesPackage{gost7184}%
+        [2004/06/14 v0.0.0.2]
+
+\RequirePackage{etoolbox}
+\RequirePackage{url}
+
+
+\InputIfFileExists{gost7184/english.bdf}{}{}%
+\InputIfFileExists{gost7184/russian.bdf}{}{}%
+\InputIfFileExists{gost7184/german.bdf}{}{}%
+\InputIfFileExists{gost7184/french.bdf}{}{}%
+
+\newenvironment{bibtranslit}{[\ignorespaces}{\ignorespaces]}
+
+%%% Local Variables:
+%%% mode: latex
+%%% fill-column: 120
+%%% TeX-master: t
+%%% End:
