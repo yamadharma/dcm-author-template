@@ -1,0 +1,76 @@
+\ProvidesFile{french.bdf}%
+  [2004/06/14  v0.0.0.1]
+
+%\DeclareRobustCommand{\No}{%
+%   \ifmmode{\nfss@text{\textnumero}}\else\textnumero\fi}
+\DeclareRobustCommand*{\no}{n\textsuperscript{\lowercase{o}}\kern+.2em}
+
+
+\AtBeginDocument%
+{%
+  %% French language      
+  \addto\extrasfrench%
+  {
+    % FUNCTION {bbl.and}
+    \def\bbland{et}
+    % FUNCTION {bbl.etal}
+    \def\bbletal{et~al}
+    % FUNCTION {bbl.editors}
+    % { "\bbleditors{}" }
+    % FUNCTION {bbl.editor}
+    % { "\bbleditor{}" }
+    % FUNCTION {bbl.edby}
+    % { "\bbledby{}" }
+    \def\bbledby{Ed. by}
+    % FUNCTION {bbl.edition}
+    % { "\bbledn{}" }
+    \def\bblvol{T.}
+    \def\bblissue{issue}
+    \def\bblissuefirst{Issue}
+    % FUNCTION {bbl.of}
+    \def\bblof{de}
+    % FUNCTION {bbl.number}
+    \def\bblno{\no}
+    \def\bblnofirst{No.}
+    % FUNCTION {bbl.nr}
+    % { "\bblno{}" }
+    % FUNCTION {bbl.in}
+    % { "\bblin{}" }
+    % FUNCTION {bbl.pages}
+    \def\bblpp{Pp.}
+    % FUNCTION {bbl.page}
+    \def\bblp{P.}
+    %FUNCTION {bbl.numpages}
+    \def\bblnump{p}
+    % FUNCTION {bbl.chapter}
+    % { "\bblchap{}" }
+    % FUNCTION {bbl.techrep}
+    % { "\bbltechrep{}" }
+    % FUNCTION {bbl.mthesis}
+    \def\bblmthesis{Master's thesis}
+    % FUNCTION {bbl.phdthesis}
+    \def\bblphdthesis{Ph.D. thesis}
+    %FUNCTION {bbl.cmplr}
+    \def\bblcompiler{Compiler}
+    % MACRO {jan} {"\bbljan{}"}
+    % MACRO {feb} {"\bblfeb{}"}
+    % MACRO {mar} {"\bblmar{}"}
+    % MACRO {apr} {"\bblapr{}"}
+    % MACRO {may} {"\bblmay{}"}
+    % MACRO {jun} {"\bbljun{}"}
+    % MACRO {jul} {"\bbljul{}"}
+    % MACRO {aug} {"\bblaug{}"}
+    % MACRO {sep} {"\bblsep{}"}
+    % MACRO {oct} {"\bbloct{}"}
+    % MACRO {nov} {"\bblnov{}"}
+    % MACRO {dec} {"\bbldec{}"}
+  }
+
+} % END \AtBeginDocument
+
+\endinput
+
+%%% Local Variables: 
+%%% mode: latex
+%%% coding: cp1251-unix
+%%% End: 

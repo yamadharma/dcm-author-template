@@ -1,6 +1,6 @@
 {
     "name": "dcm-author-template",
-    "version": "1.0.0",
+    "version": "1.0.1",
     "description": "Author template for journal Discrete and Continuous Models and Applied Computational Science",
     "main": "index.js",
     "repository": "git@github.com:yamadharma/dcm-author-template.git",

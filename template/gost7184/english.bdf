@@ -1,0 +1,128 @@
+\ProvidesFile{english.bdf}%
+  [2010/08/24  v0.0.1.0]
+
+\AtEndPreamble{%
+  %% English language
+  \@ifpackageloaded{polyglossia}{%
+    \addto\captionsenglish{%
+      %%% English
+      % FUNCTION {bbl.and}
+      \def\bbland{}
+      % FUNCTION {bbl.etal}
+      \def\bbletal{et~al}
+      % FUNCTION {bbl.editors}
+      % { "\bbleditors{}" }
+      % FUNCTION {bbl.editor}
+      % { "\bbleditor{}" }
+      % FUNCTION {bbl.edby}
+      % { "\bbledby{}" }
+      \def\bbledby{Ed.~by}
+      % FUNCTION {bbl.edition}
+      \def\bbledn{edition}
+      \def\bblvol{Vol.}
+      \def\bblissue{issue}
+      \def\bblissuefirst{Issue}
+      % FUNCTION {bbl.of}
+      \def\bblof{of}
+      % FUNCTION {bbl.number}
+      \def\bblno{No}
+      \def\bblnofirst{No}
+      % FUNCTION {bbl.nr}
+      % { "\bblno{}" }
+      % FUNCTION {bbl.in}
+      % { "\bblin{}" }
+      % FUNCTION {bbl.pages}
+      \def\bblpp{Pp.}
+      % FUNCTION {bbl.page}
+      \def\bblp{P.}
+      % FUNCTION {bbl.numpages}
+      \def\bblnump{p}
+      % FUNCTION {bbl.chapter}
+      % { "\bblchap{}" }
+      % FUNCTION {bbl.techrep}
+      \def\bbltechrep{Techrep}
+      % FUNCTION {bbl.mthesis}
+      \def\bblmthesis{Master's thesis}
+      % FUNCTION {bbl.phdthesis}
+      \def\bblphdthesis{Ph.D. thesis}
+      % FUNCTION {bbl.cmplr}
+      \def\bblcompiler{Compiler}
+      % MACRO {jan} {"\bbljan{}"}
+      % MACRO {feb} {"\bblfeb{}"}
+      % MACRO {mar} {"\bblmar{}"}
+      % MACRO {apr} {"\bblapr{}"}
+      % MACRO {may} {"\bblmay{}"}
+      % MACRO {jun} {"\bbljun{}"}
+      % MACRO {jul} {"\bbljul{}"}
+      % MACRO {aug} {"\bblaug{}"}
+      % MACRO {sep} {"\bblsep{}"}
+      % MACRO {oct} {"\bbloct{}"}
+      % MACRO {nov} {"\bblnov{}"}
+      % MACRO {dec} {"\bbldec{}"}
+    }
+  }{%
+    \addto\extrasenglish{%
+      %%% English
+      % FUNCTION {bbl.and}
+      \def\bbland{}
+      % FUNCTION {bbl.etal}
+      \def\bbletal{et~al}
+      % FUNCTION {bbl.editors}
+      % { "\bbleditors{}" }
+      % FUNCTION {bbl.editor}
+      % { "\bbleditor{}" }
+      % FUNCTION {bbl.edby}
+      % { "\bbledby{}" }
+      \def\bbledby{Ed.~by}
+      % FUNCTION {bbl.edition}
+      \def\bbledn{edition}
+      \def\bblvol{Vol.}
+      \def\bblissue{issue}
+      \def\bblissuefirst{Issue}
+      % FUNCTION {bbl.of}
+      \def\bblof{of}
+      % FUNCTION {bbl.number}
+      \def\bblno{No}
+      \def\bblnofirst{No}
+      % FUNCTION {bbl.nr}
+      % { "\bblno{}" }
+      % FUNCTION {bbl.in}
+      % { "\bblin{}" }
+      % FUNCTION {bbl.pages}
+      \def\bblpp{Pp.}
+      % FUNCTION {bbl.page}
+      \def\bblp{P.}
+      % FUNCTION {bbl.numpages}
+      \def\bblnump{p}
+      % FUNCTION {bbl.chapter}
+      % { "\bblchap{}" }
+      % FUNCTION {bbl.techrep}
+      \def\bbltechrep{Techrep}
+      % FUNCTION {bbl.mthesis}
+      \def\bblmthesis{Master's thesis}
+      % FUNCTION {bbl.phdthesis}
+      \def\bblphdthesis{Ph.D. thesis}
+      % FUNCTION {bbl.cmplr}
+      \def\bblcompiler{Compiler}
+      % MACRO {jan} {"\bbljan{}"}
+      % MACRO {feb} {"\bblfeb{}"}
+      % MACRO {mar} {"\bblmar{}"}
+      % MACRO {apr} {"\bblapr{}"}
+      % MACRO {may} {"\bblmay{}"}
+      % MACRO {jun} {"\bbljun{}"}
+      % MACRO {jul} {"\bbljul{}"}
+      % MACRO {aug} {"\bblaug{}"}
+      % MACRO {sep} {"\bblsep{}"}
+      % MACRO {oct} {"\bbloct{}"}
+      % MACRO {nov} {"\bblnov{}"}
+      % MACRO {dec} {"\bbldec{}"}
+    }
+  }
+} % END \AtBeginDocument
+
+\endinput
+
+%%% Local Variables: 
+%%% mode: latex
+%%% coding: cp1251-unix
+%%% End: 
