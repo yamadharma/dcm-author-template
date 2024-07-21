@@ -1,0 +1,26 @@
+%% Scientific and Technical Information Exchange (STIX) fonts
+%% url: https://www.stixfonts.org/
+%% url: https://github.com/stipub/stixfonts
+%% gentoo:
+%% emerge media-fonts/stix-fonts
+%% emerge media-fonts/source-code-pro
+%% emerge media-fonts/source-sans
+   
+\setmainfont[Ligatures={Common,TeX}]{STIX Two Text}
+\setromanfont[Ligatures={Common,TeX}]{STIX Two Text}
+\setsansfont[Ligatures={Common,TeX},Scale=MatchLowercase]{Source Sans 3}
+\setmonofont[Scale=MatchLowercase,Scale=0.92]{Source Code Pro}
+
+\makeatletter
+\AtBeginDocument{%
+  \@ifpackageloaded{unicode-math}{%
+    \setmathfont{STIX Two Math}
+  }{%
+  }
+}
+\makeatother
+
+%%% Local Variables:
+%%% mode: latex
+%%% coding: utf-8-unix
+%%% End:

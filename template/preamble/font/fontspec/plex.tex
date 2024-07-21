@@ -1,0 +1,26 @@
+%% IBM Plex fonts
+%% url: https://github.com/IBM/plex
+%% gentoo:
+%% emerge media-fonts/ibm-plex
+%% emerge media-fonts/stix-fonts
+
+\setmainfont[Ligatures={Common,TeX},Scale=0.94]{IBM Plex Serif}
+\setromanfont[Ligatures={Common,TeX},Scale=0.94]{IBM Plex Serif}
+\setsansfont[Ligatures={Common,TeX},Scale=MatchLowercase,Scale=0.94]{IBM Plex Sans}
+\setmonofont[Scale=MatchLowercase,Scale=0.94,FakeStretch=0.9]{IBM Plex Mono}
+
+\addfontfeatures{Fractions=On}
+
+\makeatletter
+\AtBeginDocument{%
+  \@ifpackageloaded{unicode-math}{%
+    \setmathfont{STIX Two Math}
+  }{%
+  }
+}
+\makeatother
+
+%%% Local Variables:
+%%% mode: latex
+%%% coding: utf-8-unix
+%%% End:

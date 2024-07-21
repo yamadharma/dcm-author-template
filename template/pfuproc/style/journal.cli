@@ -288,7 +288,7 @@
 
 % \providecommand{\rightmark}{\PFUheader}%
 
-\providecommand{\contentsnameFontSize}{\huge}
+% \providecommand{\contentsnameFontSize}{\huge}
 
 %%% Local Variables: 
 %%% mode: latex

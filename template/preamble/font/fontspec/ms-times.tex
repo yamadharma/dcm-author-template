@@ -2,13 +2,64 @@
 %% url: http://corefonts.sourceforge.net/
 %% gentoo: emerge media-fonts/corefonts
 
-\newfontfamily\cyrillicfont[Script=Cyrillic,Ligatures=TeX]{Times New Roman}
-\newfontfamily\cyrillicfontsf[Script=Cyrillic,Ligatures=TeX,Scale=MatchLowercase,Scale=0.9]{Arial}
-\newfontfamily\cyrillicfonttt[Script=Cyrillic,Scale=MatchLowercase,Scale=0.9]{Courier New}
+% \ifthenelse{\boolean{luatex}}{% then
+
+% % Times New Roman
+% \newfontfamily\cyrillicfont[Script=Cyrillic,Ligatures=TeX,
+% BoldFont=timesbd.ttf,
+% ItalicFont=timesi.ttf,
+% BoldItalicFont=timesbi.ttf,
+% ]{times.ttf}
+
+% % Arial
+% \newfontfamily\cyrillicfontsf[Script=Cyrillic,Ligatures=TeX,Scale=MatchLowercase,
+% BoldFont=arialbd.ttf,
+% ItalicFont=ariali.ttf,
+% BoldItalicFont=arialbi.ttf,
+% ]{arial.ttf}
+
+% \newfontfamily\cyrillicfonttt[Script=Cyrillic,Scale=MatchLowercase,Scale=0.9,
+% BoldFont=courbd.ttf,
+% ItalicFont=couri.ttf,
+% BoldItalicFont=courbi.ttf,
+% ]{cour.ttf}
+
+% % Times New Roman
+% \setromanfont[Ligatures=TeX,
+% BoldFont=timesbd.ttf,
+% ItalicFont=timesi.ttf,
+% BoldItalicFont=timesbi.ttf,
+% ]{Times New Roman}
+
+% % Arial
+% \setsansfont[Ligatures=TeX,Scale=MatchLowercase,
+% BoldFont=arialbd.ttf,
+% ItalicFont=ariali.ttf,
+% BoldItalicFont=arialbi.ttf,
+% ]{arial.ttf}
+
+% % Courier New
+% \setmonofont[Scale=MatchLowercase,Scale=0.9,
+% BoldFont=courbd.ttf,
+% ItalicFont=couri.ttf,
+% BoldItalicFont=courbi.ttf,
+% ]{times.ttf}
+
+% }{% else
 
 \setromanfont[Ligatures=TeX]{Times New Roman}
-\setsansfont[Ligatures=TeX,Scale=MatchLowercase,Scale=0.9]{Arial}
+\setsansfont[Ligatures=TeX,Scale=MatchLowercase]{Arial}
 \setmonofont[Scale=MatchLowercase,Scale=0.9]{Courier New}
+
+% \newfontfamily\cyrillicfont[Script=Cyrillic,Ligatures=TeX]{Times New Roman}
+% \newfontfamily\cyrillicfontsf[Script=Cyrillic,Ligatures=TeX,Scale=MatchLowercase]{Arial}
+% \newfontfamily\cyrillicfonttt[Script=Cyrillic,Scale=MatchLowercase,Scale=0.9]{Courier New}
+
+\newfontfamily\cyrillicfont[Ligatures=TeX]{Times New Roman}
+\newfontfamily\cyrillicfontsf[Ligatures=TeX,Scale=MatchLowercase]{Arial}
+\newfontfamily\cyrillicfonttt[Scale=MatchLowercase,Scale=0.9]{Courier New}
+
+% }
 
 %%% Local Variables:
 %%% mode: latex

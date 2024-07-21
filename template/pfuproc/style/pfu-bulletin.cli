@@ -56,19 +56,19 @@
 %  \cyrs.\,\pageref{starttitle}--\pageref{endtitle} 
 %}
 
-\AtEndOfClass{%
-  \RequirePackage{geometry}
-  % \geometry{reset}
-  \geometry{twoside}
-  \geometry{hcentering}
-  \geometry{includehead}
-  \geometry{includefoot}
-  % \geometry{nofoot}
-  \geometry{marginparwidth=0pt,marginparsep=0pt}
-  % \geometry{hmargin={13mm,17mm},vmargin={14mm,19mm}}
-  \geometry{hmargin={13mm,17mm},vmargin={8mm,13mm}}
-  \geometry{heightrounded}
-}
+% \AtEndOfClass{%
+%   \RequirePackage{geometry}
+%   % \geometry{reset}
+%   \geometry{twoside}
+%   \geometry{hcentering}
+%   \geometry{includehead}
+%   \geometry{includefoot}
+%   % \geometry{nofoot}
+%   \geometry{marginparwidth=0pt,marginparsep=0pt}
+%   % \geometry{hmargin={13mm,17mm},vmargin={14mm,19mm}}
+%   \geometry{hmargin={13mm,17mm},vmargin={8mm,13mm}}
+%   \geometry{heightrounded}
+% }
 
 \PassOptionsToClass{twoside,final,singlespace,70x108/16}{kgeneric}
 

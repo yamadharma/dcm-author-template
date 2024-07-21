@@ -1,3 +1,9 @@
+\documentclass[default]{subfiles}
+
+\addbibresource{cite.bib}
+
+\begin{document}
+
 {%
 \selectlanguage{english}
 
@@ -11,6 +17,8 @@
   02.70.Bf %Finite-difference methods
 }
 
+\edn{xxxxxx}
+
 \documentType{Research article}
 % жанр (тип) каждой публикации на русском и английском языке:
 % - Научная статья/Research article;
@@ -21,24 +29,19 @@
 
 \title{Towards the Analysis of the Queuing System Operating in~the~Random Environment with Resource Allocation}
 
-\author[1,2]{Ivan S. Zaryadov}
-\author[1]{Vladimir V. Tsurlukov}
-\author[1]{H. Viana Carvalho Cravid}
-\author[1]{Anna A. Zaytseva}
-\author[1]{Tatiana A. Milovanova}
+\author[rudn,ras]{Ivan S. Zaryadov}
+\author[rudn]{Vladimir V. Tsurlukov}
+\author[rudn]{H. Viana Carvalho Cravid}
+\author[rudn]{Anna A. Zaytseva}
+\author[rudn]{Tatiana A. Milovanova}
 
-\address[1]{
-  Department of Applied Probability and Informatics\\
-  Peoples' Friendship University of Russia (RUDN University)\\
-  6, Miklukho-Maklaya str., Moscow, 117198, Russian Federation}
+\address[rudn]{RUDN University, 6 Miklukho-Maklaya St, Moscow, 117198, Russian Federation}
 
-\address[2]{Institute of Informatics Problems, FRC CSC RAS\\
-  IPI FRC CSC RAS, 44-2 Vavilova Str., Moscow 119333, Russian
-  Federation}
+\address[ras]{Institute of Informatics Problems, 44-2 Vavilova St, Moscow 119333, Russian Federation}
 
-
-\received{29}{06}{2019}
-\accepted{30}{06}{2019}
+% \received{29}{06}{2019}
+% \revised{25}{05}{2023}
+% \accepted{30}{05}{2023}
 
 \begin{authordescription}
   % \authorfull[russian]{Зарядов Иван Сергеевич}
@@ -150,20 +153,18 @@
 
 \alttitle{К анализу системы массового обслуживания с ресурсами, функционирующей в случайном окружении}
 
-\altauthor[1,2]{И. С. Зарядов}
-\altauthor[1]{В. В. Цурлуков}
-\altauthor[1]{И. Виана Карвалью Кравид}
-\altauthor[1]{А. А. Зайцева}
-\altauthor[1]{Т. А. Милованова}
+\altauthor[rudn,ras]{И. С. Зарядов}
+\altauthor[rudn]{В. В. Цурлуков}
+\altauthor[rudn]{И. Виана Карвалью Кравид}
+\altauthor[rudn]{А. А. Зайцева}
+\altauthor[rudn]{Т. А. Милованова}
 
-\altaddress[1]{Кафедра прикладной информатики и теории вероятностей\\
-  Российский университет дружбы народов\\
-  ул. Миклухо-Маклая, д.6, Москва, Россия, 117198}
+\altaddress[rudn]{Российский университет дружбы народов,
+  ул. Миклухо-Маклая, д.6, Москва, 117198, Российская Федерация}
 
-\altaddress[2]{Институт проблем информатики\\
-  Федеральный исследовательский центр <<Информатика и управление>> РАН \\
-%  Российской академии наук\\
-  ул. Вавилова, д.~44, кор.~2, Москва, Россия, 119333}
+\altaddress[ras]{Институт проблем информатики,
+  Федеральный исследовательский центр <<Информатика и управление>> РАН,
+  ул. Вавилова, д.~44, кор.~2, Москва, 119333, Российская Федерация}
 
 
 \altabstracts{Строится математическая модель системы, состоящей из
@@ -1019,7 +1020,7 @@ from the buffer, $p_2$ --- the probability that the second type
 application is taken from the buffer.
 
 
-\section{Conclusions}
+\section{Conclusion}
 
 The mathematical model of the system with the allocation of resources
 to incoming applications and functioning in the random environment is
@@ -1037,13 +1038,31 @@ Also of interest are stationary distributions of applications of each
 type, the average value of the system's system resources, the average
 number of discarded (lossed) applications.
 
+%% Please complete {{{
+
+\begin{authorcontributions}
+  For research articles with several authors, a short paragraph specifying their individual contributions must be provided. The following statements should be used ``Conceptualization, X.X. and Y.Y.; methodology, X.X.; software, X.X.; validation, X.X., Y.Y. and Z.Z.; formal analysis, X.X.; investigation, X.X.; resources, X.X.; data curation, X.X.; writing---original draft preparation, X.X.; writing---review and editing, X.X.; visualization, X.X.; supervision, X.X.; project administration, X.X.; funding acquisition, Y.Y. All authors have read and agreed to the published version of the manuscript.'', please turn to the CRediT taxonomy for the term explanation. Authorship must be limited to those who have contributed substantially to the work~reported.
+  %% Please add at the end of section
+  All authors have read and agreed to the published version of the manuscript.
+\end{authorcontributions}
+
+\begin{funding}
+  Please add: ``This research received no external funding'' or ``This research was funded by NAME OF FUNDER grant number XXX.'' Check carefully that the details given are accurate and use the standard spelling of funding agency names, any errors may affect your future funding.
+\end{funding}
+
+\begin{dataavailability}
+  We encourage all authors of articles to share their research data. In this section, please provide details regarding where data supporting reported results can be found, including links to publicly archived datasets analyzed or generated during the study. Where no new data were created, or where data is unavailable due to privacy or ethical restrictions, a statement is still required. Or add ``Data sharing is not applicable.''
+\end{dataavailability}
 
 \begin{acknowledgments}
-The publication has been prepared with the support of the
-  ``RUDN University Program 5-100'' and funded by RFBR according to
-  the research projects No.~18-07-00692 and No.~16-07-00766.
-\end{acknowledgments}
+Non profit acknowledgments.
+\end{acknowledgments}  
 
+\begin{conflictsofinterest}
+  Declare conflicts of interest or state ``The authors declare no conflict of interest.'' Authors must identify and declare any personal circumstances or interest that may be perceived as inappropriately influencing the representation or interpretation of reported research results. Any role of the funders in the design of the study; in the collection, analyses or interpretation of data; in the writing of the manuscript; or in the decision to publish the results must be declared in this section. If there is no role, please state ``The funders had no role in the design of the study; in the collection, analyses, or interpretation of data; in the writing of the manuscript; or in the decision to publish the results.''
+\end{conflictsofinterest}
+
+%%}}}
 
 \putbib[cite]
 
@@ -1051,6 +1070,7 @@ The publication has been prepared with the support of the
 
 } % END \selectlanguage
 
+\end{document}
 
 %%% Local Variables:
 %%% mode: latex

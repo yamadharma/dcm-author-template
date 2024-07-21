@@ -1,26 +1,37 @@
-%%%
+%%% Lualatex preamble
 
-% Dirty hack. We need amssymb befor xunicode
+%% This package provides emulation of pdfTeX primitives for LuaTeX v0.85+
+\RequirePackage{luatex85}
+
+%% Dirty hack. We need amssymb befor xunicode
 \usepackage{amssymb}
-\usepackage{xltxtra}
-\usepackage{polyglossia}
+
+%% Choose only one packege for multilingual support
+% \def\multilingualrealization{babel}
+\def\multilingualrealization{polyglossia}
+
+\input{preamble/pkg/\multilingualrealization/common}
+
+\AtBeginDocument{%
+  \usepackage{lualatex-math}}
+
+\input{preamble/pkg/\multilingualrealization/default/english}
+\input{preamble/pkg/\multilingualrealization/other/russian}
 
 %{{{ Fonts
 
+\usepackage{fontspec}
+\defaultfontfeatures{Scale=MatchLowercase} % устанавливает поведение шрифтов по умолчанию
 \input{preamble/font/fontspec}
 
+%% Math fonts
+\input{preamble/font/unicode-math}
+
 %}}}
-
-\setdefaultlanguage{english}  % устанавливает язык по умолчанию
-\setotherlanguages{russian}
-
-\usepackage{fontspec}
-\defaultfontfeatures{Mapping=tex-text,Scale=MatchLowercase} % устанавливает поведение шрифтов по умолчанию
 
 \input{preamble/fix/xelatex}
 
 %%% Local Variables:
 %%% mode: latex
-%%% TeX-master: "../default"
 %%% coding: utf-8-unix
-%%% End: 
+%%% End:

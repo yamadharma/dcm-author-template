@@ -1,0 +1,23 @@
+% Fix @misc entries.
+% Converts all @miscs with URLs to @online and all other @miscs to
+% @patent. Additionally the institution field is copied over to
+% holder, since @patent does not recognise the institution field.
+
+\DeclareStyleSourcemap{
+  \maps[datatype=bibtex, overwrite=true]{
+    \map{
+      \step[fieldsource=url, final]
+      \step[typesource=misc, typetarget=online]
+    }
+    \map{
+      \step[typesource=misc, typetarget=patent, final]
+      \step[fieldsource=institution, final]
+      \step[fieldset=holder, origfieldval]
+    }
+  }
+}
+
+%%% Local Variables:
+%%% mode: latex
+%%% coding: utf-8-unix
+%%% End:

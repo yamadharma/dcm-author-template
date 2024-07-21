@@ -1,5 +1,5 @@
-%
 \NeedsTeXFormat{LaTeX2e}[1994/12/01]
+\RequirePackage{expl3}
 \ProvidesClass{kproc}%
         [2007/12/05 v0.0.7.3]
 \def\@tempa#1#2\@nil{\edef\@classname{#1}}
@@ -12,11 +12,35 @@
 %\RequirePackage{etextools}
 %\reserveinserts{128}
 
+\RequirePackage{xstring}
+
+% \RequirePackage{xr}
+% \RequirePackage{xr-hyper}
+% \RequirePackage[unicode]{hyperref}
+% \RequirePackage{hyperxmp}
+% \hypersetup{%
+%   hidelinks = true,
+%   % colorlinks   = true, % Colours links instead of ugly boxes
+%   % urlcolor     = gray, % Colour for external hyperlinks
+%   % linkcolor    = gray, % Colour of internal links
+%   % citecolor   = gray, % Colour of citations
+%   % allcolors=DarkSlateGrey,
+%   bookmarksnumbered,
+%   pdfencoding=unicode,
+% }
+% \hypersetup{
+%   pdftitle={Test of package "silence"},
+%   pdfauthor={Anne O. Nymus},
+%   pdfcreator={pdfTeX},
+%   pdfcopyright={Public domain (below threshold)}
+% }
+
 %%%
 %\def\@namedef#1{\expandafter\def\csname test:#1\endcsname}
 %\def\@nameuse#1{\csname #1\endcsname}
 \newcounter{PFUtitle}
 \newcounter{subtitle}
+
 %% \def\label#1{\@bsphack
 %%   \protected@write\@auxout{}%
 %%          {\string\newlabel{\thePFUtitle:#1}{{\@currentlabel}{\thepage}}}%
@@ -37,7 +61,9 @@
 \@Elproofingfalse
 %
 
-\providecommand{\authorFontShape}{\bfseries}
+% \providecommand{\authorFontShape}{\bfseries}
+\providecommand{\authorFontShape}{}
+% \providecommand{\authorFontSize}{\normalsize}
 \providecommand{\authorFontSize}{\normalsize}
 
 \def\tabular@font{}
@@ -261,48 +287,48 @@
 \@endparpenalty=-\@lowpenalty
 \@itempenalty=-\@lowpenalty
 %%%
-\def\ps@empty{\let\@mkboth\@gobbletwo
-  \let\@oddhead\@empty \let\@evenhead\@empty
-  \let\@oddfoot\@empty \let\@evenfoot\@empty
-  \global\topskip\normaltopskip}
-\def\ps@plain{\ps@empty
-  \def\@oddfoot{\normalfont\scriptsize \hfil\thepage\hfil}%
-  \let\@evenfoot\@oddfoot}
-\def\ps@headings{\ps@empty
-  \def\@evenhead{\normalfont\scriptsize
-      \rlap{\thepage}\hfil \leftmark{}{}\hfil}%
-  \def\@oddhead{\normalfont\scriptsize \hfil
-      \rightmark{}{}\hfil \llap{\thepage}}%
-  \let\@mkboth\markboth
-}
-\let\sectionname\@empty
-\let\subsectionname\@empty
-\let\subsubsectionname\@empty
-\let\paragraphname\@empty
-\let\subparagraphname\@empty
+% \def\ps@empty{\let\@mkboth\@gobbletwo
+%   \let\@oddhead\@empty \let\@evenhead\@empty
+%   \let\@oddfoot\@empty \let\@evenfoot\@empty
+%   \global\topskip\normaltopskip}
+% \def\ps@plain{\ps@empty
+%   \def\@oddfoot{\normalfont\scriptsize \hfil\thepage\hfil}%
+%   \let\@evenfoot\@oddfoot}
+% \def\ps@headings{\ps@empty
+%   \def\@evenhead{\normalfont\scriptsize
+%       \rlap{\thepage}\hfil \leftmark{}{}\hfil}%
+%   \def\@oddhead{\normalfont\scriptsize \hfil
+%       \rightmark{}{}\hfil \llap{\thepage}}%
+%   \let\@mkboth\markboth
+% }
+% \let\sectionname\@empty
+% \let\subsectionname\@empty
+% \let\subsubsectionname\@empty
+% \let\paragraphname\@empty
+% \let\subparagraphname\@empty
 % \def\leftmark{\expandafter\@firstoftwo\topmark{}{}}
 % \def\rightmark{\expandafter\@secondoftwo\botmark{}{}}
-\def\ps@firstpage{\ps@plain
-  \def\@oddfoot{\normalfont\scriptsize \hfil\thepage\hfil
-     \global\topskip\normaltopskip}%
-  \let\@evenfoot\@oddfoot
-  \def\@oddhead{\@serieslogo\hss}%
-  \let\@evenhead\@oddhead % in case an article starts on a left-hand page
-}
-\long\def\@nilgobble#1\@nil{}
-\def\markboth#1#2{%
-  \begingroup
-    \@temptokena{{#1}{#2}}\xdef\@themark{\the\@temptokena}%
-    \mark{\the\@temptokena}%
-  \endgroup
-  \if@nobreak\ifvmode\nobreak\fi\fi}
-\def\ps@myheadings{\ps@headings \let\@mkboth\@gobbletwo}
-\newskip\normaltopskip
-\normaltopskip=10pt \relax
-\let\sectionmark\@gobble
-\let\subsectionmark\@gobble
-\let\subsubsectionmark\@gobble
-\let\paragraphmark\@gobble
+% \def\ps@firstpage{\ps@plain
+%   \def\@oddfoot{\normalfont\scriptsize \hfil\thepage\hfil
+%      \global\topskip\normaltopskip}%
+%   \let\@evenfoot\@oddfoot
+%   \def\@oddhead{\@serieslogo\hss}%
+%   \let\@evenhead\@oddhead % in case an article starts on a left-hand page
+% }
+% \long\def\@nilgobble#1\@nil{}
+% \def\markboth#1#2{%
+%   \begingroup
+%     \@temptokena{{#1}{#2}}\xdef\@themark{\the\@temptokena}%
+%     \mark{\the\@temptokena}%
+%   \endgroup
+%   \if@nobreak\ifvmode\nobreak\fi\fi}
+% \def\ps@myheadings{\ps@headings \let\@mkboth\@gobbletwo}
+% \newskip\normaltopskip
+% \normaltopskip=10pt \relax
+% \let\sectionmark\@gobble
+% \let\subsectionmark\@gobble
+% \let\subsubsectionmark\@gobble
+% \let\paragraphmark\@gobble
 
 %{{{ Declarations
 
@@ -363,6 +389,11 @@
 % \@sectionAfterTitlefalse
 \newboolean{sectionAfterTitle}
 \setboolean{sectionAfterTitle}{false}
+
+\DeclareRobustCommand{\pagerange}[1]{%
+  \gdef\@pagerange{#1}
+}
+\let\@pagerange\@empty
 
 \DeclareRobustCommand{\doi}[1]{%
   \gdef\@doi{#1}
@@ -448,7 +479,7 @@
 %%     \SetPFUprocKey{\CurrentOption}
   }%
   {% else
-    \PassOptionsToClass{\CurrentOption}{kgeneric}
+    % \PassOptionsToClass{\CurrentOption}{kgeneric} % scrbook
   }%
 %%     \PassOptionsToClass{\CurrentOption}{kgeneric}
 %%   }%
@@ -483,22 +514,59 @@
 % \RequirePackage{mathtext}
 % \RequirePackage[english,russian]{babel}
 
-\LoadClass{kgeneric}
-%\LoadClassWithOptions{kgeneric}
+% \LoadClass{kgeneric}
+% \LoadClassWithOptions{kgeneric}
+\LoadClassWithOptions{scrbook}
+
+
+% \RequirePackage{xr}
+% \RequirePackage{xr-hyper}
+\RequirePackage{zref}
+\RequirePackage{zref-user}
+\RequirePackage[unicode]{hyperref}
+\RequirePackage{hyperxmp}
+\hypersetup{%
+  hidelinks = true,
+  % colorlinks   = true, % Colours links instead of ugly boxes
+  % urlcolor     = cyan, % Colour for external hyperlinks
+  % linkcolor    = gray, % Colour of internal links
+  % citecolor   = gray, % Colour of citations
+  % allcolors=DarkSlateGrey,
+  % allcolors=gray,
+  bookmarksnumbered,
+  pdfencoding=unicode,
+}
+\urlstyle{same}
+% \hypersetup{
+%   pdftitle={Test of package "silence"},
+%   pdfauthor={Anne O. Nymus},
+%   pdfcreator={pdfTeX},
+%   pdfcopyright={Public domain (below threshold)}
+% }
+
+
 %%
-  \message{1111111}
+\message{1111111}
+%% Multicolumn
+\newif\if@twocolumn
+\newif\if@multicolumn
+\@multicolumnfalse
+\newboolean{KermitMultiColumn}
+\setboolean{KermitMultiColumn}{false}
+\newcounter{NumberOfColumn}
+
 %%   \newif\if@twocolumn
 %%   \@twocolumntrue%
-  \if@twocolumn\typeout{2-col}%
-  \else%
-  \typeout{1-col}%
-  \fi%
-  \if@multicolumn\typeout{2-col}%
-  \else%
-  \typeout{1-col}%
-  \fi%
-  \ifthenelse{\boolean{@twocolumn}}{\typeout{2-col}}{\typeout{1-col}}
-  \ifthenelse{\boolean{PFUprocMultiColumn}}{\typeout{2-col}}{\typeout{1-col}}
+  % \if@twocolumn\typeout{2-col}%
+  % \else%
+  % \typeout{1-col}%
+  % \fi%
+  % \if@multicolumn\typeout{2-col}%
+  % \else%
+  % \typeout{1-col}%
+  % \fi%
+  % \ifthenelse{\boolean{@twocolumn}}{\typeout{2-col}}{\typeout{1-col}}
+  % \ifthenelse{\boolean{PFUprocMultiColumn}}{\typeout{2-col}}{\typeout{1-col}}
 %%
 %% Required packages
 %%
@@ -556,21 +624,27 @@
 %%
 %% \newcounter{title}
 
-\def\label#1{\@bsphack
-  \protected@write\@auxout{}%
-         {\string\newlabel{\thePFUtitle:#1}{{\@currentlabel}{\thepage}}}%
-  \@esphack}
-\def\ref#1{\expandafter\@setref\csname r@\thePFUtitle:#1\endcsname\@firstoftwo{\thePFUtitle:#1}}
-\def\pageref#1{\expandafter\@setref\csname r@\thePFUtitle:#1\endcsname
-  \@secondoftwo{\thePFUtitle:#1}}
+%% 2024-07-03
+% \def\label#1{\@bsphack
+%   \protected@write\@auxout{}%
+%          {\string\newlabel{\thePFUtitle:#1}{{\@currentlabel}{\thepage}}}%
+%   \@esphack}
+% \def\ref#1{\expandafter\@setref\csname r@\thePFUtitle:#1\endcsname\@firstoftwo{\thePFUtitle:#1}}
+% \def\pageref#1{\expandafter\@setref\csname r@\thePFUtitle:#1\endcsname
+%   \@secondoftwo{\thePFUtitle:#1}}
 %
-\def\glabel#1{\@bsphack
-  \protected@write\@auxout{}%
-         {\string\newlabel{#1}{{\@currentlabel}{\thepage}}}%
-  \@esphack}
-\def\gref#1{\expandafter\@setref\csname r@#1\endcsname\@firstoftwo{#1}}
-\def\gpageref#1{\expandafter\@setref\csname r@#1\endcsname
-  \@secondoftwo{#1}}
+%% FIXIT
+%% Пробую убрать glabel
+% \def\glabel#1{\@bsphack
+%   \protected@write\@auxout{}%
+%          {\string\newlabel{#1}{{\@currentlabel}{\thepage}}}%
+%   \@esphack}
+% \def\gref#1{\expandafter\@setref\csname r@#1\endcsname\@firstoftwo{#1}}
+% \def\gpageref#1{\expandafter\@setref\csname r@#1\endcsname
+%   \@secondoftwo{#1}}
+\let\glabel\label
+\let\gref\ref
+\let\gpageref\pageref
 
 %%
 %% Babel
@@ -583,6 +657,7 @@
 %\def\PFUudcName{UDC}
 
 \def\keywordsname{Key words and phrases}
+\def\abstractname{Abstract}
 %\AtEndPreamble{%
 \AtBeginDocument{%
 %\AtEndOfClass{%
@@ -601,19 +676,21 @@
       % Ключевые слова
       \def\keywordsname{Ключевые слова}
       \def\acknowledgmentsname{Благодарности}
+      \def\abstractname{Аннотация}
     }
     \addto\captionsenglish{%
-    \def\PFUudcName{UDC}
-    \def\PFUpacsName{PACS}
-    \def\PFUreceivedName{received}%
-    \def\PFUrevisedName{revised}%
-    \def\PFUacceptedName{accepted}%
-    \def\PFUpublishedName{published}%
-     \def\etal{et al.}
-%%    \renewcommand{\etal}{et al.}
-%%     \providecommand{\etal}{et al.}
-    \def\keywordsname{Key words and phrases}
-    \def\acknowledgmentsname{Acknowledgments}
+      \def\PFUudcName{UDC}
+      \def\PFUpacsName{PACS}
+      \def\PFUreceivedName{received}%
+      \def\PFUrevisedName{revised}%
+      \def\PFUacceptedName{accepted}%
+      \def\PFUpublishedName{published}%
+      \def\etal{et al.}
+      %% \renewcommand{\etal}{et al.}
+      %% \providecommand{\etal}{et al.}
+      \def\keywordsname{Key words and phrases}
+      \def\acknowledgmentsname{Acknowledgments}
+      \def\abstractname{Abstract}
     }
   }{%
     \addto\extrasrussian{%
@@ -656,8 +733,8 @@
       % \def\refname{%
       % {\cyr\CYRS\cyrp\cyri\cyrs\cyro\cyrk
       % \ \cyrl\cyri\cyrt\cyre\cyrr\cyra\cyrt\cyru\cyrr\cyrery}}%
-      \def\abstractname{%
-        {\cyr\CYRA\cyrn\cyrn\cyro\cyrt\cyra\cyrc\cyri\cyrya}}%
+      % \def\abstractname{%
+      %   {\cyr\CYRA\cyrn\cyrn\cyro\cyrt\cyra\cyrc\cyri\cyrya}}%
       \def\refname{%
         {\cyr\CYRL\cyri\cyrt\cyre\cyrr\cyra\cyrt\cyru\cyrr\cyra}}%
       \def\bibname{%
@@ -744,7 +821,11 @@
   }
 }
 %%
+% \RequirePackage{scrlayer-scrpage}
+% \pagestyle{scrheadings}
+% \RequirePackage{scrlayer-fancyhdr}
 \RequirePackage{fancyhdr}%
+% \setplength{firstheadwidth}{\textwidth}
 
 %% \DeclareRobustCommand{\journal}[1]%
 %% {%
@@ -792,7 +873,6 @@
 % Last name first by default
 \setboolean{isNameFam}{false}
 
-\RequirePackage{xstring}
 \AtBeginDocument{%
   \ifx\@defaultlanguage\@empty
     \defaultlanguage{\bbl@main@language}
@@ -809,7 +889,7 @@
 
 % % \AtEndPreamble{%
 % \AtEndOfPackage{%
-%   \pagestyle{fancy} 
+%   \pagestyle{fancy}
 %   \fancyhead{}%
 %   \fancyhead[LE,RO]{\headerFontSize\thepage}%
 %   \fancyhead[RE]{\leftmark}%
@@ -906,6 +986,7 @@
 \let\authorsrunning\@empty
 \let\altauthorsrunning\@empty
 \let\authorstoc\@empty
+% \let\authorstocshortRev\@empty
 \let\altauthorstoc\@empty
 \let\authors\@empty
 \let\altauthors\@empty
@@ -930,8 +1011,7 @@
 %% Для biblatex, привязанного к файлу
 \def\pfuBiblatexResource{}
 
-\renewcommand*{\title}[2][]%
-{%
+\renewcommand*{\title}[2][]{%
   %% \def\@biblabel##1{\@ifempty{##1}##1.......}
   \refstepcounter{PFUtitle}
   \@title@hook@pre
@@ -950,6 +1030,7 @@
   \let\authorsrunning\@empty
   \let\altauthorsrunning\@empty
   \let\authorstoc\@empty
+  % \let\authorstocshortRev\@empty
   \let\altauthorstoc\@empty
   \let\authors\@empty
   \let\altauthors\@empty
@@ -961,8 +1042,10 @@
 %%   \label{starttitle}
   \ifx\@doiPrefix\@empty
   \else
-    \doi{\@doiPrefix{}/\@doiSuffixBase{}-\pageref{starttitle}-\pageref{endtitle}}
+    % \doi{\@doiPrefix{}/\@doiSuffixBase{}-\pageref{starttitle}-\pageref{endtitle}}
+    \doi{\@doiPrefix{}/\@doiSuffixBase{}-\zpageref{\thePFUtitle:starttitle}-\zpageref{\thePFUtitle:endtitle}}
   \fi
+  \pagerange{\zpageref{\thePFUtitle:starttitle}-\zpageref{\thePFUtitle:endtitle}}
   \iflanguage{english}%
   {%
     \edef\PFUlanguage{english}
@@ -992,6 +1075,7 @@
   \let\authorsrunning\@empty
   \let\altauthorsrunning\@empty
   \let\authorstoc\@empty
+  % \let\authorstocshortRev\@empty
   \let\altauthorstoc\@empty
   \let\authors\@empty
   \let\altauthors\@empty
@@ -1020,9 +1104,11 @@
 %   \@xp\@nx\csname\string\title\endcsname}
 \newcommand*{\appendixtitle}[2][]{\stepcounter{PFUtitle}
   \label{starttitle}
+  \zlabel{\thePFUtitle:starttitle}
   \gdef\shortappendixtitle{#1}\gdef\@appendixtitle{#2}}
 \newcommand*{\altappendixtitle}[2][]{\stepcounter{PFUtitle}
   \label{starttitle}
+  \zlabel{\thePFUtitle:starttitle}
   \gdef\shortaltappendixtitle{#1}\gdef\@altappendixtitle{#2}}
 %%%
 \newcommand*{\alttitle}[2][]%
@@ -1046,7 +1132,7 @@
    % \clist_map_inline:nn { #1 } { \ref{##1} }
    \seq_set_from_clist:Nn \l_tmpa_seq { #1 }
    \seq_set_map:NNn \l_tmpb_seq \l_tmpa_seq { \exp_not:n { \ref { ##1 } } }
-   \seq_use:Nn \l_tmpb_seq { ,\protect\, }   
+   \seq_use:Nn \l_tmpb_seq { ,\protect\, }
  }
 
 \ExplSyntaxOff
@@ -1230,9 +1316,11 @@
   \protected@edef\@tempd{#4}
   \ifx\@tempd\@empty
     \protected@edef\authorFamIn{\authorfamily\,\authorinitials}
+    \protected@edef\authorFamInPlain{\authorfamily{} \authorinitialsplain}
     \protected@edef\authorFamInShort{\authorfamily\,\authorinitialsshort}
-    \protected@edef\authorInFamShort{\authorinitialsshort\,\authorfamily}
-    \protected@edef\authorInFam{\authorinitials\,\authorfamily}
+    \protected@edef\authorInFamShort{\authorinitialsshort{} \authorfamily}
+    \protected@edef\authorInFam{\authorinitials\ \authorfamily}
+    \protected@edef\authorInFamPlain{\authorinitialsplain{} \authorfamily}
     \protected@xdef\authorFamily{\authorfamily\xspace}
     \protected@xdef\authorInitials{\authorinitials\xspace}
     \protected@xdef\authorInitialsPlain{\authorinitialsplain\xspace}
@@ -1246,6 +1334,7 @@
   \ifx\authors\@empty
     \ifbool{isNameFam}{% firstname lastname
       \protected@xdef\authorstoc{\authorInFam}%
+      % \protected@xdef\authorstoc{\authorInFamPlain}%
       \protected@xdef\authorstocshort{\authorInFamShort}%
       \protected@xdef\authorsrunning{\authorInFamShort}%
       \protected@xdef\authorstocRev{\authorFamIn}%
@@ -1260,6 +1349,7 @@
       \protected@xdef\authorsrunning{\authorFamInShort}%
       % \gdef\authorstoc{\authorfamily\ \authorinitials}%
       % \gdef\authorstoc{\atoks\ \authorinitials}%
+      \protected@xdef\authorstocshortRev{\authorInFamShort}%
     }
     \protected@edef\@tempb{#2}
     \ifx\@tempb\@empty
@@ -1291,6 +1381,7 @@
     % \g@addto@macro\authorstoc{\and \authorFamIn}%
     \ifbool{isNameFam}{% firstname lastname
       \protected@xdef\authorstoc{\authorstoc \and \authorInFam}%
+      % \protected@xdef\authorstoc{\authorstoc \and \authorInFamPlain}%
       \protected@xdef\authorstocshort{\authorstocshort \and \authorInFamShort}%
       \protected@xdef\authorstocRev{\authorstocRev \and \authorFamIn}%
       \protected@xdef\authorstocshortRev{\authorstocshortRev \and \mbox{\authorFamInShort}}%
@@ -1588,44 +1679,48 @@
 } %END \altaddress@star
 
 \def\thealtaddress{\fnsymbol{altaddress}}
-\def\altaddress@fmt#1#2#3#4%
-{\@newelemtrue
+\def\altaddress@fmt#1#2#3#4{%
+  \@newelemtrue
   \if@Elproofing\def\@eltag{#4}\else\def\@eltag{\thealtaddress}\fi
   \ifnum\prev@elem=\e@altaddress \@newelemfalse \fi
-  \g@addto@macro\altaddresses{
-  \if@newelem \altaddress@fmt@init \fi
-  \noindent \bgroup \@altaddressstyle
-  \edef\@tempb{#2}%
-  \ifx\@tempb\@empty
-  \ifnum#1=\z@
-%    #3\,$^{\mathrm{#2}}$\space%
-    #3\space%
-  \else
-    \ifnum#1=\m@ne
-%      $^{\phantom{\mathrm{\@eltag}}}$\space #3\,$^{\mathrm{#2}}$%
-     $^{\phantom{\mathrm{\@eltag}}}$\space #3%
+  \g@addto@macro\altaddresses{%
+    \if@newelem \altaddress@fmt@init \fi
+    \noindent
+    \begingroup
+    \@altaddressstyle
+    \edef\@tempb{#2}%
+    \ifx\@tempb\@empty
+      \ifnum#1=\z@
+        % #3\,$^{\mathrm{#2}}$\space%
+        #3\space%
+      \else
+        \ifnum#1=\m@ne
+          % $^{\phantom{\mathrm{\@eltag}}}$\space #3\,$^{\mathrm{#2}}$%
+          $^{\phantom{\mathrm{\@eltag}}}$\space #3%
+        \else
+          % $^{\mathrm{\@eltag}}\space$#3\,$^{\mathrm{#2}}$%
+          $^{\mathrm{\@eltag}}\space$#3%
+        \fi
+      \fi
     \else
-%      $^{\mathrm{\@eltag}}\space$#3\,$^{\mathrm{#2}}$%
-     $^{\mathrm{\@eltag}}\space$#3%
+      \refstepcounter{address}%
+      \label{altaddress:#2}%
+      \ifnum#1=\z@
+        % #3\,$^{\mathrm{#2}}$\space%
+        $^{\mathrm{\ref{#2}}}$#3\space%
+      \else
+        \ifnum#1=\m@ne
+          % $^{\phantom{\mathrm{\@eltag}}}$\space #3\,$^{\mathrm{#2}}$%
+          $^{\mathrm{\ref{#2}}}$\,$^{\phantom{\mathrm{\@eltag}}}$\space #3%
+        \else
+          % $^{\mathrm{\@eltag}}\space$#3\,$^{\mathrm{#2}}$%
+          $^{\mathrm{\ref{#2}}}$\,#3%
+        \fi
+      \fi
     \fi
-  \fi
-\else
-   \refstepcounter{address}%
-   \label{altaddress:#2}%
-  \ifnum#1=\z@
-%    #3\,$^{\mathrm{#2}}$\space%
-    $^{\mathrm{\ref{#2}}}$#3\space%
-  \else
-    \ifnum#1=\m@ne
-%      $^{\phantom{\mathrm{\@eltag}}}$\space #3\,$^{\mathrm{#2}}$%
-     $^{\mathrm{\ref{#2}}}$\,$^{\phantom{\mathrm{\@eltag}}}$\space #3%
-    \else
-%      $^{\mathrm{\@eltag}}\space$#3\,$^{\mathrm{#2}}$%
-     $^{\mathrm{\ref{#2}}}$\,#3%
-    \fi
-  \fi
-\fi
-  \par \egroup}%
+    \par
+    \endgroup
+  }%
 } %END \altaddress@fmt
 \def\altaddress@fmt@init{%
   \par                                % Start new paragraph
@@ -1663,6 +1758,15 @@
 \DeclareRobustCommand{\pacs}[1]{%
   \def\@pacsnum{#1}}
 \let\@pacsnum\@empty
+\DeclareRobustCommand{\edn}[1]{%
+  \def\@edn{#1}
+}
+\let\@edn\@empty
+\DeclareRobustCommand{\ednurl}[1]{%
+  % \tokenize{\tempednurl}{\MakeLowercase{#1}}
+  \href{https://elibrary.ru/#1}{\MakeUppercase{#1}}
+}
+
 %%
 
 % \RequirePackage{datetime2}
@@ -1674,7 +1778,6 @@
   \def\@received@year{#3}
   % \def\@received{\DTMdate{#3-#2-#1}}
   \def\@received{\formatdate{#1}{#2}{#3}}
-
 }
 \let\@received\@empty
 \let\@received@day\@empty
@@ -1957,7 +2060,8 @@
   % \@topnum\z@ % this prevents figures from falling at the top of page 1
   %% \refstepcounter{title}
   \label{starttitle}
-  \message{!!!PFUtitle=\thePFUtitle}
+  \zlabel{\thePFUtitle:starttitle}
+  % \message{!!!PFUtitle=\thePFUtitle}
   \@setcopyright
   % \uppercasenonmath\shorttitle
   % \ifx\@empty\shortauthors \let\shortauthors\shorttitle
@@ -1969,8 +2073,8 @@
   \andify\authorstoc
   \altandify\altauthorstoc
   % \renewcommand{\leftmark}{\authors}
-  \message{99999}
-  \message{\@biblabel{1}}
+  % \message{99999}
+  % \message{\@biblabel{1}}
   \iflanguage{\@defaultlanguage}
   {%
     \message{99999-1}
@@ -1987,31 +2091,40 @@
     \addcontentsline{toc}{chapter}{%
       % \raggedright
       \\[-6pt]
-      {\bfseries \authorstoc}\unskip,{}\xspace
+      \raggedright
+      % {\bfseries \authorstoc}\unskip,{}\xspace
+      {% \sffamily
+        \itshape \authorstocshort}\unskip{}\xspace
       \no@harm \@title
     }
     \addcontentsline{tac}{chapter}{%
       % \raggedright
       \\[-6pt]
-      {\bfseries \altauthorstoc}\unskip,{}\xspace
+      \raggedright
+      % {\bfseries \altauthorstoc}\unskip,{}\xspace
+      {% \sffamily
+        \itshape \altauthorstocshort}\unskip{}\xspace
       \no@harm \@alttitle
     }
-  }
-  {%
+  }{%
     \addtocontents{toc}{\protect\select@language{\@defaultlanguage}}
     \addcontentsline{toc}{chapter}{
       \raggedright
-      {\bfseries \altauthorstoc}\unskip,{}\xspace
+      % {\bfseries \altauthorstocshort}\unskip,{}\xspace
+      {% \sffamily
+        \itshape \altauthorstocshort}\unskip{}\xspace
       % \\
       \no@harm \@alttitle}
     \addtocontents{tac}{\protect\select@language{\@defaultaltlanguage}}
     \addcontentsline{tac}{chapter}{%
       \raggedright
-      {\bfseries \authorstoc}\unskip,{}\xspace
+      % {\bfseries \authorstocshort}\unskip,{}\xspace
+      {% \sffamily
+        \itshape \authorstocshort}\unskip{}\xspace
       % \\
       \no@harm \@title}
   }
-  \message{99999-5}
+  % \message{99999-5}
   % \@mkboth{\@journal}{\authors \@title}
   % \@mkboth{\andify\altauthors}{\shorttitle}
   % \toks@\@xp{\authors}
@@ -2161,6 +2274,7 @@
   % \@topnum\z@ % this prevents figures from falling at the top of page 1
   %% \refstepcounter{title}
   \label{starttitle}
+  \zlabel{\thePFUtitle:starttitle}
   % \@setcopyright
   % \uppercasenonmath\shorttitle
   % \ifx\@empty\shortauthors \let\shortauthors\shorttitle
@@ -2174,14 +2288,18 @@
   % \renewcommand{\leftmark}{\authors}
   \iflanguage{\@defaultlanguage}
   {%
-    \addcontentsline{toc}{chapter}{{\bfseries \authorstoc} \no@harm \@title}
-    \addcontentsline{tac}{chapter}{{\bfseries \altauthorstoc} \no@harm \@alttitle}
+    % \addcontentsline{toc}{chapter}{{\bfseries \authorstoc} \no@harm \@title}
+    % \addcontentsline{tac}{chapter}{{\bfseries \altauthorstoc} \no@harm \@alttitle}
+    \addcontentsline{toc}{chapter}{{\sffamily \authorstocshort} \no@harm \@title}
+    \addcontentsline{tac}{chapter}{{\sffamily \altauthorstocshort} \no@harm \@alttitle}
   }
   {%
     \addtocontents{toc}{\protect\select@language{\@defaultlanguage}}
-    \addcontentsline{toc}{chapter}{{\bfseries \altauthorstoc} \no@harm \@alttitle}
+    % \addcontentsline{toc}{chapter}{{\bfseries \altauthorstoc} \no@harm \@alttitle}
+    \addcontentsline{toc}{chapter}{{\sffamily \altauthorstocshort} \no@harm \@alttitle}
     \addtocontents{tac}{\protect\select@language{\@defaultaltlanguage}}
-    \addcontentsline{tac}{chapter}{{\bfseries \authorstoc} \no@harm \@title}
+    % \addcontentsline{tac}{chapter}{{\bfseries \authorstoc} \no@harm \@title}
+    \addcontentsline{tac}{chapter}{{\sffamily \altauthorstocshort} \no@harm \@title}
   }
   % \@mkboth{\@journal}{\authors \@title}
   % \@mkboth{\andify\altauthors}{\shorttitle}
@@ -2272,7 +2390,7 @@
   \let\@address\@empty%
   \let\thankses\@empty%
   \let\@keywords\@empty%
-  % 
+  %
   \let\@received\@empty
   \let\@received@day\@empty
   \let\@received@month\@empty
@@ -2301,9 +2419,9 @@
   \let\@paperid\@empty
   %%%
 } % END \maketitleToc
-
-\def\@maketitle@hook@pre{\global\let\@maketitle@hook@pre\@empty}
+% \def\@maketitle@hook@pre{\global\let\@maketitle@hook@pre\@empty}
 % \def\@maketitle@hook{\global\let\@maketitle@hook\@empty}
+\def\@maketitle@hook@pre{}
 \def\@maketitle@hook{}
 % \def\@maketitle@hook@post{\global\let\@maketitle@hook@post\@empty}
 \def\@maketitle@hook@post{}
@@ -2334,7 +2452,10 @@
   \ifx\@empty\@documentType \else \noindent \hfill\textit{\@documentType}\par \fi
   \ifx\@empty\@udcnum \else \nobreak\smallskip\noindent \footnotesize\PFUudcName{} \@udcnum \hfill\par \fi
   \ifx\@empty\@pacsnum \else \nobreak\smallskip\noindent \footnotesize\PFUpacsName{} \@pacsnum \hfill\par \fi
-  \ifx\@empty\@doi \else \nobreak\smallskip\noindent \footnotesize DOI: \@doi \hfill\par \fi
+  % \ifx\@empty\@doi \else \nobreak\smallskip\noindent \footnotesize DOI: \@doi \hfill \fi%
+  \ifx\@empty\@doi \else \nobreak\smallskip\noindent \footnotesize DOI:~\@doi \hfill \fi%
+  % \ifx\@empty\@edn \else \footnotesize EDN:~\href{\ednurl}{\MakeUppercase{\@edn}} \par \fi
+  \ifx\@empty\@edn \else \footnotesize EDN:~\ednurl{\@edn} \par \fi
   \nobreak%
   \smallskip
   \@settitle
@@ -2343,16 +2464,18 @@
   \endgroup
   %%% --
   \nobreak %
-  \begingroup
-  % \smallskip
-  \footnotesize
-  \centering
-  \addresses
-  \par
-  \medskip
-  \ifx\@empty\@email \else \noindent Email: \@email \par \fi
-  \endgroup
-  %%%
+  \begin{flushleft}
+    \begingroup
+    % \smallskip
+    \footnotesize
+    % \centering
+    \addresses
+    \par
+    \medskip
+    \ifx\@empty\@email \else \noindent Email: \@email \par \fi
+    \endgroup
+  \end{flushleft}
+%%%
   \ifx\@empty\@dedicatory
   \else
   \baselineskip26\p@
@@ -2369,17 +2492,22 @@
     \ifx\@empty\@received \else \@footnotetext{\hspace{-2.5\footnotesep}\@setreceived} \fi
   \else
     \ifx\@empty\@received \else
-      \begin{center}
+      \begin{flushleft}
         \footnotesize
         (%
         \PFUreceivedName:\enspace \@received%
+        \ifx\@empty\@revised%
+        \else
+          ;
+          \PFUrevisedName:\enspace \@revised%
+        \fi
         \ifx\@empty\@accepted%
         \else
           ;
           \PFUacceptedName:\enspace \@accepted%
         \fi
         )
-      \end{center}
+      \end{flushleft}
     \fi
   \fi
   % \@setabstract
@@ -2642,6 +2770,7 @@
   \vspace{2\bigskipamount}
   \@makealttitle
   \label{endtitle}
+  \zlabel{\thePFUtitle:endtitle}
   %\if@twocolumn
   %\twocolumn[\@makealttitle]
   %\fi
@@ -2679,6 +2808,7 @@
 \let\@udcnum\@empty
 \let\@pacsnum\@empty
 \let\@doi\@empty
+\let\@edn\@empty
 \let\@documentType\@empty
 \let\alt@keywords\@empty
 \let\@altabstracts\@empty
@@ -2758,7 +2888,8 @@
     % \ifx\@empty\@documentType \else \noindent \hfill\textit{\@documentType}\par \fi
     \ifx\@empty\@udcnum \else \nobreak\smallskip\noindent \footnotesize\PFUudcName{} \@udcnum \hfill\par \fi
     \ifx\@empty\@pacsnum \else \nobreak\smallskip\noindent \footnotesize\PFUpacsName{} \@pacsnum \hfill\par \fi
-    \ifx\@empty\@doi \else \nobreak\smallskip\noindent \footnotesize DOI: \@doi \hfill\par \fi
+    \ifx\@empty\@doi \else \nobreak\smallskip\noindent \footnotesize DOI: \@doi \hfill \fi%
+    \ifx\@empty\@edn \else \footnotesize EDN: \MakeUppercase{\@edn} \par \fi
     \nobreak%
     \smallskip
     \@setalttitle%
@@ -2768,18 +2899,18 @@
     \endgroup
     %%% --
     \nobreak%
-    % \begingroup
+    \begingroup
     \smallskip
-    \begin{center}
+    \begin{flushleft}
       \footnotesize
       \samepage%
       \altaddresses
       \medskip
       \ifx\@empty\@email \else \noindent Email: \@email \par \fi
-    \end{center}
+    \end{flushleft}
     \nobreak
     % \par
-    % \endgroup
+    \endgroup
     %%%
     \ifx\@empty\@dedicatory
     \else
@@ -2887,59 +3018,65 @@
 %  \newcommand{\datename}{Received by the editors}
 %\fi
 \def\@settitle{
-  \begin{center}%
+  \begin{flushleft}%
     % \@titlesize
     \titleFontSize\titleFontShape
     \@title
-  \end{center}%
+  \end{flushleft}%
 }
 
 \def\@setauthors{%
-  \begingroup
-  \trivlist
-  % \centering \fontsize{11}{13\p@}\selectfont\@topsep13\p@\relax
-  %%% --
-  \centering
-  \author@font
-  % \bfseries
-  %%%
-\item\relax
-  \andify\authors
-  \authors
-  \endtrivlist
-  \endgroup
+  \begin{flushleft}
+    \begingroup
+    \trivlist
+    % \centering \fontsize{11}{13\p@}\selectfont\@topsep13\p@\relax
+    %%% --
+    % \centering
+    % \noindent%
+    \author@font
+    % \bfseries
+    %%%
+  \item\relax
+    \andify\authors
+    \authors
+    \endtrivlist
+    \endgroup
+  \end{flushleft}
 }
 %%%
-\def\@setsubtitle{
-  \begin{center}%
+\def\@setsubtitle{%
+  \begin{flushleft}%
     \@subtitlesize
     \@subtitle
-  \end{center}%
+  \end{flushleft}%
 }
 %%% --
-\providecommand{\@setalttitle}%
-{%
-  \begin{center}%
+\providecommand{\@setalttitle}{%
+  \begin{flushleft}%
     % \large
     % \bfseries
     \titleFontSize\titleFontShape
     \@alttitle
-  \end{center}%
+  \end{flushleft}%
 } % END \@setalttitle
+
 \def\@setaltauthors{%
-  \begingroup
-  \trivlist
-%  \centering \fontsize{10}{12\p@}\selectfont\@topsep12\p@\relax
-%%%--
-  \centering
-  \author@font
-%  \bfseries
-%%%
+  \begin{flushleft}
+    \begingroup
+    \trivlist
+    % \centering \fontsize{10}{12\p@}\selectfont\@topsep12\p@\relax
+    %%% --
+    % \centering
+    % \noindent%
+    \author@font
+    % \bfseries
+    %%%
   \item\relax
-  \andify\altauthors
-  \altauthors
-  \endtrivlist
-  \endgroup
+    \andify\altauthors
+    \altauthors
+    \endtrivlist
+    \endgroup
+  \end{flushleft}
 }
 %%%
 \def\@setdate{\datename\ \@date\@addpunct.}
@@ -2989,8 +3126,8 @@
   \global\setbox\t@abstract=\vbox\bgroup
   \leftskip=0pt \rightskip\leftskip
    \small
-  \parindent 1em                      % \parindent in abstract
-  \ignorespaces
+   \parindent 1em                      % \parindent in abstract
+   \ignorespaces
 
   % \ifx\maketitle\relax
   %   \ClassWarning{\@classname}{Abstract should precede
@@ -3021,6 +3158,7 @@
   \leftskip=0pt \rightskip\leftskip
   \small
   \parindent 1em                      % \parindent in abstract
+  \noindent{\DivFontShape\abstractname .}
   \ignorespaces
   #1
   \par \egroup%
@@ -3116,6 +3254,7 @@
     \leftskip=0pt \rightskip\leftskip
     \small
     \parindent 1em                      % \parindent in abstract
+    \noindent{\DivFontShape\abstractname.}
     \ignorespaces
     #1
     \par \egroup%
@@ -3451,26 +3590,38 @@
 %% Fonts
 %%
 
-\providecommand{\DivFontShape}{\bfseries}
+% % \providecommand{\DivFontShape}{\sffamily\bfseries}
+% \providecommand{\DivFontShape}{\sffamily}
 
-\providecommand{\titleFontShape}{\DivFontShape}
-\providecommand{\titleFontSize}{\large}
-\providecommand{\titlePosition}{\center}
+% \providecommand{\titleFontShape}{\DivFontShape}
+% \providecommand{\titleFontSize}{\large}
+% % \providecommand{\titlePosition}{\center}
+% \providecommand{\titlePosition}{\noindent}
 
-%\renewcommand{\sectionFontShape}{\scshape}
-\renewcommand{\sectionFontSize}{\large}
-\renewcommand{\sectionPosition}{\center}
-%\renewcommand{\subsectionFontShape}{\scshape}
-\renewcommand{\subsectionFontSize}{\normalsize}
-\renewcommand{\subsectionPosition}{\center}
-%\renewcommand{\subsubsectionFontShape}{\scshape}
-\renewcommand{\subsubsectionFontSize}{\normalsize}
-\renewcommand{\subsubsectionPosition}{\center}
-%%
-%\renewcommand{\paragraphFontShape}{\scshape}
-\renewcommand{\paragraphFontSize}{\normalsize}
-%\renewcommand{\subparagraphFontShape}{\scshape}
-\renewcommand{\subparagraphFontSize}{\normalsize}
+% \renewcommand{\chapterFontShape}{\DivFontShape}
+
+% % \renewcommand{\sectionFontShape}{\scshape}
+% \renewcommand{\sectionFontShape}{\DivFontShape}
+% \renewcommand{\sectionFontSize}{\large}
+% % \renewcommand{\sectionPosition}{\center}
+% \renewcommand{\sectionPosition}{\noindent}
+% % \renewcommand{\subsectionFontShape}{\scshape}
+% \renewcommand{\subsectionFontShape}{\DivFontShape}
+% \renewcommand{\subsectionFontSize}{\normalsize}
+% % \renewcommand{\subsectionPosition}{\center}
+% \renewcommand{\subsectionPosition}{\noindent}
+% % \renewcommand{\subsubsectionFontShape}{\scshape}
+% \renewcommand{\subsubsectionFontShape}{\DivFontShape}
+% \renewcommand{\subsubsectionFontSize}{\normalsize}
+% % \renewcommand{\subsubsectionPosition}{\center}
+% \renewcommand{\subsubsectionPosition}{\noindent}
+% %%
+% % \renewcommand{\paragraphFontShape}{\scshape}
+% \renewcommand{\paragraphFontShape}{\DivFontShape}
+% \renewcommand{\paragraphFontSize}{\normalsize}
+% % \renewcommand{\subparagraphFontShape}{\scshape}
+% \renewcommand{\subparagraphFontShape}{\DivFontShape}
+% \renewcommand{\subparagraphFontSize}{\normalsize}
 
 
 \renewcommand\thepart          {\arabic{part}}
@@ -3484,26 +3635,28 @@
 \renewcommand\theequation{\@arabic\c@equation}
 \def\partname{Part}
 
-\providecommand{\chapaftersnum}{.}
-\providecommand{\secaftersnum}{.}
+% \providecommand{\chapaftersnum}{.}
+% \providecommand{\secaftersnum}{.}
 
-\RequirePackage[indentafter]{titlesec}
+% \RequirePackage[indentafter]{titlesec}
 
-\titleformat{\chapter}[block]%
-    {\thispagestyle{fancy}\normalfont\chapterFontSize\chapterFontShape}{\ifx\chaptertitlename\@empty\else\chaptertitlename\ \fi\thechapter\chapaftersnum}{0.8\baselineskip}{\chapterFontSize}
-\titleformat{\section}[block]%
-    {\sectionPosition\normalfont\sectionFontSize\sectionFontShape}{\thesection\secaftersnum}{1em}{}
-\titleformat{\subsection}[block]%
-    {\subsectionPosition\normalfont\subsectionFontSize\subsectionFontShape}{\thesubsection\secaftersnum}{1em}{}
-\titleformat{\subsubsection}[block]%
-    {\subsubsectionPosition\normalfont\subsubsectionFontSize\subsubsectionFontShape}{\thesubsubsection\secaftersnum}{1em}{}
-\titleformat{\paragraph}[runin]%
-    {\normalfont\paragraphFontSize\paragraphFontShape}{\theparagraph\secaftersnum}{1em}{}
-\titleformat{\subparagraph}[runin]%
-    {\normalfont\subparagraphFontSize\subparagraphFontShape}{\thesubparagraph\secaftersnum}{1em}{}
+% \titleformat{\chapter}[block]%
+%     {\thispagestyle{fancy}\normalfont\chapterFontSize\chapterFontShape\chapterPosition}{\ifx\chaptertitlename\@empty\else\chaptertitlename\ \fi\thechapter\chapaftersnum}{0.8\baselineskip}{\chapterFontSize}
+% \titleformat{\section}[block]%
+%     {\sectionPosition\normalfont\sectionFontSize\sectionFontShape\sectonPosition}{\thesection\secaftersnum}{1em}{}
+% \titleformat{\subsection}[block]%
+%     {\subsectionPosition\normalfont\subsectionFontSize\subsectionFontShape\subsectionPosition}{\thesubsection\secaftersnum}{1em}{}
+% \titleformat{\subsubsection}[block]%
+%     {\subsubsectionPosition\normalfont\subsubsectionFontSize\subsubsectionFontShape\subsubsectionPosition}{\thesubsubsection\secaftersnum}{1em}{}
+% \titleformat{\paragraph}[runin]%
+%     {\normalfont\paragraphFontSize\paragraphFontShape}{\theparagraph\secaftersnum}{1em}{}
+% \titleformat{\subparagraph}[runin]%
+%     {\normalfont\subparagraphFontSize\subparagraphFontShape}{\thesubparagraph\secaftersnum}{1em}{}
 
-\titlespacing{\chapter}{\z@}{\z@}{10\p@}
-\titlespacing{\section}{\z@}{*4}{*1.5}
+% \titlespacing{\chapter}{\z@}{\z@}{10\p@}
+% \titlespacing{\section}{\z@}{*4}{*1.5}
+
+
 % \titlespacing{\section}{\z@}{\if@sectionAfterTitle \z@ \@sectionAfterTitlefalse \else -3.5ex \@plus -1ex \@minus -.2ex \fi}{2.3ex \@plus.2ex}
 %\titlespacing{\section}{\z@}{\ifsectionAfterTitle \z@ \else -3.5ex \@plus -1ex \@minus -.2ex \fi}{2.3ex \@plus.2ex}
 %\titlespacing{\section}{\z@}{%
@@ -3680,14 +3833,21 @@
 \def\@starttoc#1{%
   \begingroup
   %% \toc@pre
-    \makeatletter
-    \@input{\jobname.#1}%
-    \if@filesw
-      \expandafter\newwrite\csname tf@#1\endcsname
-      \immediate\openout \csname tf@#1\endcsname \jobname.#1\relax
-    \fi
-    \@nobreakfalse
-%%     \toc@post
+  \makeatletter
+  % \tolerance=1
+  % \emergencystretch=\maxdimen
+  % \hyphenpenalty=10000
+  % \hbadness=10000
+  % \raggedright
+  \hyphenchar\font=-1 % disable hyphen
+  \@input{\jobname.#1}%
+  \if@filesw
+    \expandafter\newwrite\csname tf@#1\endcsname
+    \immediate\openout \csname tf@#1\endcsname \jobname.#1\relax
+  \fi
+  \hyphenchar\font=`\- % reset hyphen
+  \@nobreakfalse
+  %% \toc@post
   \endgroup
 }%
 % \def\@starttoc#1#2{\begingroup
@@ -4125,26 +4285,26 @@
 %                {\@float{figure}}
 %                {\end@float}
 
-\newenvironment{acknowledgments}{%
-  % \acknowledgments@sw{%
-  \section*{\acknowledgmentsname}%
-  % }
-  {%
-    \par
-%    \phantomsection
-    \addcontentsline{toc}{section}{\protect\numberline{}\acknowledgmentsname}%
-  }%
-}
-{%
-  \par
-}%
-% \@booleantrue\acknowledgments@sw
-% \newenvironment{acknowledgements}{%
-%   \replace@environment{acknowledgements}{acknowledgments}%
+% \newenvironment{acknowledgments}{%
+%   % \acknowledgments@sw{%
+%   \section*{\acknowledgmentsname}%
+%   % }
+%   {%
+%     \par
+% %    \phantomsection
+%     \addcontentsline{toc}{section}{\protect\numberline{}\acknowledgmentsname}%
+%   }%
 % }
-{%
-  \endacknowledgments
-}%
+% {%
+%   \par
+% }%
+% % \@booleantrue\acknowledgments@sw
+% % \newenvironment{acknowledgements}{%
+% %   \replace@environment{acknowledgements}{acknowledgments}%
+% % }
+% {%
+%   \endacknowledgments
+% }%
 
 %%%
 %%% Captions
