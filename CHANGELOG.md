@@ -1,3 +1,12 @@
+## [1.0.2](https://github.com/yamadharma/dcm-author-template/compare/v1.0.1...v1.0.2) (2024-07-21)
+
+
+### Features
+
+* **class:** switch to new tex-class ([dcdfa29](https://github.com/yamadharma/dcm-author-template/commit/dcdfa293ebe77038889045df049382623e0c6fe8))
+
+
+
 ## [1.0.1](https://github.com/yamadharma/dcm-author-template/compare/v1.0.0...v1.0.1) (2023-10-21)
 
 

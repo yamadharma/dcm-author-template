@@ -1,0 +1,40 @@
+%% Adobe Source fonts
+%% Source Serif 4
+%% https://adobe-fonts.github.io/source-serif/
+%% https://github.com/adobe-fonts/source-serif
+%% Source Sans 3
+%% https://adobe-fonts.github.io/source-sans/
+%% https://github.com/adobe-fonts/source-sans
+%% Source Code Pro
+%% https://adobe-fonts.github.io/source-code-pro/
+%% https://github.com/adobe-fonts/source-code-pro
+%% Source Han Serif
+%% https://github.com/adobe-fonts/source-han-serif
+%% Source Han Sans
+%% https://github.com/adobe-fonts/source-han-sans
+%% Source Han Mono
+%% https://github.com/adobe-fonts/source-han-mono
+%% gentoo:
+%% emerge media-fonts/source-serif
+%% emerge media-fonts/source-sans
+%% emerge media-fonts/source-code-pro
+%% emerge media-fonts/source-han-sans
+
+\setmainfont[Ligatures={Common,TeX}]{Source Serif 4}
+\setromanfont[Ligatures={Common,TeX}]{Source Serif 4}
+\setsansfont[Ligatures={Common,TeX},Scale=MatchLowercase]{Source Sans 3}
+\setmonofont[Scale=MatchLowercase,Scale=0.87]{Source Code Pro}
+
+\makeatletter
+\AtBeginDocument{%
+  \@ifpackageloaded{unicode-math}{%
+    \setmathfont{STIX Two Math}
+  }{%
+  }
+}
+\makeatother
+
+%%% Local Variables:
+%%% mode: latex
+%%% coding: utf-8-unix
+%%% End:

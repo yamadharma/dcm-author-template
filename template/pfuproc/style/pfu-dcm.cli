@@ -26,7 +26,7 @@
   \defaultlanguage{english}
   \defaultaltlanguage{russian}
   % First name before Last name
-  \setboolean{isNameFam}{true}
+  \setboolean{isNameFam}{false}
 }
 
 \AtEndOfPackage{%
@@ -135,10 +135,12 @@
   \PFUjournalyear%
   \ifx\PFUjournalvolume\@empty\else, \PFUjournalvolume\fi{}~%
   \ifx\PFUjournalnumber\@empty\else (\PFUjournalnumber)\fi{}%
-  \ifx\PFUjournalissue\@empty\else\,(\PFUjournalissue),\fi{}%
+  \ifx\PFUjournalissue\@empty,~\else\,(\PFUjournalissue),~\fi{}%
+  \@pagerange
   % dirty hack
   \@ifundefined{r@\thePFUtitle:starttitle}{}{%
-    ~\pageref{starttitle}--\pageref{endtitle}
+    ~\@pagerange
+    % ~\pageref{starttitle}--\pageref{endtitle}
   }
 }
 

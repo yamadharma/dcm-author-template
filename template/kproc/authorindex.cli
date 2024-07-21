@@ -1,0 +1,59 @@
+\RequirePackage[noautomatic]{indextools}
+
+\def\@author@hook@post{%
+  \iflanguage{\@defaultlanguage}
+  {%
+    \index[author]{\authorFamily \authorInitialsPlain}
+  }
+  {%
+    \index[altauthor]{\authorFamily \authorInitialsPlain}
+  }
+} % END \@author@hook@post
+
+\def\@altauthor@hook@post{%
+  \iflanguage{\@defaultaltlanguage}
+  {%
+    \index[author]{\altauthorFamily \altauthorInitialsPlain}
+  }
+  {%
+    \index[altauthor]{\altauthorFamily \altauthorInitialsPlain}
+  }
+} % END \@altauthor@hook@post
+
+
+\AtBeginDocument%
+{%
+
+  \def\authorindexname{Author index}
+  
+  \@ifpackageloaded{polyglossia}{%
+    \addto\captionsrussian{%
+      \def\authorindexname{Именной указатель}%
+    }%
+    \addto\captionsenglish{%
+      \def\authorindexname{Author index}%
+      }%   
+  }{%
+    \addto\extrasrussian{%
+      \def\authorindexname{%
+        {\cyr\CYRI\cyrm\cyre\cyrn\cyrn\cyro\cyrishrt
+          \ \cyru\cyrk\cyra\cyrz\cyra\cyrt\cyre\cyrl\cyrsftsn}}%
+    }
+    \addto\extrasenglish{%
+      \def\authorindexname{Author index}%
+    }%   
+  }
+
+%  {\selectlanguage{\@defaultlanguage}
+    \makeindex[name=author,title={\authorindexname}]
+%  }
+
+  \makeindex[name=altauthor,title={\authorindexname}]
+  
+}
+
+
+%%% Local Variables: 
+%%% mode: latex
+%%% coding: utf-8-unix
+%%% End:

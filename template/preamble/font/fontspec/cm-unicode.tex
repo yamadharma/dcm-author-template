@@ -2,45 +2,24 @@
 %% url: http://canopus.iacp.dvo.ru/~panov/cm-unicode/
 %% gentoo: emerge media-fonts/cm-unicode-otf
 
-% CMU Serif
-\newfontfamily\cyrillicfont{cmunrm}%
-[Script=Cyrillic,Ligatures=TeX,Scale=MatchLowercase,%
-Extension = .otf,%
-ItalicFont = cmunti,%
-BoldFont = cmunbx,%
-BoldItalicFont = cmunbi,%
-SlantedFont = cmunsl,%
-BoldSlantedFont = cmunbl,%
-% SmallCapsFont = 
-]
-
-% CMU Sans Serif
-\newfontfamily\cyrillicfontsf{cmunss}%
-[Script=Cyrillic,Ligatures=TeX,Scale=MatchLowercase,%
-Extension = .otf,%
-ItalicFont = cmunsi,%
-BoldFont = cmunsx,%
-BoldItalicFont = cmunso,%
-% SlantedFont = ,
-% BoldSlantedFont = ,
-% SmallCapsFont = ,
-]
-
-% CMU Typewriter Text
-\newfontfamily\cyrillicfonttt{cmuntt}%
-[Script=Cyrillic,Scale=MatchLowercase,%
-Extension = .otf,%
-ItalicFont = cmunit,%
-BoldFont = cmuntb,%
-BoldItalicFont = cmuntx,%
-% SlantedFont = ,
-% BoldSlantedFont = ,
-% SmallCapsFont = ,
-]
-
 \setmainfont[Ligatures=TeX,Scale=MatchLowercase]{CMU Serif}
 \setsansfont[Ligatures=TeX,Scale=MatchLowercase]{CMU Sans Serif}
 \setmonofont[Scale=MatchLowercase]{CMU Typewriter Text}
+
+% CMU Serif
+\newfontfamily\cyrillicfont%
+[Script=Cyrillic,Ligatures=TeX,Scale=MatchLowercase]%
+{CMU Serif}
+
+% CMU Sans Serif
+\newfontfamily\cyrillicfontsf%
+[Script=Cyrillic,Ligatures=TeX,Scale=MatchLowercase]%
+{CMU Sans Serif}
+
+% CMU Typewriter Text
+\newfontfamily\cyrillicfonttt%
+[Script=Cyrillic,Scale=MatchLowercase]%
+{CMU Typewriter Text}
 
 %%% Local Variables:
 %%% mode: latex

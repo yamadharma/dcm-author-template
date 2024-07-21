@@ -1,0 +1,61 @@
+%% biblatex
+
+\usepackage[%
+parentracker=true,%
+backend=biber,%
+hyperref=auto,%
+language=auto,%
+autolang=other*,%
+%citestyle=,%
+defernumbers=true,%
+%bibstyle=gost-footnote,%
+style=nature,%
+%style=phys,%
+% disable printing the URLs and ISBNs in the bibliography
+url=false,
+isbn=false,
+doi=true,
+eprint=true,
+% enables/disables generation of the back references to the citation,
+% which are usually number(s) of the page where citation appears
+%backref=true,
+% Amount of displayed author names
+% limit amount of authors of the cited document to be printed in the
+% document body and in the bibliography, respectively
+maxcitenames=3,
+maxbibnames=100,
+% A threshold affecting all lists of names
+maxnames=10,%
+minnames=1,%
+% This option automatically starts a new reference section at a document division such
+% as a chapter or a section
+%refsection=chapter,%
+% Similar to the refsection option but starts a new reference segment
+%refsegment=chapter,
+% This option automatically executes the \citereset command at a 
+% document division such as a chapter or a section.
+%citereset=chapter,%
+% Global cite counter
+%citecounter=false,%
+% sorting=nty,nyt,nyvt,anyt,anyvt,ynt,ydnt,none
+%sorting=nty,
+% Article titles are not always included in the bibliography
+articletitle=true,%
+% Whether the title of books is printed for inbook and incollection entries
+intitle=true,%
+]{biblatex}
+
+%\ExecuteBibliographyOptions{%
+%maxnames=10,%
+%maxcitenames=10,%
+%maxbibnames=10,%
+%movenames=true,%
+%url=false,%
+%sorting=ynt,%
+%refsection=chapter,%
+%}
+
+%%% Local Variables:
+%%% mode: latex
+%%% coding: utf-8-unix
+%%% End:

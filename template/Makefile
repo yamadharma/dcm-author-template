@@ -4,7 +4,7 @@ LATEX = lualatex
 all:
 	$(LATEX) $(FILE)
 	$(LATEX) $(FILE)
-	-bibtex bu*
+	-biber $(FILE)
 	$(LATEX) $(FILE)
 	$(LATEX) $(FILE)
 	mkdir -p out
@@ -13,8 +13,8 @@ all:
 cleanall: clean
 
 clean:
-	-rm -f *.{log,toc,tac,aux,dvi,ps,bbl,blg,tmp,nav,out,snm,vrb,rel,thm,rel,*~,titlelist.tex} $(FILE).pdf
-	-rm -f *.4o[mftsy] *.{ojs.ini,xml,mw,loa,idx}
+	-rm -f *.{log,toc,tac,aux,dvi,ps,bbl,blg,tmp,nav,out,snm,vrb,rel,thm,rel,*~,ilg,titlelist.tex} $(FILE).pdf
+	-rm -f *.4o[mftsy] *.{ojs.ini,xml,mw,loa,idx} *_latexmk
 	-rm -f split*
 	rm -rf out auto
 	for i in $(ALLSUBDIRS); do \
