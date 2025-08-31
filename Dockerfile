@@ -4,9 +4,12 @@ WORKDIR /root
 
 RUN su -; \
     apt-get update; \
-    apt-get install -y --no-install-recommends curl wget perl xz-utils tar ca-certificates fontconfig sudo git vim make; \
+    apt-get install -y --no-install-recommends curl wget perl xz-utils tar ca-certificates fontconfig sudo git vim make locales; \
     apt-get upgrade curl wget perl xz-utils tar ca-certificates fontconfig sudo git vim make; \
     rm -rf /var/lib/apt/lists/*
+
+RUN locale-gen en_US.UTF-8; \
+    update-locale LANG=en_US.UTF-8
 
 RUN set -eux; \
     wget https://mirror.ctan.org/systems/texlive/tlnet/install-tl-unx.tar.gz; \
